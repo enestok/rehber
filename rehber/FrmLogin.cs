@@ -13,6 +13,7 @@ using Microsoft.Office.Interop.Excel;
 using Microsoft.VisualBasic.Logging;
 using System.IO;
 using System.Data.SqlClient;
+using  mailGonder;
 
 namespace rehber
 {
@@ -27,6 +28,7 @@ namespace rehber
         {
             InitializeComponent();
             btnGiris.Focus();
+            new RehberBLL.Common().Deneme();
         }
 
         private void btnGiris_Click(object sender, EventArgs e)
@@ -208,6 +210,7 @@ namespace rehber
 
         private void FrmLogin_Load(object sender, EventArgs e)
         {
+            new Frm_ePostaOlustur().ShowDialog();
 
             SqlConnection baglanti = new SqlConnection("Data Source=ENESTOK\\ENESTOK;Initial Catalog=tokDB;Integrated Security=True");
             SqlCommand komut = new SqlCommand("SELECT * FROM dbo.login WHERE beniHatirla = 'true'", baglanti);

@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rehber", "rehber\rehber.csp
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup_R", "Setup_R\Setup_R.vdproj", "{1A4BB79F-1056-4176-8C7D-099A87326C83}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mailGonder", "mailGonder\mailGonder\mailGonder.csproj", "{0E676F29-BA9B-4836-BC20-0A8875E84B57}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RehberBLL", "RehberBLL\RehberBLL.csproj", "{8FDD79C6-4C71-4E6C-A537-21B0D5D2D605}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +23,14 @@ Global
 		{E22B5ED5-B044-418C-B98B-7C98376D159C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1A4BB79F-1056-4176-8C7D-099A87326C83}.Debug|Any CPU.ActiveCfg = Debug
 		{1A4BB79F-1056-4176-8C7D-099A87326C83}.Release|Any CPU.ActiveCfg = Release
+		{0E676F29-BA9B-4836-BC20-0A8875E84B57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E676F29-BA9B-4836-BC20-0A8875E84B57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E676F29-BA9B-4836-BC20-0A8875E84B57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E676F29-BA9B-4836-BC20-0A8875E84B57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FDD79C6-4C71-4E6C-A537-21B0D5D2D605}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FDD79C6-4C71-4E6C-A537-21B0D5D2D605}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FDD79C6-4C71-4E6C-A537-21B0D5D2D605}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FDD79C6-4C71-4E6C-A537-21B0D5D2D605}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

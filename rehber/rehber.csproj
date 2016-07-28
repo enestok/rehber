@@ -262,6 +262,16 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\mailGonder\mailGonder\mailGonder.csproj">
+      <Project>{0e676f29-ba9b-4836-bc20-0a8875e84b57}</Project>
+      <Name>mailGonder</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RehberBLL\RehberBLL.csproj">
+      <Project>{8fdd79c6-4c71-4e6c-a537-21b0d5d2d605}</Project>
+      <Name>RehberBLL</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
