@@ -23,7 +23,7 @@ namespace rehber
         {
             if (txtKullaniciKayit.Text == "" && txtSifreKayit.Text == "" || txtSifreKayit.Text != txtSifreTekrarKayit.Text)
             {
-                MessageBox.Show(" Boş alanları doldurun ve şifrelerin uyuştuğundan emin olun! ", "Kayıt Ol", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show(" Boş alanları doldurunn ve şifrelerin uyuştuğundan emin olun! ", "Kayıt Ol", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
             else
             {
