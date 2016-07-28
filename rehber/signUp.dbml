@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="tokDB" Class="signUpDataContextDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=ENESTOK\ENESTOK;Initial Catalog=tokDB;Integrated Security=True" SettingsObjectName="rehber.Properties.Settings" SettingsPropertyName="tokDBConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.login" Member="KullaniciKayits">
+    <Type Name="KullaniciKayit">
+      <Column Name="kullaniciID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="kullaniciAdi" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="sifre" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>
