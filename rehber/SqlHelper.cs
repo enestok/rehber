@@ -9,7 +9,7 @@ namespace rehber
 {
     public class SqlHelper
     {
-        public static string ConnectionString()
+        public static string ConnectionString() //
         {
            return System.Configuration.ConfigurationManager.ConnectionStrings["rehber.Properties.Settings.tokDBConnectionString"].ConnectionString;
         }

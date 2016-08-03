@@ -21,7 +21,7 @@ namespace rehber
     {
 
         public RehberModel _rehberModel;
-
+        
         public bool Login { get; set; }
 
         public FrmLogin()

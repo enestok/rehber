@@ -97,60 +97,71 @@ namespace rehber
                 MessageBox.Show("Lütfen Boş Alanları Doldurunuz !");
             else
             {
-                //Sql Veritabanı ve Kayıt işlemleri
-                SqlConnection baglanti = new SqlConnection("Data Source=ENESTOK\\ENESTOK;Initial Catalog=tokDB;Integrated Security=True");
-                SqlCommand guncelle = new SqlCommand("kayitGuncelle", baglanti);//kayitGuncelle (stored procedure)
-                guncelle.CommandType = CommandType.StoredProcedure;
-
-                var sonuc = ImageCompare.Compare((Bitmap)pictureBoxYeni.Image, image.icon_user_default);
-
-                if (sonuc == ImageCompare.CompareResult.ciNull || (sonuc == ImageCompare.CompareResult.ciCompareOk))//resource ekleyerek default görüntü atadık. resource eklemeyi adım adım deftere yaz.
-                    guncelle.Parameters.Add("@ResimYeni", SqlDbType.Image).Value = DBNull.Value;  //veri tabanından resim bilgisi gelmediyse DB ye NULL yazsın..
+                if (new RehberBL().NumaraVar(maskedTxtNumaraYeni.Text, _rehberModel.KullaniciID,_rehberModel.Id))
+                {
+                    MessageBox.Show("nümeramı nerden aldın!!");
+                    maskedTxtNumaraYeni.Clear();
+                    maskedTxtNumaraYeni.Focus();
+                    return;
+                }
                 else
                 {
-                    if (!string.IsNullOrEmpty(resimYolu)) // fotoğraf seç butonuna tıklandıysa (resim yolu na bir değer geldiyse) seçilen fotoğrafı db ye ekle..
-                    {
-                        FileStream fs = new FileStream(resimYolu, FileMode.Open, FileAccess.Read);
-                        BinaryReader br = new BinaryReader(fs);
-                        byte[] resim = br.ReadBytes(Convert.ToInt32(fs.Length));
-                        br.Close();
-                        fs.Close();
+                    //Sql Veritabanı ve Kayıt işlemleri
+                    SqlConnection baglanti = new SqlConnection("Data Source=ENESTOK\\ENESTOK;Initial Catalog=tokDB;Integrated Security=True");
+                    SqlCommand guncelle = new SqlCommand("kayitGuncelle", baglanti);//kayitGuncelle (stored procedure)
+                    guncelle.CommandType = CommandType.StoredProcedure;
 
-                        guncelle.Parameters.Add("@ResimYeni", SqlDbType.Image).Value = (byte[])resim;
+                    var sonuc = ImageCompare.Compare((Bitmap)pictureBoxYeni.Image, image.icon_user_default);
+
+                    if (sonuc == ImageCompare.CompareResult.ciNull || (sonuc == ImageCompare.CompareResult.ciCompareOk))//resource ekleyerek default görüntü atadık. resource eklemeyi adım adım deftere yaz.
+                        guncelle.Parameters.Add("@ResimYeni", SqlDbType.Image).Value = DBNull.Value;  //veri tabanından resim bilgisi gelmediyse DB ye NULL yazsın..
+                    else
+                    {
+                        if (!string.IsNullOrEmpty(resimYolu)) // fotoğraf seç butonuna tıklandıysa (resim yolu na bir değer geldiyse) seçilen fotoğrafı db ye ekle..
+                        {
+                            FileStream fs = new FileStream(resimYolu, FileMode.Open, FileAccess.Read);
+                            BinaryReader br = new BinaryReader(fs);
+                            byte[] resim = br.ReadBytes(Convert.ToInt32(fs.Length));
+                            br.Close();
+                            fs.Close();
+
+                            guncelle.Parameters.Add("@ResimYeni", SqlDbType.Image).Value = (byte[])resim;
+                        }
+
+
+
                     }
 
+                    guncelle.Parameters.AddWithValue("@telNoYeni", maskedTxtNumaraYeni.Text);
+                    guncelle.Parameters.AddWithValue("@isimYeni", textIsimYeni.Text);
+                    guncelle.Parameters.AddWithValue("@soyisimYeni", textSoyisimYeni.Text);
+                    //guncelle.Parameters.AddWithValue("@dTarihYeni", date1Yeni.Tarih).DbType = DbType.DateTime;
+                    guncelle.Parameters.AddWithValue("@dTarihYeni", dtDogumTarihiYeni.Value);
+                    guncelle.Parameters.AddWithValue("@cinsiyetYeni", comboBox1Yeni.SelectedItem);
+                    guncelle.Parameters.AddWithValue("@isTanimiYeni", richTextBox1Yeni.Text);
+                    guncelle.Parameters.AddWithValue("@id", _rehberModel.Id);/////
 
+                    try
+                    {
+                        baglanti.Open();
+                        guncelle.ExecuteNonQuery();
+                        MessageBox.Show(" Güncelleme İşlemi Tamamlandı. ");
 
+                        if (_rehber != null)
+                            _rehber.listele();
+                    }
+
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message.ToString());
+                    }
+
+                    finally
+                    {
+                        baglanti.Close();
+                    }
                 }
-
-                guncelle.Parameters.AddWithValue("@telNoYeni", maskedTxtNumaraYeni.Text);
-                guncelle.Parameters.AddWithValue("@isimYeni", textIsimYeni.Text);
-                guncelle.Parameters.AddWithValue("@soyisimYeni", textSoyisimYeni.Text);
-              //guncelle.Parameters.AddWithValue("@dTarihYeni", date1Yeni.Tarih).DbType = DbType.DateTime;
-                guncelle.Parameters.AddWithValue("@dTarihYeni",dtDogumTarihiYeni.Value);
-                guncelle.Parameters.AddWithValue("@cinsiyetYeni", comboBox1Yeni.SelectedItem);
-                guncelle.Parameters.AddWithValue("@isTanimiYeni", richTextBox1Yeni.Text);
-                guncelle.Parameters.AddWithValue("@id", _rehberModel.Id);/////
-
-                try
-                {
-                    baglanti.Open();
-                    guncelle.ExecuteNonQuery();
-                    MessageBox.Show(" Güncelleme İşlemi Tamamlandı. ");
-
-                    if (_rehber != null)
-                        _rehber.listele();
-                }
-
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message.ToString());
-                }
-
-                finally
-                {
-                    baglanti.Close();
-                }
+                
                 this.Close();
             }
         }

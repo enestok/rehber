@@ -43,55 +43,64 @@ namespace rehber
                 MessageBox.Show("Lütfen Boş Alanları Doldurunuz !");
             else
             {
-                numaraVar();
-
-                //Sql Veritabanı ve Kayıt işlemleri
-                SqlConnection baglanti = new SqlConnection("Data Source=ENESTOK\\ENESTOK;Initial Catalog=tokDB;Integrated Security=True");
-                SqlCommand komut = new SqlCommand("resimKayit", baglanti);//resimKayit (stored procedure)
-                komut.CommandType = CommandType.StoredProcedure;
- 
-                if (pictureBox.Image == null)
-                    komut.Parameters.Add("@Resim", SqlDbType.Image).Value = DBNull.Value;
+                if (new RehberBL().NumaraVar(maskedTxtNumara.Text, KullaniciBilgi.KullaniciID,0))
+                {
+                    MessageBox.Show("nümeramı nerden aldın!!");
+                    maskedTxtNumara.Clear();
+                    maskedTxtNumara.Focus();
+                    return;
+                }
                 else
                 {
-                    FileStream fs = new FileStream(resimYolu, FileMode.Open, FileAccess.Read);
-                    BinaryReader br = new BinaryReader(fs);
-                    byte[] resim = br.ReadBytes(Convert.ToInt32(fs.Length));
-                    br.Close();
-                    fs.Close();
+                    //Sql Veritabanı ve Kayıt işlemleri
+                    SqlConnection baglanti = new SqlConnection("Data Source=ENESTOK\\ENESTOK;Initial Catalog=tokDB;Integrated Security=True");
+                    SqlCommand komut = new SqlCommand("resimKayit", baglanti);   //resimKayit (stored procedure)
+                    komut.CommandType = CommandType.StoredProcedure;
 
-                    komut.Parameters.AddWithValue("@Resim", resim);
+                    if (pictureBox.Image == null)
+                        komut.Parameters.Add("@Resim", SqlDbType.Image).Value = DBNull.Value;
+                    else
+                    {
+                        FileStream fs = new FileStream(resimYolu, FileMode.Open, FileAccess.Read);
+                        BinaryReader br = new BinaryReader(fs);
+                        byte[] resim = br.ReadBytes(Convert.ToInt32(fs.Length));
+                        br.Close();
+                        fs.Close();
+
+                        komut.Parameters.AddWithValue("@Resim", resim);
+                    }
+
+                    komut.Parameters.AddWithValue("@isim", textIsim.Text);
+                    komut.Parameters.AddWithValue("@soyisim", textSoyisim.Text);
+                    komut.Parameters.AddWithValue("@telNo", maskedTxtNumara.Text);
+                    komut.Parameters.AddWithValue("@dTarih", dtDogumTarihi.Value);
+                    komut.Parameters.AddWithValue("@cinsiyet", comboBox1.SelectedItem);
+                    komut.Parameters.AddWithValue("@isTanimi", richTextBox1.Text);
+                    komut.Parameters.AddWithValue("@kullaniciID", KullaniciBilgi.KullaniciID);
+
+                    try
+                    {
+                        baglanti.Open();
+                        komut.ExecuteNonQuery();
+
+                        _frmRehber.listele();
+                        _frmRehber.controlsEnableOrNot();
+
+                        MessageBox.Show(" Kayıt İşlemi Tamamlandı. ", "Kayıt Ekle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Temizle();
+                    }
+
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message.ToString());
+                    }
+
+                    finally
+                    {
+                        baglanti.Close();
+                    }
                 }
-
-                komut.Parameters.AddWithValue("@isim", textIsim.Text);
-                komut.Parameters.AddWithValue("@soyisim", textSoyisim.Text);
-                komut.Parameters.AddWithValue("@telNo", maskedTxtNumara.Text);
-                komut.Parameters.AddWithValue("@dTarih", dtDogumTarihi.Value);
-                komut.Parameters.AddWithValue("@cinsiyet", comboBox1.SelectedItem);
-                komut.Parameters.AddWithValue("@isTanimi", richTextBox1.Text);
-                komut.Parameters.AddWithValue("@kullaniciID", KullaniciBilgi.KullaniciID);
                 
-                try
-                {
-                    baglanti.Open();
-                    komut.ExecuteNonQuery();
-
-                    _frmRehber.listele();
-                    _frmRehber.controlsEnableOrNot();
-
-                    MessageBox.Show(" Kayıt İşlemi Tamamlandı. ", "Kayıt Ekle", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Temizle();
-                }
-
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message.ToString());
-                }
-
-                finally
-                {
-                    baglanti.Close();
-                }
             }
         }
 
@@ -117,19 +126,7 @@ namespace rehber
             this.Close();
         }
 
-        private bool numaraVar()
-        {
-            //var kullanici = new tokDBEntities1().logins.SqlQuery();
-            var mevcut = new tokDBEntities1().rehbers.SingleOrDefault(q => q.telNo.Equals(maskedTxtNumara.Text)); // rehberdeki kayıtları kullanıcı ID ye göre çekebilmeliyim. ???
-            
-            if (mevcut != null)
-            {
-                MessageBox.Show(" Aynı numaraya sahip kullanıcı mevcut. ");
-                return true;  // başka bir kayıt mevcut.
-            }
-            return false;
-
-        }
+       
 
     }
 }
