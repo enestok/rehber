@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="tokDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="tokDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="login">
           <Key>
             <PropertyRef Name="kullaniciID" />
@@ -12,6 +12,7 @@
           <Property Name="kullaniciID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="kullaniciAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="sifre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="kullaniciEMail" Type="nvarchar" MaxLength="50" />
           <Property Name="beniHatirla" Type="bit" />
         </EntityType>
         <EntityType Name="rehber">
@@ -23,6 +24,7 @@
           <Property Name="isim" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="soyisim" Type="nvarchar" MaxLength="50" />
           <Property Name="telNo" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="eMail" Type="nvarchar" MaxLength="50" />
           <Property Name="dTarih" Type="date" />
           <Property Name="isTanimi" Type="nvarchar(max)" />
           <Property Name="cinsiyet" Type="nvarchar" MaxLength="1" />
@@ -61,6 +63,7 @@
           <Property Name="sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="rehbers" Relationship="Self.FK_rehber_login" FromRole="login" ToRole="rehber" />
           <Property Name="beniHatirla" Type="Boolean" />
+          <Property Name="kullaniciEMail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="rehber">
           <Key>
@@ -76,6 +79,7 @@
           <Property Name="cinsiyet" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
           <Property Name="resim" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="login" Relationship="Self.FK_rehber_login" FromRole="rehber" ToRole="login" />
+          <Property Name="eMail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_rehber_login">
           <End Role="login" Type="Self.login" Multiplicity="1" />
@@ -106,6 +110,7 @@
           <EntitySetMapping Name="logins">
             <EntityTypeMapping TypeName="tokDBModel.login">
               <MappingFragment StoreEntitySet="login">
+                <ScalarProperty Name="kullaniciEMail" ColumnName="kullaniciEMail" />
                 <ScalarProperty Name="beniHatirla" ColumnName="beniHatirla" />
                 <ScalarProperty Name="kullaniciID" ColumnName="kullaniciID" />
                 <ScalarProperty Name="kullaniciAdi" ColumnName="kullaniciAdi" />
@@ -116,6 +121,7 @@
           <EntitySetMapping Name="rehbers">
             <EntityTypeMapping TypeName="tokDBModel.rehber">
               <MappingFragment StoreEntitySet="rehber">
+                <ScalarProperty Name="eMail" ColumnName="eMail" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="kullaniciID" ColumnName="kullaniciID" />
                 <ScalarProperty Name="isim" ColumnName="isim" />

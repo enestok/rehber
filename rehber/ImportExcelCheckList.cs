@@ -14,13 +14,13 @@ namespace rehber
 {
     public partial class ImportExcelCheckList : Form
     {
+
+        System.Windows.Forms.ListBox _lstBox; 
         public ImportExcelCheckList(System.Windows.Forms.ListBox lstBox)
         {
             InitializeComponent();
             _lstBox = lstBox;
         }
-
-        System.Windows.Forms.ListBox _lstBox;
 
         private void btnExcelIptal_Click(object sender, EventArgs e)
         {
@@ -30,7 +30,6 @@ namespace rehber
         private void btnExcelTamam_Click(object sender, EventArgs e)
         {
             ImportToExcell();
-
         }
 
         ////
@@ -80,7 +79,7 @@ namespace rehber
                             default: { MessageBox.Show("Hay Aksi! İstenmeyen bir durum oluştu.", "Hata"); this.Close(); break; }
                         }
                         index++;
-
+                        
                     }
 
                 }
@@ -91,6 +90,11 @@ namespace rehber
             
 
          }
+
+        private void ImportExcelCheckList_Load(object sender, EventArgs e)
+        {
+            checkedListBox1.Items.Add("asd");
+        }
 
         
     }

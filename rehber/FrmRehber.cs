@@ -74,7 +74,7 @@ namespace rehber
                     connection.Open();
 
                     RehberModel selectedItem = this.listBox1.SelectedItem as RehberModel;
-                    new SqlCommand("delete from dbo.rehber where rehber.ID = " + selectedItem.Id, connection).ExecuteNonQuery();
+                    new SqlCommand("DELETE FROM dbo.rehber WHERE rehber.ID = " + selectedItem.Id, connection).ExecuteNonQuery();
                     this.pictureBoxGoster.Image = image.icon_user_default;
                     this.labelAdSoyad.Text = null;
                     this.labelTelefon.Text = this.labelDogumTarihi.Text = this.labelCinsiyet.Text = this.labelIsTanim.Text = string.Empty;
@@ -113,7 +113,7 @@ namespace rehber
         }
 
         ///
-        //->   listBox1_SelectedIndexChanged
+        //->   listBox1_SelectedIndexChanged  -> listede seçili eleman deðiþtiðinde..
         ///
         private void listBox1_SelectedIndexChanged(object sender, System.EventArgs e)
         {
@@ -130,7 +130,7 @@ namespace rehber
         }
 
         ///
-        //->   textBoxAra_TextChanged
+        //->   textBoxAra_TextChanged -> arama yaparken sonuçlarý anlýk gösterebilmek için..
         ///
         private void textBoxAra_TextChanged(object sender, System.EventArgs e)
         {
@@ -168,7 +168,7 @@ namespace rehber
         }
 
         ///
-        //->   listele() --> kaydedilen isimler listbox ta listeleniyor.
+        //->   listele() -> kaydedilen isimler listbox ta listeleniyor.
         ///
         public void listele()
         {
@@ -181,7 +181,7 @@ namespace rehber
         }
 
         ///
-        //->   goster()  --> FrmRehber formunun sað tarafýnda bilgiler gösteriliyor.
+        //->   goster()  -> FrmRehber formunun sað tarafýnda bilgiler gösteriliyor.
         ///
         public void goster()
         {
@@ -223,7 +223,7 @@ namespace rehber
             }
         }
         ////
-        //--> controlsEnableOrNot() --> "Ara" text box ýný ve "excel'e aktar" butonunu kayýt varken açýp kayýt yokken kapatýr.
+        //--> controlsEnableOrNot() -> "Ara" text box ýný ve "excel'e aktar" butonunu kayýt varken açýp kayýt yokken kapatýr.
         ////
         public void controlsEnableOrNot() 
         {
@@ -242,7 +242,7 @@ namespace rehber
 
       
         ////
-        //--> btnKullaniciDegistir_Click() --> baþka kullanýcýya geçmek için.. 
+        //--> btnKullaniciDegistir_Click() -> baþka kullanýcýya geçmek için.. 
         ////
         private void btnKullaniciDegistir_Click(object sender, EventArgs e)
         {
@@ -261,7 +261,7 @@ namespace rehber
         }
 
         ////
-        //--> btnExcelAktar_Click() --> verileri excel e aktaran buton 
+        //--> btnExcelAktar_Click() -> verileri excel e aktaran buton 
         ////
         private void btnExcelAktar_Click(object sender, EventArgs e)
         {
@@ -276,59 +276,6 @@ namespace rehber
             _frmChangePassword.ShowDialog();
            
         }
-
-        private void FrmRehber_FormClosing(object sender, FormClosingEventArgs e)
-        {
-        //    if (string.Equals((sender as Button).Name, @"btnKullaniciDegistir"))
-        //    {
-        //        this.Close();
-        //    }
-        //    else
-        //    {
-        //        DialogResult result = MessageBox.Show("Çýkmak istediðinize emin misiniz?", "Çýkýþ", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-        //        if (result == DialogResult.No)
-        //        {
-        //            e.Cancel = true;
-
-        //            //List<Form> openForms = new List<Form>();
-
-        //            //foreach (Form f in Application.OpenForms)
-        //            //    openForms.Add(f);
-
-        //            //foreach (Form f in openForms)
-        //            //{
-        //            //    if (f.Name != "FrmRehber")
-        //            //        f.Close();
-        //            //}
-
-        //        } // else --> zaten closing event'ýn içindeyiz. durdurmazsak her türlü kapanacaðý için application.Exit()'e gerek yok (mu?)
-           
-        //    }
-
-        //    //DialogResult result = MessageBox.Show("Çýkmak istediðinize emin misiniz?","Çýkýþ",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
-
-        //    //if (result == DialogResult.No)
-        //    //{
-        //    //    e.Cancel = true;
-                
-        //    //    //List<Form> openForms = new List<Form>();
-
-        //    //    //foreach (Form f in Application.OpenForms)
-        //    //    //    openForms.Add(f);
-
-        //    //    //foreach (Form f in openForms)
-        //    //    //{
-        //    //    //    if (f.Name != "FrmRehber")
-        //    //    //        f.Close();
-        //    //    //}
-
-        //    //} // else --> zaten closing event'ýn içindeyiz. durdurmazsak her türlü kapanacaðý için application.Exit()'e gerek yok.
-           
-        }
-
-
-
 
     }
 }

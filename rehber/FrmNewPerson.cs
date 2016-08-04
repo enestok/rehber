@@ -45,15 +45,16 @@ namespace rehber
             {
                 if (new RehberBL().NumaraVar(maskedTxtNumara.Text, KullaniciBilgi.KullaniciID,0))
                 {
-                    MessageBox.Show("nümeramı nerden aldın!!");
+                    MessageBox.Show("Aynı numaraya sahip kullanıcı mevcut!!");
                     maskedTxtNumara.Clear();
                     maskedTxtNumara.Focus();
                     return;
                 }
                 else
                 {
+                    
                     //Sql Veritabanı ve Kayıt işlemleri
-                    SqlConnection baglanti = new SqlConnection("Data Source=ENESTOK\\ENESTOK;Initial Catalog=tokDB;Integrated Security=True");
+                    SqlConnection baglanti = new SqlHelper().Connection();
                     SqlCommand komut = new SqlCommand("resimKayit", baglanti);   //resimKayit (stored procedure)
                     komut.CommandType = CommandType.StoredProcedure;
 
@@ -69,7 +70,7 @@ namespace rehber
 
                         komut.Parameters.AddWithValue("@Resim", resim);
                     }
-
+   
                     komut.Parameters.AddWithValue("@isim", textIsim.Text);
                     komut.Parameters.AddWithValue("@soyisim", textSoyisim.Text);
                     komut.Parameters.AddWithValue("@telNo", maskedTxtNumara.Text);

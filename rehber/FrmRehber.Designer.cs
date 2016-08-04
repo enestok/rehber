@@ -465,7 +465,6 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "REHBER";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmRehber_FormClosing);
             this.Load += new System.EventHandler(this.FrmRehber_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGoster)).EndInit();
             this.panel3.ResumeLayout(false);

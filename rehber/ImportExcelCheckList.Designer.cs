@@ -120,6 +120,7 @@
             this.Name = "ImportExcelCheckList";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Seçiniz";
+            this.Load += new System.EventHandler(this.ImportExcelCheckList_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

@@ -99,7 +99,7 @@ namespace rehber
             {
                 if (new RehberBL().NumaraVar(maskedTxtNumaraYeni.Text, _rehberModel.KullaniciID,_rehberModel.Id))
                 {
-                    MessageBox.Show("nümeramı nerden aldın!!");
+                    MessageBox.Show("Aynı numaraya sahip kullanıcı mevcut!!"); // yine de kaydetmek istiyor musunuz? ??? 
                     maskedTxtNumaraYeni.Clear();
                     maskedTxtNumaraYeni.Focus();
                     return;
@@ -116,7 +116,7 @@ namespace rehber
                     if (sonuc == ImageCompare.CompareResult.ciNull || (sonuc == ImageCompare.CompareResult.ciCompareOk))//resource ekleyerek default görüntü atadık. resource eklemeyi adım adım deftere yaz.
                         guncelle.Parameters.Add("@ResimYeni", SqlDbType.Image).Value = DBNull.Value;  //veri tabanından resim bilgisi gelmediyse DB ye NULL yazsın..
                     else
-                    {
+                    { 
                         if (!string.IsNullOrEmpty(resimYolu)) // fotoğraf seç butonuna tıklandıysa (resim yolu na bir değer geldiyse) seçilen fotoğrafı db ye ekle..
                         {
                             FileStream fs = new FileStream(resimYolu, FileMode.Open, FileAccess.Read);
@@ -135,7 +135,7 @@ namespace rehber
                     guncelle.Parameters.AddWithValue("@telNoYeni", maskedTxtNumaraYeni.Text);
                     guncelle.Parameters.AddWithValue("@isimYeni", textIsimYeni.Text);
                     guncelle.Parameters.AddWithValue("@soyisimYeni", textSoyisimYeni.Text);
-                    //guncelle.Parameters.AddWithValue("@dTarihYeni", date1Yeni.Tarih).DbType = DbType.DateTime;
+                  //guncelle.Parameters.AddWithValue("@dTarihYeni", date1Yeni.Tarih).DbType = DbType.DateTime;
                     guncelle.Parameters.AddWithValue("@dTarihYeni", dtDogumTarihiYeni.Value);
                     guncelle.Parameters.AddWithValue("@cinsiyetYeni", comboBox1Yeni.SelectedItem);
                     guncelle.Parameters.AddWithValue("@isTanimiYeni", richTextBox1Yeni.Text);

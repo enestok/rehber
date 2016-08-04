@@ -28,7 +28,6 @@ namespace rehber
         {
             InitializeComponent();
             btnGiris.Focus();
-            new RehberBLL.Common().Deneme();
         }
 
         private void btnGiris_Click(object sender, EventArgs e)
@@ -42,7 +41,7 @@ namespace rehber
             else
             {
       
-                SqlConnection baglanti = new SqlConnection(SqlHelper.ConnectionString());
+                SqlConnection baglanti = new SqlHelper().Connection();
                 SqlCommand komut = new SqlCommand("beniHatirla", baglanti); // beniHatirla (stored procedure)
                 komut.CommandType = CommandType.StoredProcedure;
 
@@ -76,32 +75,8 @@ namespace rehber
                 FrmRehber _frmRehber = new FrmRehber();
                 _frmRehber.ShowDialog();
                 this.Close();
-                //Login = true;
             }
 
-            //if (chkBeniHatirla.Checked)          
-            //{
-
-                ////File.WriteAllText(@"D:\\Kullanici_Adi.txt", txtKullaniciAdi.Text);
-                ////File.WriteAllText(@"D:\\Kullanici_Adi.txt", txtSifre.Text);
-
-                //FileStream fs = new FileStream("D:\\Kullanici_Adi.txt", FileMode.Append, FileAccess.Write);
-                //StreamWriter srWriter = new StreamWriter(fs);
-
-                //if (fs.Length != 0)
-                //{
-                //    srWriter.WriteLine(txtKullaniciAdi.Text);
-                //    srWriter.WriteLine(txtSifre.Text);
-                //}
-
-                //srWriter.Close();
-                //fs.Close();
-
-               // var L = new tokDBEntities1().logins.Include(q=> q.beniHatirla.Equals(0));   // ???
-                
-            //}
-
-            
         }
 
         private bool KullaniciLoginDurum()
