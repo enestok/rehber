@@ -272,6 +272,7 @@
             this.textMail.Name = "textMail";
             this.textMail.Size = new System.Drawing.Size(173, 23);
             this.textMail.TabIndex = 4;
+            this.textMail.TextChanged += new System.EventHandler(this.textMail_TextChanged);
             // 
             // FrmNewPerson
             // 

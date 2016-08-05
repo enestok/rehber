@@ -111,8 +111,17 @@ namespace rehber
 
                     }
 
+
+                    if (new FrmNewPerson(_rehber).IsMailAddress(textMailYeni.Text) == false)
+                    {
+                        MessageBox.Show("E Mail adresinizi kontrol ediniz.");
+                    }
+                    else 
+                    {
+                        guncelle.Parameters.AddWithValue("@eMailYeni", textMailYeni.Text);
+                    }// e mail adresini boş girmeyi sağla
+                   
                     guncelle.Parameters.AddWithValue("@telNoYeni", maskedTxtNumaraYeni.Text);
-                    guncelle.Parameters.AddWithValue("@eMailYeni", textMailYeni.Text);
                     guncelle.Parameters.AddWithValue("@isimYeni", textIsimYeni.Text);
                     guncelle.Parameters.AddWithValue("@soyisimYeni", textSoyisimYeni.Text);
                     guncelle.Parameters.AddWithValue("@dTarihYeni", dtDogumTarihiYeni.Value);

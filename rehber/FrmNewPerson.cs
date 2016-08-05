@@ -4,6 +4,9 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Mail;
+using System.Runtime.Remoting.Messaging;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -80,9 +83,17 @@ namespace rehber
                         komut.Parameters.AddWithValue("@isim", textIsim.Text);
                         komut.Parameters.AddWithValue("@soyisim", textSoyisim.Text);
                     }
-   
+
+                    if (IsMailAddress(textMail.Text) == false)
+                    {
+                        MessageBox.Show("e mail adresinizi kontrol ediniz");
+                    }
+                    else
+                    {
+                        komut.Parameters.AddWithValue("@eMail", textMail.Text); 
+                    }
+
                     komut.Parameters.AddWithValue("@telNo", maskedTxtNumara.Text);
-                    komut.Parameters.AddWithValue("@eMail", textMail.Text);
                     komut.Parameters.AddWithValue("@dTarih", dtDogumTarihi.Value);
                     komut.Parameters.AddWithValue("@cinsiyet", comboBox1.SelectedItem);
                     komut.Parameters.AddWithValue("@isTanimi", richTextBox1.Text);
@@ -163,5 +174,22 @@ namespace rehber
             }
         }
 
+        public bool IsMailAddress(string mail)
+        {
+            List<string> lst = new List<string>();
+            if (mail.Contains("@") && mail.Contains(".com"))// sadece .com olmasın. .gov .co vs de olsun   
+            {
+                return true;
+            }
+            return false;
+        }
+        private void textMail_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        
     }
+
+
+    
 }
