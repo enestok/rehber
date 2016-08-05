@@ -13,10 +13,10 @@ namespace rehber
     {
       public List<RehberModel> RehberList() //List -> collection. List<Type> -> generic collection. içerisine her türden veri alabilir.
       {
-          SqlConnection baglanti = new SqlConnection("Data Source=ENESTOK\\ENESTOK;Initial Catalog=tokDB;Integrated Security=True");
+          SqlConnection baglanti = new SqlHelper().Connection();
           baglanti.Open();
 
-          var cmd = new SqlCommand("Select * From Rehber Where kullaniciId = @kulId", baglanti);
+          var cmd = new SqlCommand("SELECT * FROM rehber WHERE kullaniciId = @kulId", baglanti);
 
           cmd.Parameters.AddWithValue("@kulId", KullaniciBilgi.KullaniciID);
 
@@ -38,6 +38,7 @@ namespace rehber
               model.IsTanimi = rd["isTanimi"].ToString();
               model.DogumTarihi =DateTime.Parse( rd["dTarih"].ToString() );
               model.TelNo = rd["telNo"].ToString();
+              model.EMail = rd["eMail"].ToString();
               model.Soyisim = rd["soyisim"].ToString();
               model.Isim = rd["isim"].ToString();
               model.Id =Int32.Parse( rd["ID"].ToString() );

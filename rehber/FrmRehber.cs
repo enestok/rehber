@@ -53,11 +53,10 @@ namespace rehber
 
             controlsEnableOrNot();
             
-        
         }
 
         ///
-        //->    buttonSil_Click
+        //->    btnSil_Click
         ///
         private void btnSil_Click(object sender, System.EventArgs e)
         {
@@ -209,14 +208,15 @@ namespace rehber
                     this.labelAdSoyad.Font = new Font("candara", 15, FontStyle.Regular);
                     this.labelAdSoyad.TextAlign = ContentAlignment.MiddleLeft;
                 }
-                else
+                else 
                 {
                     this.labelAdSoyad.Font = new Font("candara", 12, FontStyle.Regular);
                     this.labelAdSoyad.TextAlign = ContentAlignment.MiddleLeft;
                 }
-                
+
                 this.labelAdSoyad.Text = selectedItem.GenelBilgi; 
                 this.labelTelefon.Text = selectedItem.TelNo;
+                this.labelEMail.Text = selectedItem.EMail;
                 this.labelDogumTarihi.Text = selectedItem.DogumTarihi.ToShortDateString();
                 this.labelCinsiyet.Text = selectedItem.Cinsiyet;
                 this.labelIsTanim.Text = selectedItem.IsTanimi;
@@ -240,7 +240,6 @@ namespace rehber
 
         }
 
-      
         ////
         //--> btnKullaniciDegistir_Click() -> baþka kullanýcýya geçmek için.. 
         ////
@@ -257,7 +256,6 @@ namespace rehber
 
             }
            
-            
         }
 
         ////

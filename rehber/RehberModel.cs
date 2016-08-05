@@ -13,6 +13,7 @@ namespace rehber
         public string Isim { get; set; }
         public string Soyisim { get; set; }
         public string TelNo { get; set; }
+        public string EMail { get; set; }
         public DateTime DogumTarihi { get; set; }
         public String IsTanimi { get; set; }
         public String Cinsiyet { get; set; }

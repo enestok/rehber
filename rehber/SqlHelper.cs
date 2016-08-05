@@ -9,7 +9,7 @@ namespace rehber
 {
     public class SqlHelper
     {
-        public static string ConnectionString() //
+        public static string ConnectionString()  //App.config den ConString i çektik..
         {
            return System.Configuration.ConfigurationManager.ConnectionStrings["rehber.Properties.Settings.tokDBConnectionString"].ConnectionString;
         }
@@ -18,7 +18,7 @@ namespace rehber
             return System.Configuration.ConfigurationManager.ConnectionStrings[key].ConnectionString;
         }
 
-        public SqlConnection Connection()
+        public SqlConnection Connection()  //SqlHelper().Connection(); veritabanı bağlantısını gerçekleştiriyor..
         {
             SqlConnection conn = new SqlConnection("Data Source=ENESTOK\\ENESTOK;Initial Catalog=tokDB;Integrated Security=True");
             return conn;

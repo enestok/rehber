@@ -198,6 +198,7 @@
     <None Include="ClassDiagram4.cd" />
     <Fakes Include="Fakes\Microsoft.VisualBasic.PowerPacks.Vs.fakes" />
     <Fakes Include="Fakes\Microsoft.VisualBasic.PowerPacks.Vs01.fakes" />
+    <None Include="ClassDiagram5.cd" />
     <None Include="packages.config" />
     <None Include="signUp.dbml.layout">
       <DependentUpon>signUp.dbml</DependentUpon>

@@ -36,7 +36,6 @@ namespace rehber
             if (!KullaniciLoginDurum())
             {
                 MessageBox.Show("Hatalı Giriş. Bilgilerinizi Kontrol Edin", "Hatalı Giriş", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //Login = false;
             }
             else
             {
@@ -67,9 +66,6 @@ namespace rehber
                     }
 
                 }
-
-                
-                //////////
                 
                 this.Hide();
                 FrmRehber _frmRehber = new FrmRehber();
@@ -119,11 +115,10 @@ namespace rehber
                     {
                         MessageBox.Show("Hatalı Giriş. Bilgilerinizi Kontrol Edin", "Hatalı Giriş", MessageBoxButtons.OK,
                             MessageBoxIcon.Information);
-                        //Login = false;
                     }
                     else
                     {
-                        SqlConnection baglanti = new SqlConnection("Data Source=ENESTOK\\ENESTOK;Initial Catalog=tokDB;Integrated Security=True");
+                        SqlConnection baglanti = new SqlHelper().Connection();
                         SqlCommand komut = new SqlCommand("beniHatirla", baglanti); // beniHatirla (stored procedure)
                         komut.CommandType = CommandType.StoredProcedure;
 
@@ -150,33 +145,11 @@ namespace rehber
 
                         }
 
-                       
                         this.Hide();
                         FrmRehber _frmRehber = new FrmRehber();
                         _frmRehber.ShowDialog();
                         this.Close();
-                        //Login = true;
                     }
-
-                    if (chkBeniHatirla.Checked)
-                    {
-
-                        ////File.WriteAllText(@"D:\\Kullanici_Adi.txt", txtKullaniciAdi.Text);
-                        ////File.WriteAllText(@"D:\\Kullanici_Adi.txt", txtSifre.Text);
-
-                        //FileStream fs = new FileStream("D:\\Kullanici_Adi.txt", FileMode.Append, FileAccess.Write);
-                        //StreamWriter srWriter = new StreamWriter(fs);
-
-                        //if (fs.Length != 0)
-                        //{
-                        //    srWriter.WriteLine(txtKullaniciAdi.Text);
-                        //    srWriter.WriteLine(txtSifre.Text);
-                        //}
-
-                        //srWriter.Close();
-                        //fs.Close();
-                    }
-                    return true;
                 }
 
                 return false;
@@ -187,40 +160,14 @@ namespace rehber
         {
             new Frm_ePostaOlustur().ShowDialog();
 
-            SqlConnection baglanti = new SqlConnection("Data Source=ENESTOK\\ENESTOK;Initial Catalog=tokDB;Integrated Security=True");
+            SqlConnection baglanti = new SqlHelper().Connection();
             SqlCommand komut = new SqlCommand("SELECT * FROM dbo.login WHERE beniHatirla = 'true'", baglanti);
 
             baglanti.Open();
             komut.ExecuteNonQuery();
             baglanti.Close();
-           
-
-            //List<string> lstKullanici = new List<string>();
-            //lstKullanici = kullaniciListe();
-
-            //FileStream fs = new FileStream("D:\\Kullanici_Adi.txt", FileMode.OpenOrCreate, FileAccess.Read);
-
-            //if (fs.Length != 0)
-            //{
-            //    txtKullaniciAdi.Text = lstKullanici[0];
-            //    txtSifre.Text = lstKullanici[1];
-            //}
         }
 
-        public List<string> kullaniciListe() // beni hatırla check box ını işaretleyerek kaydedilen kullnaıcılar ve şifreleri kayıt edilen dosyadan alınarak listeye atılıyor..
-        {
-                List<string> list = new List<string>();
-                
-             
-                foreach (string line in File.ReadLines(@"D:\\Kullanici_Adi.txt"))
-                {
-                    list.Add(line.ToString());
-                }
-            
-                return list;
-
-            
-        }
 
         private void btnKayitOlDialog_Click(object sender, EventArgs e)
         {
@@ -254,25 +201,6 @@ namespace rehber
             {
                 txtSifre.Clear();
             }
-
-
-
-
-            //List<string> lstKullanici = new List<string>();
-            //lstKullanici = kullaniciListe();
-            //int i = 0;
-            //foreach (string list in lstKullanici)
-            //{
-            //     if (lstKullanici.Contains(txtKullaniciAdi.Text)) //
-            //     {
-            //         int q = lstKullanici.FindIndex(a => a.Contains(txtKullaniciAdi.Text)); // beni hatırla check box ını işaretleyen kullanıcıların kullanıcı adlarını yazdıklarında şifrelerini otomatik olarak getiriyor..
-            //        txtSifre.Text = lstKullanici[q + 1];    //
-            //     }
-
-            //}
-
         }
-
-
     }
 }

@@ -40,13 +40,14 @@ namespace rehber
 
         private void guncelle_Load(object sender, EventArgs e)
         {
-            SqlConnection baglanti = new SqlConnection("Data Source=ENESTOK\\ENESTOK;Initial Catalog=tokDB;Integrated Security=True");
+            SqlConnection baglanti = new SqlHelper().Connection();
             SqlCommand guncelle = new SqlCommand("kayitGuncelle", baglanti);  //kayitGuncelle (stored procedure)
             guncelle.CommandType = CommandType.StoredProcedure;
 
             textIsimYeni.Text = _rehberModel.Isim;
             textSoyisimYeni.Text = _rehberModel.Soyisim;
             maskedTxtNumaraYeni.Text = _rehberModel.TelNo;
+            textMailYeni.Text = _rehberModel.EMail;
             comboBox1Yeni.SelectedItem = _rehberModel.Cinsiyet;
             dtDogumTarihiYeni.Value = _rehberModel.DogumTarihi;
             richTextBox1Yeni.Text = _rehberModel.IsTanimi;
@@ -63,28 +64,6 @@ namespace rehber
                 ImageConverter converter = new ImageConverter();
                 pictureBoxYeni.Image = (Image)converter.ConvertFrom(imageArray);
             }
-
-
-            //var selectedItem = listBox1.SelectedItem as RehberModel;
-            /*
-            if (selectedItem.Resim != null)
-            {
-
-                byte[] ap = selectedItem.Resim;
-                //string aT = ds.Tables[0].Rows[0]["isim"];
-                MemoryStream ms = new MemoryStream(ap);
-                // pictureBoxGoster.Image = null;
-                pictureBoxGoster.Image = Image.FromStream(ms); ///veri tabanından telefon d.Tarihi vs okuyup forma yazdırılacak.      
-            }
-            else
-            {
-                pictureBoxGoster.Image = null;
-            }
-            labelAdSoyad.Text = selectedItem.Isim + " " + selectedItem.Soyisim;
-            labelTelefon.Text = selectedItem.TelNo;
-            labelDogumTarihi.Text = selectedItem.DogumTarihi.ToShortDateString();
-            labelCinsiyet.Text = selectedItem.Cinsiyet;*/
-            //la.Text = _rehberModel.IsTanimi;
 
         }
 
@@ -107,7 +86,7 @@ namespace rehber
                 else
                 {
                     //Sql Veritabanı ve Kayıt işlemleri
-                    SqlConnection baglanti = new SqlConnection("Data Source=ENESTOK\\ENESTOK;Initial Catalog=tokDB;Integrated Security=True");
+                    SqlConnection baglanti = new SqlHelper().Connection();
                     SqlCommand guncelle = new SqlCommand("kayitGuncelle", baglanti);//kayitGuncelle (stored procedure)
                     guncelle.CommandType = CommandType.StoredProcedure;
 
@@ -133,9 +112,9 @@ namespace rehber
                     }
 
                     guncelle.Parameters.AddWithValue("@telNoYeni", maskedTxtNumaraYeni.Text);
+                    guncelle.Parameters.AddWithValue("@eMailYeni", textMailYeni.Text);
                     guncelle.Parameters.AddWithValue("@isimYeni", textIsimYeni.Text);
                     guncelle.Parameters.AddWithValue("@soyisimYeni", textSoyisimYeni.Text);
-                  //guncelle.Parameters.AddWithValue("@dTarihYeni", date1Yeni.Tarih).DbType = DbType.DateTime;
                     guncelle.Parameters.AddWithValue("@dTarihYeni", dtDogumTarihiYeni.Value);
                     guncelle.Parameters.AddWithValue("@cinsiyetYeni", comboBox1Yeni.SelectedItem);
                     guncelle.Parameters.AddWithValue("@isTanimiYeni", richTextBox1Yeni.Text);
@@ -186,14 +165,13 @@ namespace rehber
 
                    var value = propp.GetValue(model);
 
-                   if (value.ToString() != item.Text)
-                   {
-                       MessageBox.Show("Girilen değerler farklı");  //girilen değerler farklı, o zaman veritabanında değiştir. 
-                   }                                                //girilen değerler farklı değilse veritabanındaki kayıt aynı kalsın. .. anlamına gelen işlemi yapacak sınıfı yaz!!!
+                   //if (value.ToString() != item.Text)
+                   //{
+                   //    MessageBox.Show("Girilen değerler farklı");  //girilen değerler farklı, o zaman veritabanında değiştir. 
+                   //}                                                //girilen değerler farklı değilse veritabanındaki kayıt aynı kalsın. .. anlamına gelen işlemi yapacak sınıfı yaz!!!
                 }
             }
         }
-       ///////////////// 
 
         private void btnSecYeni_Click(object sender, EventArgs e)
         {
@@ -210,9 +188,11 @@ namespace rehber
 
         private void btnTemizleYeni_Click_1(object sender, EventArgs e)
         {
+ 
             textIsimYeni.Clear();
             textSoyisimYeni.Clear();
             maskedTxtNumaraYeni.Clear();
+            textMailYeni.Clear();
             pictureBoxYeni.Image = image.icon_user_default;
             richTextBox1Yeni.Clear();
             comboBox1Yeni.SelectedItem = null;

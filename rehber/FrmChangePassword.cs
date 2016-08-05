@@ -32,7 +32,7 @@ namespace rehber
                 SqlConnection connect = new SqlHelper().Connection();
                 connect.Open();
 
-                SqlCommand command = new SqlCommand("UPDATE dbo.login SET sifre = @sifre where kullaniciId=" + userInfo.kullaniciID, connect);
+                SqlCommand command = new SqlCommand("UPDATE dbo.login SET sifre = @sifre WHERE kullaniciId=" + userInfo.kullaniciID, connect);
                 command.Parameters.AddWithValue("@sifre", txtSifreChangeYeni.Text);
                 userInfo.sifre = txtSifreChangeYeni.Text;
                 command.ExecuteNonQuery();
@@ -44,9 +44,6 @@ namespace rehber
             {
                 MessageBox.Show("Eski şifrenizi doğru girdiğinizden emin olun..");
             }
-            
-
-            
             
         }
 

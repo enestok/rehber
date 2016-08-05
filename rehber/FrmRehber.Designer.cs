@@ -55,9 +55,10 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.btnExcelAktar = new System.Windows.Forms.Button();
-            this.lblSifreDegistir = new System.Windows.Forms.LinkLabel();
-            this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.lblSifreDegistir = new System.Windows.Forms.LinkLabel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.labelEMail = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGoster)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -73,7 +74,7 @@
             // 
             this.labelTelefon.AutoSize = true;
             this.labelTelefon.Font = new System.Drawing.Font("Candara", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.labelTelefon.Location = new System.Drawing.Point(112, 5);
+            this.labelTelefon.Location = new System.Drawing.Point(112, 9);
             this.labelTelefon.Name = "labelTelefon";
             this.labelTelefon.Size = new System.Drawing.Size(12, 18);
             this.labelTelefon.TabIndex = 14;
@@ -83,7 +84,7 @@
             // 
             this.labelDogumTarihi.AutoSize = true;
             this.labelDogumTarihi.Font = new System.Drawing.Font("Candara", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.labelDogumTarihi.Location = new System.Drawing.Point(112, 40);
+            this.labelDogumTarihi.Location = new System.Drawing.Point(113, 71);
             this.labelDogumTarihi.Name = "labelDogumTarihi";
             this.labelDogumTarihi.Size = new System.Drawing.Size(12, 18);
             this.labelDogumTarihi.TabIndex = 15;
@@ -93,7 +94,7 @@
             // 
             this.labelCinsiyet.AutoSize = true;
             this.labelCinsiyet.Font = new System.Drawing.Font("Candara", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.labelCinsiyet.Location = new System.Drawing.Point(110, 75);
+            this.labelCinsiyet.Location = new System.Drawing.Point(111, 106);
             this.labelCinsiyet.Name = "labelCinsiyet";
             this.labelCinsiyet.Size = new System.Drawing.Size(12, 18);
             this.labelCinsiyet.TabIndex = 16;
@@ -105,7 +106,7 @@
             this.labelIsTanim.AutoEllipsis = true;
             this.labelIsTanim.AutoSize = true;
             this.labelIsTanim.Font = new System.Drawing.Font("Candara", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.labelIsTanim.Location = new System.Drawing.Point(21, 132);
+            this.labelIsTanim.Location = new System.Drawing.Point(21, 159);
             this.labelIsTanim.MaximumSize = new System.Drawing.Size(250, 105);
             this.labelIsTanim.Name = "labelIsTanim";
             this.labelIsTanim.Size = new System.Drawing.Size(12, 18);
@@ -117,11 +118,11 @@
             this.btnGuncelle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnGuncelle.BackColor = System.Drawing.Color.DimGray;
             this.btnGuncelle.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnGuncelle.Font = new System.Drawing.Font("Buxton Sketch", 12F);
+            this.btnGuncelle.Font = new System.Drawing.Font("Buxton Sketch", 13F);
             this.btnGuncelle.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.btnGuncelle.Location = new System.Drawing.Point(25, 222);
             this.btnGuncelle.Name = "btnGuncelle";
-            this.btnGuncelle.Size = new System.Drawing.Size(149, 35);
+            this.btnGuncelle.Size = new System.Drawing.Size(149, 45);
             this.btnGuncelle.TabIndex = 0;
             this.btnGuncelle.Text = "Kişi Güncelle";
             this.btnGuncelle.UseVisualStyleBackColor = false;
@@ -134,7 +135,7 @@
             this.btnSil.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSil.Font = new System.Drawing.Font("Buxton Sketch", 15F);
             this.btnSil.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnSil.Location = new System.Drawing.Point(25, 264);
+            this.btnSil.Location = new System.Drawing.Point(25, 273);
             this.btnSil.Name = "btnSil";
             this.btnSil.Size = new System.Drawing.Size(149, 47);
             this.btnSil.TabIndex = 1;
@@ -170,11 +171,11 @@
             this.btnKullaniciDegistir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnKullaniciDegistir.BackColor = System.Drawing.Color.DimGray;
             this.btnKullaniciDegistir.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnKullaniciDegistir.Font = new System.Drawing.Font("Buxton Sketch", 12F);
+            this.btnKullaniciDegistir.Font = new System.Drawing.Font("Buxton Sketch", 13F);
             this.btnKullaniciDegistir.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnKullaniciDegistir.Location = new System.Drawing.Point(19, 332);
+            this.btnKullaniciDegistir.Location = new System.Drawing.Point(19, 364);
             this.btnKullaniciDegistir.Name = "btnKullaniciDegistir";
-            this.btnKullaniciDegistir.Size = new System.Drawing.Size(160, 42);
+            this.btnKullaniciDegistir.Size = new System.Drawing.Size(160, 49);
             this.btnKullaniciDegistir.TabIndex = 3;
             this.btnKullaniciDegistir.Text = "Kullanıcı Değiştir >>";
             this.btnKullaniciDegistir.UseVisualStyleBackColor = false;
@@ -189,11 +190,10 @@
             this.panel4.Controls.Add(this.panel3);
             this.panel4.Controls.Add(this.btnKullaniciDegistir);
             this.panel4.Controls.Add(this.btnSil);
-            this.panel4.Location = new System.Drawing.Point(620, 32);
+            this.panel4.Location = new System.Drawing.Point(620, 49);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(200, 387);
+            this.panel4.Size = new System.Drawing.Size(200, 426);
             this.panel4.TabIndex = 2;
-           
             // 
             // btnYeniKayit
             // 
@@ -202,9 +202,9 @@
             this.btnYeniKayit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnYeniKayit.Font = new System.Drawing.Font("Buxton Sketch", 15F);
             this.btnYeniKayit.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnYeniKayit.Location = new System.Drawing.Point(13, 283);
+            this.btnYeniKayit.Location = new System.Drawing.Point(13, 322);
             this.btnYeniKayit.Name = "btnYeniKayit";
-            this.btnYeniKayit.Size = new System.Drawing.Size(210, 45);
+            this.btnYeniKayit.Size = new System.Drawing.Size(210, 49);
             this.btnYeniKayit.TabIndex = 1;
             this.btnYeniKayit.Text = "Kayıt Ekle";
             this.btnYeniKayit.UseVisualStyleBackColor = false;
@@ -214,7 +214,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Buxton Sketch", 11F);
-            this.label4.Location = new System.Drawing.Point(11, 7);
+            this.label4.Location = new System.Drawing.Point(11, 11);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(100, 19);
             this.label4.TabIndex = 8;
@@ -224,7 +224,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Buxton Sketch", 11F);
-            this.label5.Location = new System.Drawing.Point(11, 41);
+            this.label5.Location = new System.Drawing.Point(12, 72);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(100, 19);
             this.label5.TabIndex = 9;
@@ -234,7 +234,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Buxton Sketch", 11F);
-            this.label6.Location = new System.Drawing.Point(11, 75);
+            this.label6.Location = new System.Drawing.Point(12, 106);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(99, 19);
             this.label6.TabIndex = 10;
@@ -244,7 +244,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Buxton Sketch", 11F, System.Drawing.FontStyle.Underline);
-            this.label7.Location = new System.Drawing.Point(11, 109);
+            this.label7.Location = new System.Drawing.Point(11, 136);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(95, 19);
             this.label7.TabIndex = 11;
@@ -273,7 +273,7 @@
             this.listBox1.ItemHeight = 17;
             this.listBox1.Location = new System.Drawing.Point(13, 10);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(210, 242);
+            this.listBox1.Size = new System.Drawing.Size(210, 276);
             this.listBox1.TabIndex = 0;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             this.listBox1.DoubleClick += new System.EventHandler(this.listBox1_DoubleClick);
@@ -304,7 +304,7 @@
             this.panel1.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.lblLBStatus);
-            this.panel1.Location = new System.Drawing.Point(13, 251);
+            this.panel1.Location = new System.Drawing.Point(13, 289);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(210, 27);
             this.panel1.TabIndex = 21;
@@ -327,9 +327,9 @@
             this.panel2.Controls.Add(this.panel1);
             this.panel2.Controls.Add(this.listBox1);
             this.panel2.Controls.Add(this.btnYeniKayit);
-            this.panel2.Location = new System.Drawing.Point(27, 82);
+            this.panel2.Location = new System.Drawing.Point(27, 95);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(239, 337);
+            this.panel2.Size = new System.Drawing.Size(239, 380);
             this.panel2.TabIndex = 1;
             // 
             // panel5
@@ -337,7 +337,7 @@
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel5.Controls.Add(this.textBoxAra);
             this.panel5.Controls.Add(this.label14);
-            this.panel5.Location = new System.Drawing.Point(27, 32);
+            this.panel5.Location = new System.Drawing.Point(27, 49);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(239, 40);
             this.panel5.TabIndex = 0;
@@ -349,9 +349,9 @@
             this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel6.Controls.Add(this.labelAdSoyad);
             this.panel6.Font = new System.Drawing.Font("Cambria", 20F);
-            this.panel6.Location = new System.Drawing.Point(298, 32);
+            this.panel6.Location = new System.Drawing.Point(298, 49);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(309, 58);
+            this.panel6.Size = new System.Drawing.Size(309, 56);
             this.panel6.TabIndex = 27;
             // 
             // panel7
@@ -360,6 +360,8 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel7.Controls.Add(this.labelEMail);
+            this.panel7.Controls.Add(this.label1);
             this.panel7.Controls.Add(this.labelIsTanim);
             this.panel7.Controls.Add(this.labelCinsiyet);
             this.panel7.Controls.Add(this.labelDogumTarihi);
@@ -368,9 +370,9 @@
             this.panel7.Controls.Add(this.label6);
             this.panel7.Controls.Add(this.label5);
             this.panel7.Controls.Add(this.label4);
-            this.panel7.Location = new System.Drawing.Point(298, 96);
+            this.panel7.Location = new System.Drawing.Point(298, 111);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(309, 259);
+            this.panel7.Size = new System.Drawing.Size(309, 293);
             this.panel7.TabIndex = 28;
             // 
             // panel8
@@ -380,10 +382,9 @@
             this.panel8.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel8.Controls.Add(this.btnExcelAktar);
             this.panel8.Controls.Add(this.button2);
-            this.panel8.Controls.Add(this.button1);
-            this.panel8.Location = new System.Drawing.Point(298, 363);
+            this.panel8.Location = new System.Drawing.Point(298, 402);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(309, 55);
+            this.panel8.Size = new System.Drawing.Size(309, 73);
             this.panel8.TabIndex = 3;
             // 
             // btnExcelAktar
@@ -391,45 +392,15 @@
             this.btnExcelAktar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnExcelAktar.BackColor = System.Drawing.Color.DimGray;
             this.btnExcelAktar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnExcelAktar.Font = new System.Drawing.Font("Buxton Sketch", 11F);
+            this.btnExcelAktar.Font = new System.Drawing.Font("Buxton Sketch", 13F);
             this.btnExcelAktar.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnExcelAktar.Location = new System.Drawing.Point(6, 4);
+            this.btnExcelAktar.Location = new System.Drawing.Point(6, 3);
             this.btnExcelAktar.Name = "btnExcelAktar";
-            this.btnExcelAktar.Size = new System.Drawing.Size(94, 43);
+            this.btnExcelAktar.Size = new System.Drawing.Size(179, 62);
             this.btnExcelAktar.TabIndex = 0;
             this.btnExcelAktar.Text = "Excell\'e Aktar";
             this.btnExcelAktar.UseVisualStyleBackColor = false;
             this.btnExcelAktar.Click += new System.EventHandler(this.btnExcelAktar_Click);
-            // 
-            // lblSifreDegistir
-            // 
-            this.lblSifreDegistir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblSifreDegistir.AutoSize = true;
-            this.lblSifreDegistir.BackColor = System.Drawing.Color.DarkKhaki;
-            this.lblSifreDegistir.DisabledLinkColor = System.Drawing.Color.Salmon;
-            this.lblSifreDegistir.ForeColor = System.Drawing.Color.Tomato;
-            this.lblSifreDegistir.LinkColor = System.Drawing.Color.Black;
-            this.lblSifreDegistir.Location = new System.Drawing.Point(736, 14);
-            this.lblSifreDegistir.Name = "lblSifreDegistir";
-            this.lblSifreDegistir.Size = new System.Drawing.Size(79, 15);
-            this.lblSifreDegistir.TabIndex = 29;
-            this.lblSifreDegistir.TabStop = true;
-            this.lblSifreDegistir.Text = "Şifre Değiştir";
-            this.lblSifreDegistir.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblSifreDegistir_LinkClicked);
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.BackColor = System.Drawing.Color.DimGray;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.Font = new System.Drawing.Font("Buxton Sketch", 13F);
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button1.Location = new System.Drawing.Point(206, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(94, 43);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Excell\'e Aktar";
-            this.button1.UseVisualStyleBackColor = false;
             // 
             // button2
             // 
@@ -439,19 +410,55 @@
             this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.Font = new System.Drawing.Font("Buxton Sketch", 13F);
             this.button2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button2.Location = new System.Drawing.Point(106, 4);
+            this.button2.Location = new System.Drawing.Point(191, 3);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(94, 43);
+            this.button2.Size = new System.Drawing.Size(111, 62);
             this.button2.TabIndex = 2;
-            this.button2.Text = "Excell\'e Aktar";
+            this.button2.Text = "Mail Gönder";
             this.button2.UseVisualStyleBackColor = false;
+            // 
+            // lblSifreDegistir
+            // 
+            this.lblSifreDegistir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblSifreDegistir.AutoSize = true;
+            this.lblSifreDegistir.BackColor = System.Drawing.Color.DarkKhaki;
+            this.lblSifreDegistir.DisabledLinkColor = System.Drawing.Color.Salmon;
+            this.lblSifreDegistir.ForeColor = System.Drawing.Color.Tomato;
+            this.lblSifreDegistir.LinkColor = System.Drawing.Color.Black;
+            this.lblSifreDegistir.Location = new System.Drawing.Point(736, 31);
+            this.lblSifreDegistir.Name = "lblSifreDegistir";
+            this.lblSifreDegistir.Size = new System.Drawing.Size(79, 15);
+            this.lblSifreDegistir.TabIndex = 29;
+            this.lblSifreDegistir.TabStop = true;
+            this.lblSifreDegistir.Text = "Şifre Değiştir";
+            this.lblSifreDegistir.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblSifreDegistir_LinkClicked);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Buxton Sketch", 11F);
+            this.label1.Location = new System.Drawing.Point(11, 41);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(101, 19);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "~ E - Mail             :";
+            // 
+            // labelEMail
+            // 
+            this.labelEMail.AutoSize = true;
+            this.labelEMail.Font = new System.Drawing.Font("Candara", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.labelEMail.Location = new System.Drawing.Point(116, 40);
+            this.labelEMail.Name = "labelEMail";
+            this.labelEMail.Size = new System.Drawing.Size(12, 18);
+            this.labelEMail.TabIndex = 19;
+            this.labelEMail.Text = "-";
             // 
             // FrmRehber
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Khaki;
-            this.ClientSize = new System.Drawing.Size(846, 451);
+            this.ClientSize = new System.Drawing.Size(846, 511);
             this.Controls.Add(this.lblSifreDegistir);
             this.Controls.Add(this.panel8);
             this.Controls.Add(this.panel7);
@@ -460,7 +467,8 @@
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel2);
             this.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.MinimumSize = new System.Drawing.Size(862, 490);
+            this.MaximumSize = new System.Drawing.Size(862, 550);
+            this.MinimumSize = new System.Drawing.Size(862, 550);
             this.Name = "FrmRehber";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -519,6 +527,7 @@
         private System.Windows.Forms.Button btnExcelAktar;
         private System.Windows.Forms.LinkLabel lblSifreDegistir;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label labelEMail;
+        private System.Windows.Forms.Label label1;
     }
 }

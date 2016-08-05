@@ -53,7 +53,7 @@ namespace rehber
                 else
                 {
                     
-                    //Sql Veritabanı ve Kayıt işlemleri
+                    //Sql Veritabanı Bağlantısı ve Kayıt işlemleri
                     SqlConnection baglanti = new SqlHelper().Connection();
                     SqlCommand komut = new SqlCommand("resimKayit", baglanti);   //resimKayit (stored procedure)
                     komut.CommandType = CommandType.StoredProcedure;
@@ -68,12 +68,21 @@ namespace rehber
                         br.Close();
                         fs.Close();
 
-                        komut.Parameters.AddWithValue("@Resim", resim);
+                        komut.Parameters.AddWithValue("@Resim", resim); //resim yolunu veritabanına "binary" olarak kaydediyor.
+                    }
+
+                    if (textIsim.Text.Length + textSoyisim.Text.Length >= 34)
+                    {
+                        
+                    }
+                    else
+                    {
+                        komut.Parameters.AddWithValue("@isim", textIsim.Text);
+                        komut.Parameters.AddWithValue("@soyisim", textSoyisim.Text);
                     }
    
-                    komut.Parameters.AddWithValue("@isim", textIsim.Text);
-                    komut.Parameters.AddWithValue("@soyisim", textSoyisim.Text);
                     komut.Parameters.AddWithValue("@telNo", maskedTxtNumara.Text);
+                    komut.Parameters.AddWithValue("@eMail", textMail.Text);
                     komut.Parameters.AddWithValue("@dTarih", dtDogumTarihi.Value);
                     komut.Parameters.AddWithValue("@cinsiyet", comboBox1.SelectedItem);
                     komut.Parameters.AddWithValue("@isTanimi", richTextBox1.Text);
@@ -110,6 +119,7 @@ namespace rehber
             textIsim.Clear();
             textSoyisim.Clear();
             maskedTxtNumara.Clear();
+            textMail.Clear();
             pictureBox.Image = null;
             richTextBox1.Clear();
             comboBox1.SelectedItem = null;
@@ -127,7 +137,31 @@ namespace rehber
             this.Close();
         }
 
-       
+        private void FrmNewPerson_Load(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void textSoyisim_Leave(object sender, EventArgs e)
+        {
+            if (textIsim.Text.Length + textSoyisim.Text.Length >=34)
+            {
+                MessageBox.Show("Belirlenen ad çok uzun.");
+                textIsim.Clear();
+                textSoyisim.Clear();
+            }
+        }
+
+        private void textIsim_Leave(object sender, EventArgs e)
+        {
+            if (textIsim.Text.Length + textSoyisim.Text.Length >= 34)
+            {
+                MessageBox.Show("Belirlenen ad çok uzun.");
+                textIsim.Clear();
+                textSoyisim.Clear();
+                textIsim.Focus();
+            }
+        }
 
     }
 }
