@@ -24,7 +24,7 @@
           <Property Name="isim" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="soyisim" Type="nvarchar" MaxLength="50" />
           <Property Name="telNo" Type="nvarchar" MaxLength="15" Nullable="false" />
-          <Property Name="eMail" Type="nvarchar" MaxLength="50" />
+          <Property Name="eMail" Type="nvarchar" MaxLength="100" />
           <Property Name="dTarih" Type="date" />
           <Property Name="isTanimi" Type="nvarchar(max)" />
           <Property Name="cinsiyet" Type="nvarchar" MaxLength="1" />
@@ -79,7 +79,7 @@
           <Property Name="cinsiyet" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
           <Property Name="resim" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="login" Relationship="Self.FK_rehber_login" FromRole="rehber" ToRole="login" />
-          <Property Name="eMail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="eMail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_rehber_login">
           <End Role="login" Type="Self.login" Multiplicity="1" />

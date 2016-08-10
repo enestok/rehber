@@ -114,13 +114,13 @@ namespace rehber
 
                     if (new FrmNewPerson(_rehber).IsMailAddress(textMailYeni.Text) == false)
                     {
-                        MessageBox.Show("E Mail adresinizi kontrol ediniz.");
+                        MessageBox.Show("E Mail adresinizi kontrol ediniz. (örnek: biri@biryer.com)");
                     }
                     else 
                     {
                         guncelle.Parameters.AddWithValue("@eMailYeni", textMailYeni.Text);
                     }// e mail adresini boş girmeyi sağla
-                   
+                    
                     guncelle.Parameters.AddWithValue("@telNoYeni", maskedTxtNumaraYeni.Text);
                     guncelle.Parameters.AddWithValue("@isimYeni", textIsimYeni.Text);
                     guncelle.Parameters.AddWithValue("@soyisimYeni", textSoyisimYeni.Text);

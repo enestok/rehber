@@ -100,6 +100,18 @@
     <Compile Include="FrmUpdate.Designer.cs">
       <DependentUpon>FrmUpdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm_AliciEkle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_AliciEkle.Designer.cs">
+      <DependentUpon>Frm_AliciEkle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_ePostaOlustur.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_ePostaOlustur.Designer.cs">
+      <DependentUpon>Frm_ePostaOlustur.cs</DependentUpon>
+    </Compile>
     <Compile Include="image.Designer.cs">
       <DependentUpon>image.resx</DependentUpon>
       <DesignTime>True</DesignTime>
@@ -144,6 +156,18 @@
     </Compile>
     <Compile Include="RehberBL.cs" />
     <Compile Include="RehberModel.cs" />
+    <Compile Include="SelectedFilePanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SelectedFilePanel.Designer.cs">
+      <DependentUpon>SelectedFilePanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SelectedFileTool.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SelectedFileTool.Designer.cs">
+      <DependentUpon>SelectedFileTool.cs</DependentUpon>
+    </Compile>
     <Compile Include="signUp.cs">
       <DependentUpon>signUp.dbml</DependentUpon>
     </Compile>
@@ -176,6 +200,12 @@
     <EmbeddedResource Include="FrmUpdate.resx">
       <DependentUpon>FrmUpdate.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Frm_AliciEkle.resx">
+      <DependentUpon>Frm_AliciEkle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_ePostaOlustur.resx">
+      <DependentUpon>Frm_ePostaOlustur.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="image.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>image.Designer.cs</LastGenOutput>
@@ -191,15 +221,23 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="FrmRehber.resx">
       <DependentUpon>FrmRehber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectedFilePanel.resx">
+      <DependentUpon>SelectedFilePanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectedFileTool.resx">
+      <DependentUpon>SelectedFileTool.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ClassDiagram4.cd" />
     <Fakes Include="Fakes\Microsoft.VisualBasic.PowerPacks.Vs.fakes" />
     <Fakes Include="Fakes\Microsoft.VisualBasic.PowerPacks.Vs01.fakes" />
     <None Include="ClassDiagram5.cd" />
     <None Include="packages.config" />
+    <None Include="Settings.settings" />
     <None Include="signUp.dbml.layout">
       <DependentUpon>signUp.dbml</DependentUpon>
     </None>
@@ -254,6 +292,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="image\icon-user-default.png" />
+    <None Include="Resources\sendOn.png" />
+    <None Include="Resources\sendOff.png" />
+    <None Include="Resources\iconAddOn_50x50.png" />
+    <None Include="Resources\iconAddd.png" />
+    <None Include="Resources\cancelAttach.png" />
+    <None Include="Resources\attachement.png" />
     <None Include="Resources\icon-user-default.png" />
   </ItemGroup>
   <ItemGroup>
@@ -262,12 +306,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\mailGonder\mailGonder\mailGonder.csproj">
-      <Project>{0e676f29-ba9b-4836-bc20-0a8875e84b57}</Project>
-      <Name>mailGonder</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BLL\" />

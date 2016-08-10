@@ -54,7 +54,6 @@
             // pictureBoxYeni
             // 
             this.pictureBoxYeni.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.pictureBoxYeni.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBoxYeni.Image = global::rehber.image.icon_user_default;
             this.pictureBoxYeni.Location = new System.Drawing.Point(292, 32);
             this.pictureBoxYeni.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);

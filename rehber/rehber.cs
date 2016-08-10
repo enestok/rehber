@@ -42,6 +42,9 @@ public partial class rehber
 
     public virtual login login { get; set; }
 
+    public class SelectedFilePanel : global::rehber.SelectedFilePanel
+    {
+    }
 }
 
 }

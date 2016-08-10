@@ -83,7 +83,9 @@ namespace rehber
 		private int _kullaniciID;
 		
 		private string _kullaniciAdi;
-		
+		/// 
+        private string _kullaniciEmail;
+		///
 		private string _sifre;
 
 	    private bool _beniHatirla;
@@ -96,6 +98,10 @@ namespace rehber
     partial void OnkullaniciIDChanged();
     partial void OnkullaniciAdiChanging(string value);
     partial void OnkullaniciAdiChanged();
+        //
+    partial void OnkullaniciEmailChanging(string value);
+    partial void OnkullaniciEmailChanged();
+        //
     partial void OnsifreChanging(string value);
     partial void OnsifreChanged();
    
@@ -145,7 +151,27 @@ namespace rehber
 				}
 			}
 		}
-
+        //
+        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_kullaniciEmail", DbType = "NVarChar(50)", CanBeNull = true)]
+        public string kullaniciEmail
+        {
+            get
+            {
+                return this._kullaniciEmail;
+            }
+            set
+            {
+                if ((this._kullaniciEmail != value))
+                {
+                    this.OnkullaniciEmailChanging(value);
+                    this.SendPropertyChanging();
+                    this._kullaniciEmail = value;
+                    this.SendPropertyChanged("kullaniciEmail");
+                    this.OnkullaniciEmailChanged();
+                }
+            }
+        }
+        //
 
         [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_beniHatirla", DbType = "bit NOT NULL", CanBeNull = false)]
         public bool beniHatirla

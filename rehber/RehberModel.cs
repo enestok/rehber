@@ -27,6 +27,14 @@ namespace rehber
             }
         }
 
+        public string MailListe
+        {
+            get
+            {
+                return Isim + " " + Soyisim + " (" + EMail + ")";
+            }
+        }
+
     }
     
 }

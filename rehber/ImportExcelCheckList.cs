@@ -24,7 +24,7 @@ namespace rehber
 
         private void btnExcelIptal_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void btnExcelTamam_Click(object sender, EventArgs e)
@@ -90,7 +90,7 @@ namespace rehber
             
 
          }
-
+        //deneme...
         private void ImportExcelCheckList_Load(object sender, EventArgs e)
         {
             checkedListBox1.Items.Add("asd");

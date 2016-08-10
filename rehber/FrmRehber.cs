@@ -172,7 +172,7 @@ namespace rehber
         public void listele()
         {
             this.listBox1.ValueMember = "kullaniciID";
-            this.listBox1.DisplayMember = "GenelBilgi";
+            this.listBox1.DisplayMember = "GenelBilgi"; // GenelBilgi, RehberModel'in içinde "Ýsim + Soyisim" bilgisini tutan eleman.
             this._rehberList = new RehberBL().RehberList();
             this.listBox1.DataSource = this._rehberList;
 
@@ -273,6 +273,12 @@ namespace rehber
           
             _frmChangePassword.ShowDialog();
            
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var frmEPosta = new Frm_ePostaOlustur();
+            frmEPosta.ShowDialog();
         }
 
     }

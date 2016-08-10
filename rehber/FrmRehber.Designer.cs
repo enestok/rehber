@@ -53,12 +53,12 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.labelEMail = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
             this.btnExcelAktar = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.lblSifreDegistir = new System.Windows.Forms.LinkLabel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.labelEMail = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGoster)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -375,6 +375,26 @@
             this.panel7.Size = new System.Drawing.Size(309, 293);
             this.panel7.TabIndex = 28;
             // 
+            // labelEMail
+            // 
+            this.labelEMail.AutoSize = true;
+            this.labelEMail.Font = new System.Drawing.Font("Candara", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.labelEMail.Location = new System.Drawing.Point(116, 40);
+            this.labelEMail.Name = "labelEMail";
+            this.labelEMail.Size = new System.Drawing.Size(12, 18);
+            this.labelEMail.TabIndex = 19;
+            this.labelEMail.Text = "-";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Buxton Sketch", 11F);
+            this.label1.Location = new System.Drawing.Point(11, 41);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(101, 19);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "~ E - Mail             :";
+            // 
             // panel8
             // 
             this.panel8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
@@ -416,6 +436,7 @@
             this.button2.TabIndex = 2;
             this.button2.Text = "Mail Gönder";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // lblSifreDegistir
             // 
@@ -432,26 +453,6 @@
             this.lblSifreDegistir.TabStop = true;
             this.lblSifreDegistir.Text = "Şifre Değiştir";
             this.lblSifreDegistir.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblSifreDegistir_LinkClicked);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Buxton Sketch", 11F);
-            this.label1.Location = new System.Drawing.Point(11, 41);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(101, 19);
-            this.label1.TabIndex = 18;
-            this.label1.Text = "~ E - Mail             :";
-            // 
-            // labelEMail
-            // 
-            this.labelEMail.AutoSize = true;
-            this.labelEMail.Font = new System.Drawing.Font("Candara", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.labelEMail.Location = new System.Drawing.Point(116, 40);
-            this.labelEMail.Name = "labelEMail";
-            this.labelEMail.Size = new System.Drawing.Size(12, 18);
-            this.labelEMail.TabIndex = 19;
-            this.labelEMail.Text = "-";
             // 
             // FrmRehber
             // 

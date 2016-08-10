@@ -29,15 +29,16 @@ namespace rehber
             {
                 signUpDataContextDataContext signUpDataContext = new signUpDataContextDataContext();
 
-                KullaniciKayit kayit = new KullaniciKayit();
+                var kayit = new KullaniciKayit();
 
                 kayit.kullaniciAdi = txtKullaniciKayit.Text;
                 kayit.sifre = txtSifreKayit.Text;
+                kayit.kullaniciEmail = txtMailKayit.Text;
                 kayit.beniHatirla = false;
+               
 
-                
+
                 signUpDataContext.KullaniciKayits.InsertOnSubmit(kayit);
-                
                 signUpDataContext.SubmitChanges();
 
                 MessageBox.Show("Kayıt başarılı.", "Kayıt Ol", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -56,7 +57,7 @@ namespace rehber
             
             var aa = new tokDBEntities1().logins.SingleOrDefault(q=> q.kullaniciAdi.Equals(txtKullaniciKayit.Text));
 
-            if (aa !=null) 
+            if (aa != null) 
             {
                 return false; 
             }
