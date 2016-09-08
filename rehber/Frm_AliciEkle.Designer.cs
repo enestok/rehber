@@ -66,7 +66,7 @@
             this.txtAliciAra.Location = new System.Drawing.Point(99, 33);
             this.txtAliciAra.Name = "txtAliciAra";
             this.txtAliciAra.Size = new System.Drawing.Size(187, 22);
-            this.txtAliciAra.TabIndex = 28;
+            this.txtAliciAra.TabIndex = 1;
             this.txtAliciAra.ThemeName = "TelerikMetro";
             this.txtAliciAra.TextChanged += new System.EventHandler(this.txtAliciAra_TextChanged);
             // 
@@ -81,7 +81,7 @@
             this.chkTumunuSec.RootElement.StretchHorizontally = true;
             this.chkTumunuSec.RootElement.StretchVertically = true;
             this.chkTumunuSec.Size = new System.Drawing.Size(95, 22);
-            this.chkTumunuSec.TabIndex = 29;
+            this.chkTumunuSec.TabIndex = 2;
             this.chkTumunuSec.Text = "Tümünü Seç!";
             this.chkTumunuSec.ThemeName = "TelerikMetro";
             this.chkTumunuSec.ToggleStateChanged += new Telerik.WinControls.UI.StateChangedEventHandler(this.chkTumunuSec_ToggleStateChanged);
@@ -92,7 +92,7 @@
             this.btnIptal.Location = new System.Drawing.Point(52, 399);
             this.btnIptal.Name = "btnIptal";
             this.btnIptal.Size = new System.Drawing.Size(81, 34);
-            this.btnIptal.TabIndex = 27;
+            this.btnIptal.TabIndex = 4;
             this.btnIptal.Text = "İptal";
             this.btnIptal.ThemeName = "TelerikMetro";
             this.btnIptal.Click += new System.EventHandler(this.btnIptal_Click);
@@ -114,7 +114,7 @@
             this.btnAliciSec.Location = new System.Drawing.Point(197, 384);
             this.btnAliciSec.Name = "btnAliciSec";
             this.btnAliciSec.Size = new System.Drawing.Size(90, 49);
-            this.btnAliciSec.TabIndex = 25;
+            this.btnAliciSec.TabIndex = 5;
             this.btnAliciSec.Text = "Seç";
             this.btnAliciSec.ThemeName = "TelerikMetro";
             this.btnAliciSec.Click += new System.EventHandler(this.btnAliciSec_Click);
@@ -126,7 +126,7 @@
             this.chkLstKisiler.Location = new System.Drawing.Point(52, 110);
             this.chkLstKisiler.Name = "chkLstKisiler";
             this.chkLstKisiler.Size = new System.Drawing.Size(235, 259);
-            this.chkLstKisiler.TabIndex = 24;
+            this.chkLstKisiler.TabIndex = 3;
             // 
             // Frm_AliciEkle
             // 

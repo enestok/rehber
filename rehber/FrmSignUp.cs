@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace rehber
 {
-    public partial class FrmSignUp : Form
+    public partial class FrmSignUp : BaseRadForm
     {
        
         public FrmSignUp()
@@ -49,10 +49,10 @@ namespace rehber
                 signUpDataContextDataContext signUpDataContext = new signUpDataContextDataContext();
 
                 var kayit = new KullaniciKayit();
-
+                
                 kayit.kullaniciAdi = txtKullaniciKayit.Text;
                 kayit.sifre = txtSifreKayit.Text;
-                if (txtMailKayit.Text!=null)
+                if (txtMailKayit.Text!=////)  //IsMailAdress metodunu burada da çağır...
                 {
                     kayit.kullaniciEmail = txtMailKayit.Text;
                 }

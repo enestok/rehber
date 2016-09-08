@@ -33,6 +33,7 @@ namespace rehber
             _rehberModel = model;
             Ortak();
 
+            //cinsiyet bilgilerini Key Value olarak alıyoruz. Kullanıcı value yu(kadın, erkek) görecek, VT na key(K,E) kaydedilecek.
             var aa = new Dictionary<string, string>() { { "K", "Kadın" }, { "E", "Erkek" } };
             cmbCinsiyetYeni.DataSource = aa;
             cmbCinsiyetYeni.DisplayMember = "Value";
