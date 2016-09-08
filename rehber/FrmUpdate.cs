@@ -24,6 +24,7 @@ namespace rehber
             _rehberModel = model;//
             _rehber = frm;
             Ortak();
+         
         }
 
         public FrmUpdate(RehberModel model)  //constructor -> yapıcı metod. guncelle butonunun click olayında kullandık.
@@ -31,6 +32,11 @@ namespace rehber
             InitializeComponent();
             _rehberModel = model;
             Ortak();
+
+            var aa = new Dictionary<string, string>() { { "K", "Kadın" }, { "E", "Erkek" } };
+            cmbCinsiyetYeni.DataSource = aa;
+            cmbCinsiyetYeni.DisplayMember = "Value";
+            cmbCinsiyetYeni.ValueMember = "Key";
         }
         private void Ortak()
         {
@@ -48,7 +54,7 @@ namespace rehber
             txtSoyisimYeni.Text = _rehberModel.Soyisim;
             maskedTxtNumaraYeni.Text = _rehberModel.TelNo;
             txtMailYeni.Text = _rehberModel.EMail;
-            cmbCinsiyetYeni.SelectedItem = _rehberModel.Cinsiyet;
+            cmbCinsiyetYeni.SelectedValue = _rehberModel.Cinsiyet;
             dtDogumTarihiYeni.Value = _rehberModel.DogumTarihi;
             txtRchIsTanimiYeni.Text = _rehberModel.IsTanimi;
              
@@ -153,7 +159,7 @@ namespace rehber
                     guncelle.Parameters.AddWithValue("@isimYeni", txtIsimYeni.Text);
                     guncelle.Parameters.AddWithValue("@soyisimYeni", txtSoyisimYeni.Text);
                     guncelle.Parameters.AddWithValue("@dTarihYeni", dtDogumTarihiYeni.Value);
-                    guncelle.Parameters.AddWithValue("@cinsiyetYeni", cmbCinsiyetYeni.SelectedItem);
+                    guncelle.Parameters.AddWithValue("@cinsiyetYeni", cmbCinsiyetYeni.SelectedValue);
                     guncelle.Parameters.AddWithValue("@isTanimiYeni", txtRchIsTanimiYeni.Text);
                     guncelle.Parameters.AddWithValue("@id", _rehberModel.Id);/////
 
