@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="tokDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="login">
+          <Key>
+            <PropertyRef Name="kullaniciID" />
+          </Key>
+          <Property Name="kullaniciID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kullaniciAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="sifre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="kullaniciEMail" Type="nvarchar" MaxLength="50" />
+          <Property Name="beniHatirla" Type="bit" />
+        </EntityType>
+        <EntityType Name="rehber">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kullaniciID" Type="int" Nullable="false" />
+          <Property Name="isim" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="soyisim" Type="nvarchar" MaxLength="50" />
+          <Property Name="telNo" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="eMail" Type="nvarchar" MaxLength="100" />
+          <Property Name="dTarih" Type="date" />
+          <Property Name="isTanimi" Type="nvarchar(max)" />
+          <Property Name="cinsiyet" Type="nvarchar" MaxLength="1" />
+          <Property Name="resim" Type="image" />
+        </EntityType>
+        <Association Name="FK_rehber_login">
+          <End Role="login" Type="Self.login" Multiplicity="1" />
+          <End Role="rehber" Type="Self.rehber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="login">
+              <PropertyRef Name="kullaniciID" />
+            </Principal>
+            <Dependent Role="rehber">
+              <PropertyRef Name="kullaniciID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="tokDBModelStoreContainer">
+          <EntitySet Name="login" EntityType="Self.login" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="rehber" EntityType="Self.rehber" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_rehber_login" Association="Self.FK_rehber_login">
+            <End Role="login" EntitySet="login" />
+            <End Role="rehber" EntitySet="rehber" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="tokDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="login">
+          <Key>
+            <PropertyRef Name="kullaniciID" />
+          </Key>
+          <Property Name="kullaniciID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kullaniciAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="rehbers" Relationship="Self.FK_rehber_login" FromRole="login" ToRole="rehber" />
+          <Property Name="beniHatirla" Type="Boolean" />
+          <Property Name="kullaniciEMail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="rehber">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kullaniciID" Type="Int32" Nullable="false" />
+          <Property Name="isim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="soyisim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="telNo" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="dTarih" Type="DateTime" Precision="0" />
+          <Property Name="isTanimi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="cinsiyet" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="resim" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="login" Relationship="Self.FK_rehber_login" FromRole="rehber" ToRole="login" />
+          <Property Name="eMail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_rehber_login">
+          <End Role="login" Type="Self.login" Multiplicity="1" />
+          <End Role="rehber" Type="Self.rehber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="login">
+              <PropertyRef Name="kullaniciID" />
+            </Principal>
+            <Dependent Role="rehber">
+              <PropertyRef Name="kullaniciID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="tokDBEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="logins" EntityType="Self.login" />
+          <EntitySet Name="rehbers" EntityType="Self.rehber" />
+          <AssociationSet Name="FK_rehber_login" Association="Self.FK_rehber_login">
+            <End Role="login" EntitySet="logins" />
+            <End Role="rehber" EntitySet="rehbers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="tokDBModelStoreContainer" CdmEntityContainer="tokDBEntities1">
+          <EntitySetMapping Name="logins">
+            <EntityTypeMapping TypeName="tokDBModel.login">
+              <MappingFragment StoreEntitySet="login">
+                <ScalarProperty Name="kullaniciEMail" ColumnName="kullaniciEMail" />
+                <ScalarProperty Name="beniHatirla" ColumnName="beniHatirla" />
+                <ScalarProperty Name="kullaniciID" ColumnName="kullaniciID" />
+                <ScalarProperty Name="kullaniciAdi" ColumnName="kullaniciAdi" />
+                <ScalarProperty Name="sifre" ColumnName="sifre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rehbers">
+            <EntityTypeMapping TypeName="tokDBModel.rehber">
+              <MappingFragment StoreEntitySet="rehber">
+                <ScalarProperty Name="eMail" ColumnName="eMail" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="kullaniciID" ColumnName="kullaniciID" />
+                <ScalarProperty Name="isim" ColumnName="isim" />
+                <ScalarProperty Name="soyisim" ColumnName="soyisim" />
+                <ScalarProperty Name="telNo" ColumnName="telNo" />
+                <ScalarProperty Name="dTarih" ColumnName="dTarih" />
+                <ScalarProperty Name="isTanimi" ColumnName="isTanimi" />
+                <ScalarProperty Name="cinsiyet" ColumnName="cinsiyet" />
+                <ScalarProperty Name="resim" ColumnName="resim" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

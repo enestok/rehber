@@ -13,7 +13,7 @@ using System.Security.Cryptography;
 
 namespace rehber
 {
-    public partial class FrmUpdate : Form // kayıt güncelleme formu ..
+    public partial class FrmUpdate : BaseRadForm // kayıt güncelleme formu ..
     {
         public RehberModel _rehberModel;
         private FrmRehber _rehber;
@@ -44,14 +44,14 @@ namespace rehber
             SqlCommand guncelle = new SqlCommand("kayitGuncelle", baglanti);  //kayitGuncelle (stored procedure)
             guncelle.CommandType = CommandType.StoredProcedure;
 
-            textIsimYeni.Text = _rehberModel.Isim;
-            textSoyisimYeni.Text = _rehberModel.Soyisim;
+            txtIsimYeni.Text = _rehberModel.Isim;
+            txtSoyisimYeni.Text = _rehberModel.Soyisim;
             maskedTxtNumaraYeni.Text = _rehberModel.TelNo;
-            textMailYeni.Text = _rehberModel.EMail;
-            comboBox1Yeni.SelectedItem = _rehberModel.Cinsiyet;
+            txtMailYeni.Text = _rehberModel.EMail;
+            cmbCinsiyetYeni.SelectedItem = _rehberModel.Cinsiyet;
             dtDogumTarihiYeni.Value = _rehberModel.DogumTarihi;
-            richTextBox1Yeni.Text = _rehberModel.IsTanimi;
-
+            txtRchIsTanimiYeni.Text = _rehberModel.IsTanimi;
+             
             if (_rehberModel.Resim == null)
             {
                 ImageConverter converter = new ImageConverter();
@@ -68,92 +68,7 @@ namespace rehber
         }
 
         string resimYolu;
-        private void btnKaydetYeni_Click(object sender, EventArgs e)
-        {
-            EntityCompare(_rehberModel);
-
-            if (textIsimYeni.Text == "" || maskedTxtNumaraYeni.Text == "")
-                MessageBox.Show("Lütfen Boş Alanları Doldurunuz !");
-            else
-            {
-                if (new RehberBL().NumaraVar(maskedTxtNumaraYeni.Text, _rehberModel.KullaniciID,_rehberModel.Id))
-                {
-                    MessageBox.Show("Aynı numaraya sahip kullanıcı mevcut!!"); // yine de kaydetmek istiyor musunuz? ??? 
-                    maskedTxtNumaraYeni.Clear();
-                    maskedTxtNumaraYeni.Focus();
-                    return;
-                }
-                else
-                {
-                    //Sql Veritabanı ve Kayıt işlemleri
-                    SqlConnection baglanti = new SqlHelper().Connection();
-                    SqlCommand guncelle = new SqlCommand("kayitGuncelle", baglanti);//kayitGuncelle (stored procedure)
-                    guncelle.CommandType = CommandType.StoredProcedure;
-
-                    var sonuc = ImageCompare.Compare((Bitmap)pictureBoxYeni.Image, image.icon_user_default);
-
-                    if (sonuc == ImageCompare.CompareResult.ciNull || (sonuc == ImageCompare.CompareResult.ciCompareOk))//resource ekleyerek default görüntü atadık. resource eklemeyi adım adım deftere yaz.
-                        guncelle.Parameters.Add("@ResimYeni", SqlDbType.Image).Value = DBNull.Value;  //veri tabanından resim bilgisi gelmediyse DB ye NULL yazsın..
-                    else
-                    { 
-                        if (!string.IsNullOrEmpty(resimYolu)) // fotoğraf seç butonuna tıklandıysa (resim yolu na bir değer geldiyse) seçilen fotoğrafı db ye ekle..
-                        {
-                            FileStream fs = new FileStream(resimYolu, FileMode.Open, FileAccess.Read);
-                            BinaryReader br = new BinaryReader(fs);
-                            byte[] resim = br.ReadBytes(Convert.ToInt32(fs.Length));
-                            br.Close();
-                            fs.Close();
-
-                            guncelle.Parameters.Add("@ResimYeni", SqlDbType.Image).Value = (byte[])resim;
-                        }
-
-
-
-                    }
-
-
-                    if (new FrmNewPerson(_rehber).IsMailAddress(textMailYeni.Text) == false)
-                    {
-                        MessageBox.Show("E Mail adresinizi kontrol ediniz. (örnek: biri@biryer.com)");
-                    }
-                    else 
-                    {
-                        guncelle.Parameters.AddWithValue("@eMailYeni", textMailYeni.Text);
-                    }// e mail adresini boş girmeyi sağla
-                    
-                    guncelle.Parameters.AddWithValue("@telNoYeni", maskedTxtNumaraYeni.Text);
-                    guncelle.Parameters.AddWithValue("@isimYeni", textIsimYeni.Text);
-                    guncelle.Parameters.AddWithValue("@soyisimYeni", textSoyisimYeni.Text);
-                    guncelle.Parameters.AddWithValue("@dTarihYeni", dtDogumTarihiYeni.Value);
-                    guncelle.Parameters.AddWithValue("@cinsiyetYeni", comboBox1Yeni.SelectedItem);
-                    guncelle.Parameters.AddWithValue("@isTanimiYeni", richTextBox1Yeni.Text);
-                    guncelle.Parameters.AddWithValue("@id", _rehberModel.Id);/////
-
-                    try
-                    {
-                        baglanti.Open();
-                        guncelle.ExecuteNonQuery();
-                        MessageBox.Show(" Güncelleme İşlemi Tamamlandı. ");
-
-                        if (_rehber != null)
-                            _rehber.listele();
-                    }
-
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message.ToString());
-                    }
-
-                    finally
-                    {
-                        baglanti.Close();
-                    }
-                }
-                
-                this.Close();
-            }
-        }
-
+     
         // güncelleme sırasında değiştirilmeyen verilerin aynen bırakılmak yerine gereksiz yere tekrar eklenmesini engellemek için yapılacak sınıfın başlangıcı
         private void EntityCompare(RehberModel model)
         {
@@ -182,7 +97,104 @@ namespace rehber
             }
         }
 
-        private void btnSecYeni_Click(object sender, EventArgs e)
+
+        private void btnKaydetYeni_Click(object sender, EventArgs e)
+        {
+            EntityCompare(_rehberModel);
+
+            if (txtIsimYeni.Text == "" || maskedTxtNumaraYeni.Text == "" || cmbCinsiyetYeni.SelectedItem==null)
+                MessageBox.Show("Lütfen Boş Alanları Doldurunuz !");
+            else
+            {
+                if (new RehberBL().NumaraVar(maskedTxtNumaraYeni.Text, _rehberModel.KullaniciID, _rehberModel.Id))
+                {
+                    MessageBox.Show("Aynı numaraya sahip kullanıcı mevcut!!"); // yine de kaydetmek istiyor musunuz? ??? 
+                    maskedTxtNumaraYeni.Clear();
+                    maskedTxtNumaraYeni.Focus();
+                    return;
+                }
+                else
+                {
+                    //Sql Veritabanı ve Kayıt işlemleri
+                    SqlConnection baglanti = new SqlHelper().Connection();
+                    SqlCommand guncelle = new SqlCommand("kayitGuncelle", baglanti);//kayitGuncelle (stored procedure)
+                    guncelle.CommandType = CommandType.StoredProcedure;
+
+                    var sonuc = ImageCompare.Compare((Bitmap)pictureBoxYeni.Image, image.icon_user_default);
+
+                    if (sonuc == ImageCompare.CompareResult.ciNull || (sonuc == ImageCompare.CompareResult.ciCompareOk))//resource ekleyerek default görüntü atadık. resource eklemeyi adım adım deftere yaz.
+                        guncelle.Parameters.Add("@ResimYeni", SqlDbType.Image).Value = DBNull.Value;  //veri tabanından resim bilgisi gelmediyse DB ye NULL yazsın..
+                    else
+                    {
+                        if (!string.IsNullOrEmpty(resimYolu)) // fotoğraf seç butonuna tıklandıysa (resim yolu na bir değer geldiyse) seçilen fotoğrafı db ye ekle..
+                        {
+                            FileStream fs = new FileStream(resimYolu, FileMode.Open, FileAccess.Read);
+                            BinaryReader br = new BinaryReader(fs);
+                            byte[] resim = br.ReadBytes(Convert.ToInt32(fs.Length));
+                            br.Close();
+                            fs.Close();
+
+                            guncelle.Parameters.Add("@ResimYeni", SqlDbType.Image).Value = (byte[])resim;
+                        }
+
+                    }
+
+
+                    if (new FrmNewPerson(_rehber).IsMailAddress(txtMailYeni.Text) == false)
+                    {
+                        MessageBox.Show("E Mail adresinizi kontrol ediniz. (örnek: biri@biryer.com)");
+                    }
+                    else
+                    {
+                        guncelle.Parameters.AddWithValue("@eMailYeni", txtMailYeni.Text);
+                    }// e mail adresini boş girmeyi sağla
+
+                    guncelle.Parameters.AddWithValue("@telNoYeni", maskedTxtNumaraYeni.Text);
+                    guncelle.Parameters.AddWithValue("@isimYeni", txtIsimYeni.Text);
+                    guncelle.Parameters.AddWithValue("@soyisimYeni", txtSoyisimYeni.Text);
+                    guncelle.Parameters.AddWithValue("@dTarihYeni", dtDogumTarihiYeni.Value);
+                    guncelle.Parameters.AddWithValue("@cinsiyetYeni", cmbCinsiyetYeni.SelectedItem);
+                    guncelle.Parameters.AddWithValue("@isTanimiYeni", txtRchIsTanimiYeni.Text);
+                    guncelle.Parameters.AddWithValue("@id", _rehberModel.Id);/////
+
+                    try
+                    {
+                        baglanti.Open();
+                        guncelle.ExecuteNonQuery();
+                        MessageBox.Show(" Güncelleme İşlemi Tamamlandı. ");
+
+                        if (_rehber != null)
+                            _rehber.listele();
+                    }
+
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message.ToString());
+                    }
+
+                    finally
+                    {
+                        baglanti.Close();
+                    }
+                }
+
+                this.Close();
+            }
+        }
+
+        private void btnTemizleYeni_Click(object sender, EventArgs e)
+        {
+            txtIsimYeni.Clear();
+            txtSoyisimYeni.Clear();
+            maskedTxtNumaraYeni.Clear();
+            txtMailYeni.Clear();
+            pictureBoxYeni.Image = image.icon_user_default;
+            //txtRchIsTanimiYeni.ClearFormatting();
+            cmbCinsiyetYeni.SelectedItem = null;
+            dtDogumTarihiYeni.Text = "01-01-1990";
+        }
+
+        private void btnFotografSecYeni_Click(object sender, EventArgs e)
         {
             openFileDialog1.Title = "Resim Seç..";
             openFileDialog1.Filter = "Jpeg Dosyası (*.jpg)|*.jpg";
@@ -195,18 +207,6 @@ namespace rehber
             }
         }
 
-        private void btnTemizleYeni_Click_1(object sender, EventArgs e)
-        {
- 
-            textIsimYeni.Clear();
-            textSoyisimYeni.Clear();
-            maskedTxtNumaraYeni.Clear();
-            textMailYeni.Clear();
-            pictureBoxYeni.Image = image.icon_user_default;
-            richTextBox1Yeni.Clear();
-            comboBox1Yeni.SelectedItem = null;
-            dtDogumTarihiYeni.Text = "01-01-1990";
-        }
 
 
     }
