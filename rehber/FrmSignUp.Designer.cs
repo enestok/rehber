@@ -46,7 +46,6 @@
             this.btnSignUpGiris = new Telerik.WinControls.UI.RadButton();
             this.btnSignUpCikis = new Telerik.WinControls.UI.RadButton();
             this.btnKayitOl = new Telerik.WinControls.UI.RadButton();
-            this.radMaskedEditBox1 = new Telerik.WinControls.UI.RadMaskedEditBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtSifreTekrarKayit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtKullaniciKayit)).BeginInit();
@@ -55,7 +54,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnSignUpGiris)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSignUpCikis)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnKayitOl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radMaskedEditBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -216,6 +214,7 @@
             this.txtMailKayit.Size = new System.Drawing.Size(227, 25);
             this.txtMailKayit.TabIndex = 0;
             this.txtMailKayit.ThemeName = "TelerikMetro";
+            this.txtMailKayit.Leave += new System.EventHandler(this.txtMailKayit_Leave);
             // 
             // label4
             // 
@@ -262,15 +261,6 @@
             this.btnKayitOl.ThemeName = "TelerikMetro";
             this.btnKayitOl.Click += new System.EventHandler(this.btnKayitOl_Click);
             // 
-            // radMaskedEditBox1
-            // 
-            this.radMaskedEditBox1.Location = new System.Drawing.Point(44, 310);
-            this.radMaskedEditBox1.MaskType = Telerik.WinControls.UI.MaskType.EMail;
-            this.radMaskedEditBox1.Name = "radMaskedEditBox1";
-            this.radMaskedEditBox1.Size = new System.Drawing.Size(195, 20);
-            this.radMaskedEditBox1.TabIndex = 15;
-            this.radMaskedEditBox1.TabStop = false;
-            // 
             // FrmSignUp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -278,7 +268,6 @@
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(625, 355);
             this.ControlBox = false;
-            this.Controls.Add(this.radMaskedEditBox1);
             this.Controls.Add(this.btnKayitOl);
             this.Controls.Add(this.btnSignUpCikis);
             this.Controls.Add(this.btnSignUpGiris);
@@ -301,10 +290,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnSignUpGiris)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSignUpCikis)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnKayitOl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radMaskedEditBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -327,6 +314,5 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private Telerik.WinControls.UI.RadMaskedEditBox radMaskedEditBox1;
     }
 }

@@ -125,7 +125,7 @@ namespace rehber
         private void listBox1_DoubleClick(object sender, System.EventArgs e)
         {
             RehberModel selectedItem = this.listBox1.SelectedItem as RehberModel;
-            new FrmUpdate(selectedItem, this).ShowDialog();
+            new FrmUpdate(selectedItem,this).ShowDialog();
         }
 
         ///

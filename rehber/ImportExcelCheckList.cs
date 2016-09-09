@@ -12,7 +12,7 @@ using Microsoft.Office.Interop.Excel;
 
 namespace rehber
 {
-    public partial class ImportExcelCheckList : Form
+    public partial class ImportExcelCheckList : BaseRadForm
     {
 
         System.Windows.Forms.ListBox _lstBox; 
@@ -22,10 +22,7 @@ namespace rehber
             _lstBox = lstBox;
         }
 
-        private void btnExcelIptal_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
+        private List<RehberModel> _secim;
 
         private void btnExcelTamam_Click(object sender, EventArgs e)
         {
@@ -35,9 +32,10 @@ namespace rehber
         ////
         //--> ImportToExcell() -->verileri excel e aktaran metod
         ////
+       
         private void ImportToExcell()
         {
-            if(checkedListBox1.CheckedItems.Count == 0)
+            if (chkExcelAlan.CheckedItems.Count == 0)
                 MessageBox.Show("Lütfen görüntülemek için en az 1 alan seçiniz.");
             else
             {
@@ -51,58 +49,84 @@ namespace rehber
                 Excel.Range rng = (Excel.Range)sheet1.Rows[1];
                 rng.Borders.LineStyle = Excel.XlLineStyle.xlContinuous;
 
-
-                for (int i = 1; i < checkedListBox1.CheckedItems.Count + 1; i++)
+                for (int i = 1; i < chkExcelAlan.CheckedItems.Count + 1; i++)
                 {
                     ((Range)sheet1.Columns[i, Type.Missing]).ColumnWidth = 30;
 
-                    sheet1.Cells[1, i].value = checkedListBox1.CheckedItems[i - 1].ToString().ToUpper();
+                    sheet1.Cells[1, i].value = chkExcelAlan.CheckedItems[i - 1].ToString().ToUpper();
                     sheet1.Cells[1, i].Font.Bold = true;
                 }
 
-
-
-                for (int i = 0; i < _lstBox.Items.Count; i++) //checkboxların indisine göre seçilen kolonlara gerekli girdileri yazdırıyor.
+                
+                for (int i = 0; i < _secim.Count; i++)
                 {
                     var index = 1;
-                    foreach (var item in checkedListBox1.CheckedIndices)
+                    foreach (var item in chkExcelAlan.CheckedIndices)
                     {
                         switch (Convert.ToInt32(item))
                         {
-                            case 0: sheet1.Cells[i + 2, index].value = ((RehberModel)_lstBox.Items[i]).Isim; break;
-                            case 1: sheet1.Cells[i + 2, index].value = ((RehberModel)_lstBox.Items[i]).Soyisim; break;
-                            case 2: sheet1.Cells[i + 2, index].value = ((RehberModel)_lstBox.Items[i]).TelNo; break;
-                            case 3: sheet1.Cells[i + 2, index].value = ((RehberModel)_lstBox.Items[i]).DogumTarihi;
-                                sheet1.Cells.HorizontalAlignment = XlHAlign.xlHAlignLeft; break;
-                            case 4: sheet1.Cells[i + 2, index].value = ((RehberModel)_lstBox.Items[i]).Cinsiyet; break;
-                            case 5: sheet1.Cells[i + 2, index].value = ((RehberModel)_lstBox.Items[i]).IsTanimi; break;
-                            default: { MessageBox.Show("Hay Aksi! İstenmeyen bir durum oluştu.", "Hata"); this.Close(); break; }
+                            case 0:
+                                sheet1.Cells[i + 2, index].value = _secim[i].Isim;
+                                break;
+                            case 1:
+                                sheet1.Cells[i + 2, index].value = _secim[i].Soyisim;
+                                break;
+                            case 2:
+                                sheet1.Cells[i + 2, index].value = _secim[i].TelNo;
+                                break;
+                            case 3:
+                                sheet1.Cells[i + 2, index].value = _secim[i].DogumTarihi;
+                                sheet1.Cells.HorizontalAlignment = XlHAlign.xlHAlignLeft;
+                                break;
+                            case 4:
+                                sheet1.Cells[i + 2, index].value = _secim[i].Cinsiyet;
+                                break;
+                            case 5:
+                                sheet1.Cells[i + 2, index].value = _secim[i].IsTanimi;
+                                break;
+                            default:
+                            {
+                                MessageBox.Show("Hay Aksi! İstenmeyen bir durum oluştu.", "Hata");
+                                this.Close();
+                                break;
+                            }
                         }
                         index++;
-                        
+
                     }
-
                 }
-
+               
+               
+                
                 this.Close();
-
             }
-            
 
-         }
-        //deneme...
+        }
         private void ImportExcelCheckList_Load(object sender, EventArgs e)
         {
-            checkedListBox1.Items.Add("asd");
+            chkExcelAlan.Enabled = false;
         }
 
         private void btnListedenSec_Click(object sender, EventArgs e)
         {
+            var _frmExcelKisi = new Frm_ExcelList();
+            var result = _frmExcelKisi.ShowDialog();
 
+            if (result == DialogResult.OK)
+            {
+                _secim = _frmExcelKisi.SelectedPerson;
+                chkExcelAlan.Enabled = true;
+            }
         }
 
-       
+        private void btnExcelIptal_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
 
         
+
+
     }
 }

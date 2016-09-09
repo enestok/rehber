@@ -430,7 +430,6 @@
             this.cmbCinsiyetYeni.Name = "cmbCinsiyetYeni";
             this.cmbCinsiyetYeni.Size = new System.Drawing.Size(176, 24);
             this.cmbCinsiyetYeni.TabIndex = 6;
-            this.cmbCinsiyetYeni.Text = "radDropDownList1";
             this.cmbCinsiyetYeni.ThemeName = "TelerikMetro";
             // 
             // label8

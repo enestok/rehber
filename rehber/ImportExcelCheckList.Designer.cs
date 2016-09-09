@@ -28,157 +28,159 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.radGroupBox1 = new Telerik.WinControls.UI.RadGroupBox();
+            this.radPanel1 = new Telerik.WinControls.UI.RadPanel();
             this.label2 = new System.Windows.Forms.Label();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnExcelTamam = new System.Windows.Forms.Button();
-            this.btnExcelIptal = new System.Windows.Forms.Button();
-            this.btnListedenSec = new System.Windows.Forms.Button();
-            this.chkTumunuSec = new System.Windows.Forms.CheckBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.panel1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.chkExcelAlan = new System.Windows.Forms.CheckedListBox();
+            this.btnListedenSec = new Telerik.WinControls.UI.RadButton();
+            this.btnExcelTamam = new Telerik.WinControls.UI.RadButton();
+            this.btnExcelIptal = new Telerik.WinControls.UI.RadButton();
+            ((System.ComponentModel.ISupportInitialize)(this.radGroupBox1)).BeginInit();
+            this.radGroupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).BeginInit();
+            this.radPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnListedenSec)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnExcelTamam)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnExcelIptal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel1
+            // radGroupBox1
             // 
-            this.panel1.BackColor = System.Drawing.Color.Gainsboro;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.checkedListBox1);
-            this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.panel1.Location = new System.Drawing.Point(31, 62);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(222, 225);
-            this.panel1.TabIndex = 20;
+            this.radGroupBox1.AccessibleRole = System.Windows.Forms.AccessibleRole.Grouping;
+            this.radGroupBox1.Controls.Add(this.btnExcelIptal);
+            this.radGroupBox1.Controls.Add(this.btnExcelTamam);
+            this.radGroupBox1.Controls.Add(this.radPanel1);
+            this.radGroupBox1.Controls.Add(this.btnListedenSec);
+            this.radGroupBox1.HeaderText = "Seçiniz";
+            this.radGroupBox1.Location = new System.Drawing.Point(16, 12);
+            this.radGroupBox1.Name = "radGroupBox1";
+            this.radGroupBox1.Size = new System.Drawing.Size(284, 411);
+            this.radGroupBox1.TabIndex = 0;
+            this.radGroupBox1.Text = "Seçiniz";
+            this.radGroupBox1.ThemeName = "TelerikMetro";
+            // 
+            // radPanel1
+            // 
+            this.radPanel1.Controls.Add(this.label2);
+            this.radPanel1.Controls.Add(this.label1);
+            this.radPanel1.Controls.Add(this.chkExcelAlan);
+            this.radPanel1.Location = new System.Drawing.Point(30, 87);
+            this.radPanel1.Name = "radPanel1";
+            this.radPanel1.Size = new System.Drawing.Size(221, 246);
+            this.radPanel1.TabIndex = 30;
+            this.radPanel1.ThemeName = "TelerikMetro";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Trebuchet MS", 10F);
-            this.label2.Location = new System.Drawing.Point(8, 9);
+            this.label2.Font = new System.Drawing.Font("Cambria", 12F);
+            this.label2.Location = new System.Drawing.Point(12, 16);
             this.label2.MaximumSize = new System.Drawing.Size(200, 50);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(185, 36);
-            this.label2.TabIndex = 21;
+            this.label2.Size = new System.Drawing.Size(199, 38);
+            this.label2.TabIndex = 25;
             this.label2.Text = "** Görüntülemek istediğiniz alanları işaretleyiniz.";
             // 
-            // checkedListBox1
+            // label1
             // 
-            this.checkedListBox1.BackColor = System.Drawing.Color.Gainsboro;
-            this.checkedListBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.checkedListBox1.CheckOnClick = true;
-            this.checkedListBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Items.AddRange(new object[] {
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Cambria", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label1.Location = new System.Drawing.Point(18, 72);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(52, 15);
+            this.label1.TabIndex = 24;
+            this.label1.Text = "Seçiniz :";
+            // 
+            // chkExcelAlan
+            // 
+            this.chkExcelAlan.BackColor = System.Drawing.Color.Honeydew;
+            this.chkExcelAlan.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chkExcelAlan.CheckOnClick = true;
+            this.chkExcelAlan.Font = new System.Drawing.Font("Cambria", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.chkExcelAlan.FormattingEnabled = true;
+            this.chkExcelAlan.Items.AddRange(new object[] {
             "İsim",
             "Soyisim",
             "Telefon",
             "Doğum Tarihi",
             "Cinsiyet",
             "İş Tanımı"});
-            this.checkedListBox1.Location = new System.Drawing.Point(27, 89);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(143, 126);
-            this.checkedListBox1.TabIndex = 23;
+            this.chkExcelAlan.Location = new System.Drawing.Point(41, 97);
+            this.chkExcelAlan.Name = "chkExcelAlan";
+            this.chkExcelAlan.Size = new System.Drawing.Size(143, 126);
+            this.chkExcelAlan.TabIndex = 2;
             // 
-            // label1
+            // btnListedenSec
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label1.Location = new System.Drawing.Point(13, 66);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 18);
-            this.label1.TabIndex = 20;
-            this.label1.Text = "Seçiniz :";
+            this.btnListedenSec.Font = new System.Drawing.Font("Buxton Sketch", 11F);
+            this.btnListedenSec.Location = new System.Drawing.Point(30, 44);
+            this.btnListedenSec.Name = "btnListedenSec";
+            this.btnListedenSec.Size = new System.Drawing.Size(151, 37);
+            this.btnListedenSec.TabIndex = 1;
+            this.btnListedenSec.Text = "Listeden Kişi Seçiniz >>>";
+            this.btnListedenSec.ThemeName = "Office2010Silver";
+            this.btnListedenSec.Click += new System.EventHandler(this.btnListedenSec_Click);
             // 
             // btnExcelTamam
             // 
-            this.btnExcelTamam.Location = new System.Drawing.Point(87, 303);
+            this.btnExcelTamam.Location = new System.Drawing.Point(167, 344);
             this.btnExcelTamam.Name = "btnExcelTamam";
-            this.btnExcelTamam.Size = new System.Drawing.Size(80, 27);
-            this.btnExcelTamam.TabIndex = 22;
-            this.btnExcelTamam.Text = "Tamam";
-            this.btnExcelTamam.UseVisualStyleBackColor = true;
+            this.btnExcelTamam.Size = new System.Drawing.Size(84, 39);
+            this.btnExcelTamam.TabIndex = 4;
+            this.btnExcelTamam.Text = "TAMAM";
+            this.btnExcelTamam.ThemeName = "TelerikMetro";
             this.btnExcelTamam.Click += new System.EventHandler(this.btnExcelTamam_Click);
             // 
             // btnExcelIptal
             // 
-            this.btnExcelIptal.Location = new System.Drawing.Point(173, 303);
+            this.btnExcelIptal.Location = new System.Drawing.Point(71, 356);
             this.btnExcelIptal.Name = "btnExcelIptal";
-            this.btnExcelIptal.Size = new System.Drawing.Size(80, 27);
-            this.btnExcelIptal.TabIndex = 23;
+            this.btnExcelIptal.Size = new System.Drawing.Size(90, 27);
+            this.btnExcelIptal.TabIndex = 3;
             this.btnExcelIptal.Text = "İptal";
-            this.btnExcelIptal.UseVisualStyleBackColor = true;
+            this.btnExcelIptal.ThemeName = "TelerikMetro";
             this.btnExcelIptal.Click += new System.EventHandler(this.btnExcelIptal_Click);
-            // 
-            // btnListedenSec
-            // 
-            this.btnListedenSec.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.btnListedenSec.Location = new System.Drawing.Point(157, 27);
-            this.btnListedenSec.Name = "btnListedenSec";
-            this.btnListedenSec.Size = new System.Drawing.Size(96, 28);
-            this.btnListedenSec.TabIndex = 24;
-            this.btnListedenSec.Text = "Listeden Seç..";
-            this.btnListedenSec.UseVisualStyleBackColor = true;
-            this.btnListedenSec.Click += new System.EventHandler(this.btnListedenSec_Click);
-            // 
-            // chkTumunuSec
-            // 
-            this.chkTumunuSec.AutoSize = true;
-            this.chkTumunuSec.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.chkTumunuSec.Location = new System.Drawing.Point(31, 31);
-            this.chkTumunuSec.Name = "chkTumunuSec";
-            this.chkTumunuSec.Size = new System.Drawing.Size(115, 19);
-            this.chkTumunuSec.TabIndex = 25;
-            this.chkTumunuSec.Text = "Tüm Listeyi Ekle";
-            this.chkTumunuSec.UseVisualStyleBackColor = true;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.chkTumunuSec);
-            this.groupBox1.Controls.Add(this.btnListedenSec);
-            this.groupBox1.Controls.Add(this.btnExcelIptal);
-            this.groupBox1.Controls.Add(this.btnExcelTamam);
-            this.groupBox1.Controls.Add(this.panel1);
-            this.groupBox1.Location = new System.Drawing.Point(19, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(285, 350);
-            this.groupBox1.TabIndex = 26;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Excel\'e Gönder";
             // 
             // ImportExcelCheckList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(323, 375);
+            this.ClientSize = new System.Drawing.Size(323, 436);
             this.ControlBox = false;
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.radGroupBox1);
             this.Name = "ImportExcelCheckList";
+            // 
+            // 
+            // 
+            this.RootElement.ApplyShapeToControl = true;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Seçiniz";
+            this.Text = "Excel\'e Gönder";
             this.Load += new System.EventHandler(this.ImportExcelCheckList_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radGroupBox1)).EndInit();
+            this.radGroupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).EndInit();
+            this.radPanel1.ResumeLayout(false);
+            this.radPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnListedenSec)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnExcelTamam)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnExcelIptal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
+        private Telerik.WinControls.UI.RadGroupBox radGroupBox1;
+        private Telerik.WinControls.UI.RadPanel radPanel1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnExcelTamam;
-        private System.Windows.Forms.Button btnExcelIptal;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
-        private System.Windows.Forms.Button btnListedenSec;
-        private System.Windows.Forms.CheckBox chkTumunuSec;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.CheckedListBox chkExcelAlan;
+        private Telerik.WinControls.UI.RadButton btnListedenSec;
+        private Telerik.WinControls.UI.RadButton btnExcelIptal;
+        private Telerik.WinControls.UI.RadButton btnExcelTamam;
+
     }
 }

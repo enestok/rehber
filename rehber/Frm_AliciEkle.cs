@@ -29,7 +29,7 @@ namespace rehber
 
             foreach (RehberModel model in _mailList)
             {
-                chkLstString.Add(model.MailListe);
+                chkLstString.Add(model.MailListe);//MailListe RehberModel in içinde "isim - soyisim - mail" bilgilerini yanyana tutan eleman.
             }
 
             txtAliciAra.AutoCompleteCustomSource = chkLstString;
@@ -64,8 +64,6 @@ namespace rehber
 
         public bool Selected()
         {
-            DialogResult result;
-
             var chosen = new List<string>();
 
             if (chkLstKisiler.CheckedItems.Count != 0)

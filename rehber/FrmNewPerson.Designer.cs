@@ -76,7 +76,7 @@
             this.btnSec.TabIndex = 8;
             this.btnSec.Text = "Fotoğraf Seç...";
             this.btnSec.UseVisualStyleBackColor = true;
-            this.btnSec.Click += new System.EventHandler(this.btnSec_Click_1);
+            this.btnSec.Click += new System.EventHandler(this.btnSec_Click);
             // 
             // btnTemizle
             // 

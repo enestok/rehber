@@ -24,7 +24,11 @@ namespace rehber
             _rehberModel = model;//
             _rehber = frm;
             Ortak();
-         
+
+            var aa = new Dictionary<string, string>() { { "K", "Kadın" }, { "E", "Erkek" } };
+            cmbCinsiyetYeni.DataSource = aa;
+            cmbCinsiyetYeni.DisplayMember = "Value";
+            cmbCinsiyetYeni.ValueMember = "Key";
         }
 
         public FrmUpdate(RehberModel model)  //constructor -> yapıcı metod. guncelle butonunun click olayında kullandık.
@@ -33,7 +37,7 @@ namespace rehber
             _rehberModel = model;
             Ortak();
 
-            //cinsiyet bilgilerini Key Value olarak alıyoruz. Kullanıcı value yu(kadın, erkek) görecek, VT na key(K,E) kaydedilecek.
+            //cinsiyet bilgilerini Key Value olarak alıyoruz. Kullanıcı, value yu(kadın, erkek) görecek, VT na key(K,E) kaydedilecek.
             var aa = new Dictionary<string, string>() { { "K", "Kadın" }, { "E", "Erkek" } };
             cmbCinsiyetYeni.DataSource = aa;
             cmbCinsiyetYeni.DisplayMember = "Value";

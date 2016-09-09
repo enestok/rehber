@@ -33,7 +33,7 @@ namespace rehber
 
         string resimYolu;
 
-        private void btnSec_Click_1(object sender, EventArgs e)
+        private void btnSec_Click(object sender, EventArgs e)
         {
                 openFileDialog1.Title = "Resim Seç..";
                 openFileDialog1.Filter = "Jpeg Dosyası (*.jpg)|*.jpg";
@@ -155,7 +155,7 @@ namespace rehber
 
         private void FrmNewPerson_Load(object sender, EventArgs e)
         {
-           
+         
         }
 
         private void textSoyisim_Leave(object sender, EventArgs e)
@@ -181,7 +181,7 @@ namespace rehber
 
         public bool IsMailAddress(string mail)
         {
-            List<string> lst = new List<string>();
+           
             if (mail.Contains("@") && mail.Contains(".com") )// sadece .com olmasın. .gov .co vs de olsun   
             {
                 return true;

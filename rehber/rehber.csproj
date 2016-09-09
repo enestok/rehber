@@ -153,6 +153,12 @@
     <Compile Include="Frm_ePostaOlustur.Designer.cs">
       <DependentUpon>Frm_ePostaOlustur.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm_ExcelList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_ExcelList.Designer.cs">
+      <DependentUpon>Frm_ExcelList.cs</DependentUpon>
+    </Compile>
     <Compile Include="image.Designer.cs">
       <DependentUpon>image.resx</DependentUpon>
       <DesignTime>True</DesignTime>
@@ -255,6 +261,9 @@
     <EmbeddedResource Include="Frm_ePostaOlustur.resx">
       <DependentUpon>Frm_ePostaOlustur.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Frm_ExcelList.resx">
+      <DependentUpon>Frm_ExcelList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="image.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>image.Designer.cs</LastGenOutput>
@@ -346,6 +355,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="image\icon-user-default.png" />
+    <None Include="Resources\Register-32x32.ico" />
     <None Include="Resources\SeePassword2.png" />
     <None Include="Resources\SeePassword1.png" />
     <None Include="Resources\SeePassword.png" />

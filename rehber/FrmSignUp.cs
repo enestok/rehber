@@ -19,6 +19,8 @@ namespace rehber
             InitializeComponent();
         }
 
+        FrmNewPerson _mailAdr = new FrmNewPerson();
+        
         private void FrmSignUp_Load(object sender, EventArgs e)
         {
             IsSingle(); //kullanıcı, textbox ları doldurana kadar kullanıcı adlarının tutulduğu listeyi taraması için çağırdım.
@@ -27,10 +29,9 @@ namespace rehber
 
         private bool IsSingle() 
         {
-            
-            var aa = new tokDBEntities1().logins.SingleOrDefault(q=> q.kullaniciAdi.Equals(txtKullaniciKayit.Text));
+            var kullanici = new tokDBEntities1().logins.SingleOrDefault(q=> q.kullaniciAdi.Equals(txtKullaniciKayit.Text));
 
-            if (aa != null) 
+            if (kullanici != null) //1 tane kullanıcı varsa aynı isimde başka kullanıcı kabul edilemez.
             {
                 return false; 
             }
@@ -46,21 +47,16 @@ namespace rehber
             }
             else
             {
+               
                 signUpDataContextDataContext signUpDataContext = new signUpDataContextDataContext();
 
                 var kayit = new KullaniciKayit();
                 
                 kayit.kullaniciAdi = txtKullaniciKayit.Text;
                 kayit.sifre = txtSifreKayit.Text;
-                if (txtMailKayit.Text!=////)  //IsMailAdress metodunu burada da çağır...
-                {
-                    kayit.kullaniciEmail = txtMailKayit.Text;
-                }
-                kayit.kullaniciEmail = null;
-                
+                kayit.kullaniciEmail = txtMailKayit.Text;
+           
                 kayit.beniHatirla = false;
-
-
 
                 signUpDataContext.KullaniciKayits.InsertOnSubmit(kayit);
                 signUpDataContext.SubmitChanges();
@@ -98,6 +94,24 @@ namespace rehber
                 lblKullaniciDurum.ForeColor = Color.Black;
                 lblKullaniciDurum.Text = "***";
                 btnKayitOl.Enabled = true;
+            }
+        }
+
+        private void txtMailKayit_Leave(object sender, EventArgs e)
+        {
+            var mailAdr = _mailAdr.IsMailAddress(txtMailKayit.Text);
+            if (mailAdr || txtMailKayit.Text == "")
+            {
+                lblKullaniciDurum.ForeColor = Color.Black;
+                lblKullaniciDurum.Text = "***";
+                btnKayitOl.Enabled = true;
+            }
+            else
+            {
+                btnKayitOl.Enabled = false;
+
+                lblKullaniciDurum.Text = "!! Mail formatı geçerli değil. (örnek : biri@biryer.com).";
+                lblKullaniciDurum.ForeColor = Color.Red;
             }
         }
 
