@@ -13,10 +13,11 @@ using System.Windows.Forms;
 using System.IO;
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
+using Telerik.WinControls;
 
 namespace rehber
 {
-    public partial class FrmNewPerson : Form //yeni kayıt ekleme formu..
+    public partial class FrmNewPerson : BaseRadForm //yeni kayıt ekleme formu..
     {
         FrmRehber _frmRehber;
 
@@ -24,11 +25,21 @@ namespace rehber
         {
             InitializeComponent();
             _frmRehber = frmRehber;
+
+            var aa = new Dictionary<string, string>() { { "K", "Kadın" }, { "E", "Erkek" } };
+            cmbCinsiyet.DataSource = aa;
+            cmbCinsiyet.DisplayMember = "Value";
+            cmbCinsiyet.ValueMember = "Key";
         }
 
         public FrmNewPerson()
         {
             InitializeComponent();
+
+            var aa = new Dictionary<string, string>() { { "K", "Kadın" }, { "E", "Erkek" } };
+            cmbCinsiyet.DataSource = aa;
+            cmbCinsiyet.DisplayMember = "Value";
+            cmbCinsiyet.ValueMember = "Key";
         }
 
         string resimYolu;
@@ -47,15 +58,98 @@ namespace rehber
         }
         private void btnKaydet_Click(object sender, EventArgs e)
         {
-            if (textIsim.Text == "" || maskedTxtNumara.Text == "")
-                MessageBox.Show("Lütfen Boş Alanları Doldurunuz !");
+            if (txtIsim.Text == "" || maskedTxtNumara.Text == "")
+            {
+                RadMessageBox.SetThemeName("TelerikMetro");
+                RadMessageBox.Show("Yıldızlı alanları boş bırakmayınız !", "Boş Alanları Doldurunuz");
+                
+            }
             else
             {
                 if (new RehberBL().NumaraVar(maskedTxtNumara.Text, KullaniciBilgi.KullaniciID,0))
                 {
-                    MessageBox.Show("Aynı numaraya sahip kullanıcı mevcut!!");
-                    maskedTxtNumara.Clear();
-                    maskedTxtNumara.Focus();
+                    RadMessageBox.SetThemeName("TelerikMetro");
+                    DialogResult result = RadMessageBox.Show("Aynı numaraya sahip kullanıcı mevcut!! \n " +
+                                       "Yine de kaydetmek istiyor musunuz?", "Aynı Numara Mevcut",MessageBoxButtons.YesNo,RadMessageIcon.Info);
+                    
+                    /* kayıtlarda aynı numara varsa kullanıcıya uyarı göndermek için tekrar if-else açtık!  */
+                    if (result == DialogResult.Yes)
+                    {
+                        //Sql Veritabanı Bağlantısı ve Kayıt işlemleri
+                        SqlConnection baglanti = new SqlHelper().Connection();
+                        SqlCommand komut = new SqlCommand("resimKayit", baglanti);   //resimKayit (stored procedure)
+                        komut.CommandType = CommandType.StoredProcedure;
+
+                        if (pictureBox.Image == null)
+                            komut.Parameters.Add("@Resim", SqlDbType.Image).Value = DBNull.Value;
+                        else
+                        {
+                            FileStream fs = new FileStream(resimYolu, FileMode.Open, FileAccess.Read);
+                            BinaryReader br = new BinaryReader(fs);
+                            byte[] resim = br.ReadBytes(Convert.ToInt32(fs.Length));
+                            br.Close();
+                            fs.Close();
+
+                            komut.Parameters.AddWithValue("@Resim", resim); //resim yolunu veritabanına "binary" olarak kaydediyor.
+                        }
+
+                        if (txtIsim.Text.Length + txtSoyisim.Text.Length < 34)
+                        {
+                            komut.Parameters.AddWithValue("@isim", txtIsim.Text);
+                            komut.Parameters.AddWithValue("@soyisim", txtSoyisim.Text);
+                        }
+
+                        if (IsMailAddress(txtMail.Text) == false)
+                        {
+                            RadMessageBox.SetThemeName("TelerikMetro");
+                            RadMessageBox.Show("E Mail adresinizi kontrol ediniz. (örnek: biri@biryer.com)");
+
+                        }
+                        else if (IsMailAddress(txtMail.Text) && txtMail.Text != null)
+                        {
+                            komut.Parameters.AddWithValue("@eMail", txtMail.Text);
+                        }
+                        else
+                        {
+                            komut.Parameters.AddWithValue("@eMail", "NULL");
+                        }
+
+                        komut.Parameters.AddWithValue("@telNo", maskedTxtNumara.Text);
+                        komut.Parameters.AddWithValue("@dTarih", dtDogumTarihi.Value);
+                        komut.Parameters.AddWithValue("@cinsiyet", cmbCinsiyet.SelectedValue);
+                        komut.Parameters.AddWithValue("@isTanimi", txtRchIsTanimi.Text);
+                        komut.Parameters.AddWithValue("@kullaniciID", KullaniciBilgi.KullaniciID);
+
+                        try
+                        {
+                            baglanti.Open();
+                            komut.ExecuteNonQuery();
+
+                            _frmRehber.listele();
+                            _frmRehber.controlsEnableOrNot();
+
+                            RadMessageBox.SetThemeName("TelerikMetro");
+                            RadMessageBox.Show(" Kayıt İşlemi Tamamlandı. ", "Kayıt Ekle", MessageBoxButtons.OK, RadMessageIcon.Info);
+                            Temizle();
+                        }
+
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message.ToString());
+                        }
+
+                        finally
+                        {
+                            baglanti.Close();
+                        }
+                    }
+                    else
+                    {
+                        maskedTxtNumara.Clear();
+                        maskedTxtNumara.Focus();
+                        
+                    }
+
                     return;
                 }
                 else
@@ -79,29 +173,31 @@ namespace rehber
                         komut.Parameters.AddWithValue("@Resim", resim); //resim yolunu veritabanına "binary" olarak kaydediyor.
                     }
 
-                    if (textIsim.Text.Length + textSoyisim.Text.Length >= 34)
+                    if (txtIsim.Text.Length + txtSoyisim.Text.Length < 34)
                     {
-                        
-                    }
-                    else
-                    {
-                        komut.Parameters.AddWithValue("@isim", textIsim.Text);
-                        komut.Parameters.AddWithValue("@soyisim", textSoyisim.Text);
+                        komut.Parameters.AddWithValue("@isim", txtIsim.Text);
+                        komut.Parameters.AddWithValue("@soyisim", txtSoyisim.Text);
                     }
 
-                    if (IsMailAddress(textMail.Text) == false)
+                    if (IsMailAddress(txtMail.Text) == false)
                     {
-                        MessageBox.Show("e mail adresinizi kontrol ediniz");
+                        RadMessageBox.SetThemeName("TelerikMetro");
+                        RadMessageBox.Show("E Mail adresinizi kontrol ediniz. (örnek: biri@biryer.com)");
+                        
+                    }
+                    else if (IsMailAddress(txtMail.Text) && txtMail.Text != null)
+                    {
+                        komut.Parameters.AddWithValue("@eMail", txtMail.Text); 
                     }
                     else
                     {
-                        komut.Parameters.AddWithValue("@eMail", textMail.Text); 
+                        komut.Parameters.AddWithValue("@eMail", "NULL");
                     }
 
                     komut.Parameters.AddWithValue("@telNo", maskedTxtNumara.Text);
                     komut.Parameters.AddWithValue("@dTarih", dtDogumTarihi.Value);
-                    komut.Parameters.AddWithValue("@cinsiyet", comboBox1.SelectedItem);
-                    komut.Parameters.AddWithValue("@isTanimi", richTextBox1.Text);
+                    komut.Parameters.AddWithValue("@cinsiyet", cmbCinsiyet.SelectedValue);
+                    komut.Parameters.AddWithValue("@isTanimi", txtRchIsTanimi.Text);
                     komut.Parameters.AddWithValue("@kullaniciID", KullaniciBilgi.KullaniciID);
 
                     try
@@ -112,7 +208,8 @@ namespace rehber
                         _frmRehber.listele();
                         _frmRehber.controlsEnableOrNot();
 
-                        MessageBox.Show(" Kayıt İşlemi Tamamlandı. ", "Kayıt Ekle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        RadMessageBox.SetThemeName("TelerikMetro");
+                        RadMessageBox.Show(" Kayıt İşlemi Tamamlandı. ", "Kayıt Ekle", MessageBoxButtons.OK, RadMessageIcon.Info);
                         Temizle();
                     }
 
@@ -132,15 +229,15 @@ namespace rehber
 
         private void Temizle()
         {
-            textIsim.Clear();
-            textSoyisim.Clear();
+            txtIsim.Clear();
+            txtSoyisim.Clear();
             maskedTxtNumara.Clear();
-            textMail.Clear();
+            txtMail.Clear();
             pictureBox.Image = null;
-            richTextBox1.Clear();
-            comboBox1.SelectedItem = null;
+            txtRchIsTanimi.Clear();
+            cmbCinsiyet.SelectedItem = null;
             dtDogumTarihi.Text = "01-01-1990";
-            ActiveControl = textIsim;
+            ActiveControl = txtIsim;
         }
 
         private void btnTemizle_Click(object sender, EventArgs e)
@@ -153,46 +250,44 @@ namespace rehber
             this.Close();
         }
 
-        private void FrmNewPerson_Load(object sender, EventArgs e)
+        private void txtSoyisim_Leave(object sender, EventArgs e)
         {
-         
-        }
-
-        private void textSoyisim_Leave(object sender, EventArgs e)
-        {
-            if (textIsim.Text.Length + textSoyisim.Text.Length >=34)
+            if (txtIsim.Text.Length + txtSoyisim.Text.Length >=34)
             {
-                MessageBox.Show("Belirlenen ad çok uzun.");
-                textIsim.Clear();
-                textSoyisim.Clear();
+                RadMessageBox.SetThemeName("TelerikMetro");
+                RadMessageBox.Show("Belirlenen ad çok uzun.");
+
+                txtIsim.Clear();
+                txtSoyisim.Clear();
             }
         }
 
-        private void textIsim_Leave(object sender, EventArgs e)
+        private void txtIsim_Leave(object sender, EventArgs e)
         {
-            if (textIsim.Text.Length + textSoyisim.Text.Length >= 34)
+            if (txtIsim.Text.Length + txtSoyisim.Text.Length >= 34)
             {
-                MessageBox.Show("Belirlenen ad çok uzun.");
-                textIsim.Clear();
-                textSoyisim.Clear();
-                textIsim.Focus();
+                RadMessageBox.SetThemeName("TelerikMetro");
+                RadMessageBox.Show("Belirlenen ad çok uzun.");
+
+                txtIsim.Clear();
+                txtSoyisim.Clear();
+                txtIsim.Focus();
             }
         }
 
         public bool IsMailAddress(string mail)
         {
            
-            if (mail.Contains("@") && mail.Contains(".com") )// sadece .com olmasın. .gov .co vs de olsun   
+            if (mail.Contains("@") && mail.Contains(".com") || txtMail.Text == null )// sadece .com olmasın. .gov .co vs de olsun   
             {
                 return true;
             }
             return false;
+           
+            
         }
 
-        private void textMail_TextChanged(object sender, EventArgs e)
-        {
 
-        }
         
     }
 

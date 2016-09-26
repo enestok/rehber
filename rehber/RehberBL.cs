@@ -53,7 +53,6 @@ namespace rehber
 
       public bool NumaraVar(string numara, int kullaniciId,int kayitId)
       {
-          //var kullanici = new tokDBEntities1().logins.SqlQuery();
           var noKatSayi = new tokDBEntities1().rehbers.Count(q => q.telNo.Equals(numara) && q.kullaniciID == kullaniciId && q.ID != kayitId); // aynı numaradan, kullanıcı ID si aynı olan ama kayıt ID si farklı olan kac tane numara var?(aynı kullanıcının sadece 1 tane aynı numaraya sahip olmasını istiyoruz) 
                                                                                                                                               // bu yüzden buradan gelecek Count() en az 0 ve yalnız 0 gelmelidir. aynı numaranın başka kaydı yok anlamında...              
           return noKatSayi > 0;

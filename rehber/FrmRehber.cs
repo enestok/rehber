@@ -19,6 +19,7 @@ namespace rehber
     using System.IO;
     using System.Windows.Forms;
     using System.Linq;
+    using System.Globalization;
 
     public partial class FrmRehber : Form
     {
@@ -27,7 +28,6 @@ namespace rehber
         {
             InitializeComponent();
             this.Text = KullaniciBilgi.KullaniciAdi + " - REHBER";
-
         }
 
         private List<RehberModel> _rehberList;
@@ -214,7 +214,7 @@ namespace rehber
                     this.labelAdSoyad.TextAlign = ContentAlignment.MiddleLeft;
                 }
 
-                this.labelAdSoyad.Text = selectedItem.GenelBilgi; 
+                this.labelAdSoyad.Text = ToTitleCase(selectedItem.GenelBilgi); 
                 this.labelTelefon.Text = selectedItem.TelNo;
                 this.labelEMail.Text = selectedItem.EMail;
                 this.labelDogumTarihi.Text = selectedItem.DogumTarihi.ToShortDateString();
@@ -279,6 +279,11 @@ namespace rehber
         {
             var frmEPosta = new Frm_ePostaOlustur();
             frmEPosta.ShowDialog();
+        }
+
+        public static string ToTitleCase(string value)
+        {
+            return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(value);
         }
 
     }

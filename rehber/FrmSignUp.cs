@@ -84,13 +84,13 @@ namespace rehber
             if (!IsSingle())
             {
                 btnKayitOl.Enabled = false;
-
+                
                 lblKullaniciDurum.Text = "!! Kullanıcı adı mevcut. Başka bir kullanıcı adı seçiniz.";
                 lblKullaniciDurum.ForeColor = Color.Red;
 
             }
             else
-            {
+            {  
                 lblKullaniciDurum.ForeColor = Color.Black;
                 lblKullaniciDurum.Text = "***";
                 btnKayitOl.Enabled = true;

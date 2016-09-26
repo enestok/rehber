@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.IO;
 using System.Security.Cryptography;
+using Telerik.WinControls;
 
 namespace rehber
 {
@@ -114,14 +115,92 @@ namespace rehber
             EntityCompare(_rehberModel);
 
             if (txtIsimYeni.Text == "" || maskedTxtNumaraYeni.Text == "" || cmbCinsiyetYeni.SelectedItem==null)
-                MessageBox.Show("Lütfen Boş Alanları Doldurunuz !");
-            else
             {
+                RadMessageBox.SetThemeName("TelerikMetro");
+                RadMessageBox.Show("Yıldızlı alanları boş bırakmayınız !", "Boş Alanları Doldurunuz");
+
+            }
+            else
+            {   
                 if (new RehberBL().NumaraVar(maskedTxtNumaraYeni.Text, _rehberModel.KullaniciID, _rehberModel.Id))
                 {
-                    MessageBox.Show("Aynı numaraya sahip kullanıcı mevcut!!"); // yine de kaydetmek istiyor musunuz? ??? 
-                    maskedTxtNumaraYeni.Clear();
-                    maskedTxtNumaraYeni.Focus();
+                    RadMessageBox.SetThemeName("TelerikMetro");
+                    DialogResult result = RadMessageBox.Show("Aynı numaraya sahip kullanıcı mevcut!! \n " +
+                                                             "Yine de kaydetmek istiyor musunuz ? "," Aynı Numara Mevcut ",MessageBoxButtons.YesNo,RadMessageIcon.Info); // yine de kaydetmek istiyor musunuz? ??? 
+                    /* kayıtlarda aynı numara varsa kullanıcıya uyarı göndermek için tekrar if-else açtık!  */
+                    if (result==DialogResult.Yes)
+                    {
+                        //Sql Veritabanı ve Kayıt işlemleri
+                        SqlConnection baglanti = new SqlHelper().Connection();
+                        SqlCommand guncelle = new SqlCommand("kayitGuncelle", baglanti);//kayitGuncelle (stored procedure)
+                        guncelle.CommandType = CommandType.StoredProcedure;
+
+                        var sonuc = ImageCompare.Compare((Bitmap)pictureBoxYeni.Image, image.icon_user_default);
+
+                        if (sonuc == ImageCompare.CompareResult.ciNull || (sonuc == ImageCompare.CompareResult.ciCompareOk))//resource ekleyerek default görüntü atadık. resource eklemeyi adım adım deftere yaz.
+                            guncelle.Parameters.Add("@ResimYeni", SqlDbType.Image).Value = DBNull.Value;  //veri tabanından resim bilgisi gelmediyse DB ye NULL yazsın..
+                        else
+                        {
+                            if (!string.IsNullOrEmpty(resimYolu)) // fotoğraf seç butonuna tıklandıysa (resim yolu na bir değer geldiyse) seçilen fotoğrafı db ye ekle..
+                            {
+                                FileStream fs = new FileStream(resimYolu, FileMode.Open, FileAccess.Read);
+                                BinaryReader br = new BinaryReader(fs);
+                                byte[] resim = br.ReadBytes(Convert.ToInt32(fs.Length));
+                                br.Close();
+                                fs.Close();
+
+                                guncelle.Parameters.Add("@ResimYeni", SqlDbType.Image).Value = (byte[])resim;
+                            }
+
+                        }
+
+
+                        if (new FrmNewPerson(_rehber).IsMailAddress(txtMailYeni.Text) == false)
+                        {
+                            RadMessageBox.SetThemeName("TelerikMetro");
+                            RadMessageBox.Show("E Mail adresinizi kontrol ediniz. (örnek: biri@biryer.com)");
+                        }
+                        else
+                        {
+                            guncelle.Parameters.AddWithValue("@eMailYeni", txtMailYeni.Text);
+                        }// e mail adresini boş girmeyi sağla
+
+                        guncelle.Parameters.AddWithValue("@telNoYeni", maskedTxtNumaraYeni.Text);
+                        guncelle.Parameters.AddWithValue("@isimYeni", txtIsimYeni.Text);
+                        guncelle.Parameters.AddWithValue("@soyisimYeni", txtSoyisimYeni.Text);
+                        guncelle.Parameters.AddWithValue("@dTarihYeni", dtDogumTarihiYeni.Value);
+                        guncelle.Parameters.AddWithValue("@cinsiyetYeni", cmbCinsiyetYeni.SelectedValue);
+                        guncelle.Parameters.AddWithValue("@isTanimiYeni", txtRchIsTanimiYeni.Text);
+                        guncelle.Parameters.AddWithValue("@id", _rehberModel.Id);/////
+
+                        try
+                        {
+                            baglanti.Open();
+                            guncelle.ExecuteNonQuery();
+                            RadMessageBox.SetThemeName("TelerikMetro");
+                            RadMessageBox.Show(" Güncelleme İşlemi Tamamlandı. ");
+
+                            if (_rehber != null)
+                                _rehber.listele();
+                        }
+
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message.ToString());
+                        }
+
+                        finally
+                        {
+                            baglanti.Close();
+                        }
+                    }
+                    else
+                    {
+                        maskedTxtNumaraYeni.Clear();
+                        maskedTxtNumaraYeni.Focus();
+                    }
+                   
+                    
                     return;
                 }
                 else
@@ -153,7 +232,8 @@ namespace rehber
 
                     if (new FrmNewPerson(_rehber).IsMailAddress(txtMailYeni.Text) == false)
                     {
-                        MessageBox.Show("E Mail adresinizi kontrol ediniz. (örnek: biri@biryer.com)");
+                        RadMessageBox.SetThemeName("TelerikMetro");
+                        RadMessageBox.Show("E Mail adresinizi kontrol ediniz. (örnek: biri@biryer.com)");
                     }
                     else
                     {
@@ -172,7 +252,8 @@ namespace rehber
                     {
                         baglanti.Open();
                         guncelle.ExecuteNonQuery();
-                        MessageBox.Show(" Güncelleme İşlemi Tamamlandı. ");
+                        RadMessageBox.SetThemeName("TelerikMetro");
+                        RadMessageBox.Show(" Güncelleme İşlemi Tamamlandı. ");
 
                         if (_rehber != null)
                             _rehber.listele();
