@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Runtime.CompilerServices;
@@ -21,8 +22,10 @@ namespace rehber
             
         }
 
+        FrmRehber _frmRehber = new FrmRehber();
         FrmNewPerson _frmNewPerson = new FrmNewPerson();
-        
+
+        private List<RehberModel> _rehberList; 
         public bool MailGonder(string konu, string icerik)
         {
             string GonderenMail = txtGonderenMail.Text;
@@ -181,7 +184,9 @@ namespace rehber
             openFileDialog1.ShowDialog();
 
             List<string> pathList = openFileDialog1.FileNames.ToList(); //path listesi
-
+           //////////
+           // psthList e SPLIT uygula. sadece dosya adını al, onu göster.!! 
+           /// //////
             selectedFilePanel1.AddTool(pathList);
         }
 
@@ -198,7 +203,8 @@ namespace rehber
 
         private void Frm_ePostaOlustur_Load(object sender, EventArgs e)
         {
-            
+            txtGonderenMail.Text = KullaniciBilgi.KullaniciBilgileri.kullaniciEMail; //giriş yapan kullanıcının mail adresini otomatik olarak gönderici mail adresi kısmına yazdırıyor.
+           
         }
 
         private void lnkTumunuTemizle_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -212,6 +218,7 @@ namespace rehber
             txtAliciMail.Clear();
         }
 
+     
       
 
     }

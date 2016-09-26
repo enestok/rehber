@@ -515,7 +515,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label labelAdSoyad;
-        protected System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.TextBox textBoxAra;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Panel panel1;
@@ -530,5 +529,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label labelEMail;
         private System.Windows.Forms.Label label1;
+        public System.Windows.Forms.ListBox listBox1;
     }
 }
