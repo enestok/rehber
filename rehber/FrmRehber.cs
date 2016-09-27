@@ -21,7 +21,7 @@ namespace rehber
     using System.Linq;
     using System.Globalization;
 
-    public partial class FrmRehber : Form
+    public partial class FrmRehber : BaseRadForm
     {
 
         public FrmRehber()
@@ -39,17 +39,17 @@ namespace rehber
         {
             listele();
 
-            RehberModel selectedItem = this.listBox1.SelectedItem as RehberModel;
+            RehberModel selectedItem = this.lstRehber.SelectedItem as RehberModel;
 
             AutoCompleteStringCollection listBoxStrings = new AutoCompleteStringCollection();
 
             foreach (RehberModel model in this._rehberList)
             {
                 listBoxStrings.Add(model.Isim + " " + model.Soyisim);
-                this.listBox1.SelectedItem = model.Isim + " " + model.Soyisim;
+                this.lstRehber.SelectedItem = model.Isim + " " + model.Soyisim;
             }
 
-            this.textBoxAra.AutoCompleteCustomSource = listBoxStrings;
+            this.txtAra.AutoCompleteCustomSource = listBoxStrings;
 
             controlsEnableOrNot();
             
@@ -60,7 +60,7 @@ namespace rehber
         ///
         private void btnSil_Click(object sender, System.EventArgs e)
         {
-            if(listBox1.Items.Count==0)
+            if(lstRehber.Items.Count==0)
             {
                 MessageBox.Show("Silinecek kayýt yok!", "Sil", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -72,11 +72,11 @@ namespace rehber
                     SqlConnection connection = new SqlHelper().Connection();
                     connection.Open();
 
-                    RehberModel selectedItem = this.listBox1.SelectedItem as RehberModel;
+                    RehberModel selectedItem = this.lstRehber.SelectedItem as RehberModel;
                     new SqlCommand("DELETE FROM dbo.rehber WHERE rehber.ID = " + selectedItem.Id, connection).ExecuteNonQuery();
                     this.pictureBoxGoster.Image = image.icon_user_default;
                     this.labelAdSoyad.Text = null;
-                    this.labelTelefon.Text = this.labelDogumTarihi.Text = this.labelCinsiyet.Text = this.labelIsTanim.Text = string.Empty;
+                    this.labelTelefon.Text = this.labelDogumTarihi.Text = this.labelCinsiyet.Text = this.txtIsTanimi.Text = string.Empty;
                     this.listele();
                     controlsEnableOrNot();
 
@@ -98,13 +98,13 @@ namespace rehber
         ///
         private void btnGuncelle_Click(object sender, System.EventArgs e)
         {
-                if (listBox1.Items.Count == 0)
+                if (lstRehber.Items.Count == 0)
                 {
                     MessageBox.Show("Listede henüz kayýt yok.", "Güncelle", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    RehberModel selectedItem = this.listBox1.SelectedItem as RehberModel;
+                    RehberModel selectedItem = this.lstRehber.SelectedItem as RehberModel;
                     new FrmUpdate(selectedItem).ShowDialog();
                     this.listele();
                 }
@@ -114,7 +114,7 @@ namespace rehber
         ///
         //->   listBox1_SelectedIndexChanged  -> listede seçili eleman deðiþtiðinde..
         ///
-        private void listBox1_SelectedIndexChanged(object sender, System.EventArgs e)
+        private void lstRehber_SelectedIndexChanged(object sender, System.EventArgs e)
         {
             this.goster();
         }
@@ -122,19 +122,19 @@ namespace rehber
         ///
         //->   listBox1_DoubleClick
         ///
-        private void listBox1_DoubleClick(object sender, System.EventArgs e)
+        private void lstRehber_DoubleClick(object sender, System.EventArgs e)
         {
-            RehberModel selectedItem = this.listBox1.SelectedItem as RehberModel;
+            RehberModel selectedItem = this.lstRehber.SelectedItem as RehberModel;
             new FrmUpdate(selectedItem,this).ShowDialog();
         }
 
         ///
         //->   textBoxAra_TextChanged -> arama yaparken sonuçlarý anlýk gösterebilmek için..
         ///
-        private void textBoxAra_TextChanged(object sender, System.EventArgs e)
+        private void txtAra_TextChanged(object sender, System.EventArgs e)
         {
             List<RehberModel> list = (from q in this._rehberList
-                                      where ((q.Isim.Contains(this.textBoxAra.Text) | q.Soyisim.Contains(this.textBoxAra.Text)) | q.GenelBilgi.Contains(this.textBoxAra.Text)) | q.TelNo.Contains(this.textBoxAra.Text)
+                                      where ((q.Isim.Contains(this.txtAra.Text) | q.Soyisim.Contains(this.txtAra.Text)) | q.GenelBilgi.Contains(this.txtAra.Text)) | q.TelNo.Contains(this.txtAra.Text)
                                       select q).ToList<RehberModel>();
            
 
@@ -142,19 +142,19 @@ namespace rehber
             {
                 this.pictureBoxGoster.Image = image.icon_user_default;
                 this.labelAdSoyad.Text = "...";
-                this.labelTelefon.Text = this.labelDogumTarihi.Text = this.labelCinsiyet.Text = this.labelIsTanim.Text = "-";
+                this.labelTelefon.Text = this.labelDogumTarihi.Text = this.labelCinsiyet.Text = this.txtIsTanimi.Text = "-";
                 lblLBStatus.Text = "Kayýt Bulunamadý !!";
 
                 lblLBStatus.ForeColor = Color.Red;
             }
             else
             {
-                this.listBox1.DataSource = list;
+                this.lstRehber.DataSource = list;
                 lblLBStatus.Text = "Toplam Kayýt: " + list.Count; 
                 lblLBStatus.ForeColor = Color.Black;
             }
 
-            this.listBox1.DataSource = list;
+            this.lstRehber.DataSource = list;
         }
 
 
@@ -171,10 +171,10 @@ namespace rehber
         ///
         public void listele()
         {
-            this.listBox1.ValueMember = "kullaniciID";
-            this.listBox1.DisplayMember = "GenelBilgi"; // GenelBilgi, RehberModel'in içinde "Ýsim + Soyisim" bilgisini tutan eleman.
+            this.lstRehber.ValueMember = "kullaniciID";
+            this.lstRehber.DisplayMember = "GenelBilgi"; // GenelBilgi, RehberModel'in içinde "Ýsim + Soyisim" bilgisini tutan eleman.
             this._rehberList = new RehberBL().RehberList();
-            this.listBox1.DataSource = this._rehberList;
+            this.lstRehber.DataSource = this._rehberList;
 
             lblLBStatus.Text = "Toplam Kayýt: " + _rehberList.Count;
         }
@@ -184,7 +184,7 @@ namespace rehber
         ///
         public void goster()
         {
-            RehberModel selectedItem = this.listBox1.SelectedItem as RehberModel;
+            RehberModel selectedItem = this.lstRehber.SelectedItem as RehberModel;
             if (selectedItem != null)
             {
                 if (selectedItem.Resim != null)
@@ -201,17 +201,17 @@ namespace rehber
                 if (selectedItem.GenelBilgi.Length < 19)
                 {
                     this.labelAdSoyad.Font = new Font("candara", 18, FontStyle.Regular);
-                    this.labelAdSoyad.TextAlign = ContentAlignment.MiddleLeft;
+                    this.labelAdSoyad.TextAlignment = ContentAlignment.MiddleLeft;
                 }
                 else if (selectedItem.GenelBilgi.Length >= 19 && selectedItem.GenelBilgi.Length < 25)
                 {
                     this.labelAdSoyad.Font = new Font("candara", 15, FontStyle.Regular);
-                    this.labelAdSoyad.TextAlign = ContentAlignment.MiddleLeft;
+                    this.labelAdSoyad.TextAlignment = ContentAlignment.MiddleLeft;
                 }
                 else 
                 {
                     this.labelAdSoyad.Font = new Font("candara", 12, FontStyle.Regular);
-                    this.labelAdSoyad.TextAlign = ContentAlignment.MiddleLeft;
+                    this.labelAdSoyad.TextAlignment = ContentAlignment.MiddleLeft;
                 }
 
                 this.labelAdSoyad.Text = ToTitleCase(selectedItem.GenelBilgi); 
@@ -219,7 +219,7 @@ namespace rehber
                 this.labelEMail.Text = selectedItem.EMail;
                 this.labelDogumTarihi.Text = selectedItem.DogumTarihi.ToShortDateString();
                 this.labelCinsiyet.Text = selectedItem.Cinsiyet;
-                this.labelIsTanim.Text = selectedItem.IsTanimi;
+                this.txtIsTanimi.Text = selectedItem.IsTanimi;
             }
         }
         ////
@@ -227,14 +227,14 @@ namespace rehber
         ////
         public void controlsEnableOrNot() 
         {
-            if (this.listBox1.Items.Count == 0)
+            if (this.lstRehber.Items.Count == 0)
             {
-                this.textBoxAra.Enabled = false;
+                this.txtAra.Enabled = false;
                 this.btnExcelAktar.Enabled = false;
             }
             else
             {
-                this.textBoxAra.Enabled = true;
+                this.txtAra.Enabled = true;
                 this.btnExcelAktar.Enabled = true;
             }
 
@@ -263,19 +263,17 @@ namespace rehber
         ////
         private void btnExcelAktar_Click(object sender, EventArgs e)
         {
-            new ImportExcelCheckList(this.listBox1).ShowDialog();
+            new ImportExcelCheckList(this.lstRehber).ShowDialog();
         }
 
         public void lblSifreDegistir_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
 
-            FrmChangePassword _frmChangePassword = new FrmChangePassword();
-          
-            _frmChangePassword.ShowDialog();
+            
            
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnMailGonder_Click(object sender, EventArgs e)
         {
             var frmEPosta = new Frm_ePostaOlustur();
             frmEPosta.ShowDialog();
@@ -284,6 +282,19 @@ namespace rehber
         public static string ToTitleCase(string value)
         {
             return CultureInfo.CurrentCulture.TextInfo.ToTitleCase(value);
+        }
+
+        private void btnSplitSifreDegistir_Click(object sender, EventArgs e)
+        {
+            FrmChangePassword _frmChangePassword = new FrmChangePassword();
+
+            _frmChangePassword.ShowDialog();
+        }
+
+        private void btnSplitEMailDegistir_Click(object sender, EventArgs e)
+        {
+            FrmChangeEmailAddress _frmChangeEmail = new FrmChangeEmailAddress();
+            _frmChangeEmail.ShowDialog();
         }
 
     }

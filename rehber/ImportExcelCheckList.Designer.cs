@@ -29,20 +29,20 @@
         private void InitializeComponent()
         {
             this.radGroupBox1 = new Telerik.WinControls.UI.RadGroupBox();
+            this.btnExcelIptal = new Telerik.WinControls.UI.RadButton();
+            this.btnExcelTamam = new Telerik.WinControls.UI.RadButton();
             this.radPanel1 = new Telerik.WinControls.UI.RadPanel();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.chkExcelAlan = new System.Windows.Forms.CheckedListBox();
             this.btnListedenSec = new Telerik.WinControls.UI.RadButton();
-            this.btnExcelTamam = new Telerik.WinControls.UI.RadButton();
-            this.btnExcelIptal = new Telerik.WinControls.UI.RadButton();
             ((System.ComponentModel.ISupportInitialize)(this.radGroupBox1)).BeginInit();
             this.radGroupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnExcelIptal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnExcelTamam)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).BeginInit();
             this.radPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnListedenSec)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnExcelTamam)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnExcelIptal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,6 +60,26 @@
             this.radGroupBox1.TabIndex = 0;
             this.radGroupBox1.Text = "Seçiniz";
             this.radGroupBox1.ThemeName = "TelerikMetro";
+            // 
+            // btnExcelIptal
+            // 
+            this.btnExcelIptal.Location = new System.Drawing.Point(71, 356);
+            this.btnExcelIptal.Name = "btnExcelIptal";
+            this.btnExcelIptal.Size = new System.Drawing.Size(90, 27);
+            this.btnExcelIptal.TabIndex = 3;
+            this.btnExcelIptal.Text = "İptal";
+            this.btnExcelIptal.ThemeName = "TelerikMetro";
+            this.btnExcelIptal.Click += new System.EventHandler(this.btnExcelIptal_Click);
+            // 
+            // btnExcelTamam
+            // 
+            this.btnExcelTamam.Location = new System.Drawing.Point(167, 344);
+            this.btnExcelTamam.Name = "btnExcelTamam";
+            this.btnExcelTamam.Size = new System.Drawing.Size(84, 39);
+            this.btnExcelTamam.TabIndex = 4;
+            this.btnExcelTamam.Text = "TAMAM";
+            this.btnExcelTamam.ThemeName = "TelerikMetro";
+            this.btnExcelTamam.Click += new System.EventHandler(this.btnExcelTamam_Click);
             // 
             // radPanel1
             // 
@@ -109,7 +129,7 @@
             "İş Tanımı"});
             this.chkExcelAlan.Location = new System.Drawing.Point(41, 97);
             this.chkExcelAlan.Name = "chkExcelAlan";
-            this.chkExcelAlan.Size = new System.Drawing.Size(143, 126);
+            this.chkExcelAlan.Size = new System.Drawing.Size(143, 120);
             this.chkExcelAlan.TabIndex = 2;
             // 
             // btnListedenSec
@@ -122,26 +142,6 @@
             this.btnListedenSec.Text = "Listeden Kişi Seçiniz >>>";
             this.btnListedenSec.ThemeName = "Office2010Silver";
             this.btnListedenSec.Click += new System.EventHandler(this.btnListedenSec_Click);
-            // 
-            // btnExcelTamam
-            // 
-            this.btnExcelTamam.Location = new System.Drawing.Point(167, 344);
-            this.btnExcelTamam.Name = "btnExcelTamam";
-            this.btnExcelTamam.Size = new System.Drawing.Size(84, 39);
-            this.btnExcelTamam.TabIndex = 4;
-            this.btnExcelTamam.Text = "TAMAM";
-            this.btnExcelTamam.ThemeName = "TelerikMetro";
-            this.btnExcelTamam.Click += new System.EventHandler(this.btnExcelTamam_Click);
-            // 
-            // btnExcelIptal
-            // 
-            this.btnExcelIptal.Location = new System.Drawing.Point(71, 356);
-            this.btnExcelIptal.Name = "btnExcelIptal";
-            this.btnExcelIptal.Size = new System.Drawing.Size(90, 27);
-            this.btnExcelIptal.TabIndex = 3;
-            this.btnExcelIptal.Text = "İptal";
-            this.btnExcelIptal.ThemeName = "TelerikMetro";
-            this.btnExcelIptal.Click += new System.EventHandler(this.btnExcelIptal_Click);
             // 
             // ImportExcelCheckList
             // 
@@ -160,12 +160,12 @@
             this.Load += new System.EventHandler(this.ImportExcelCheckList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.radGroupBox1)).EndInit();
             this.radGroupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.btnExcelIptal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnExcelTamam)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).EndInit();
             this.radPanel1.ResumeLayout(false);
             this.radPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnListedenSec)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnExcelTamam)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnExcelIptal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
 

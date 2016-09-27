@@ -20,21 +20,10 @@ namespace rehber
             
         }
         
-
         private void FrmChangePassword_Load(object sender, EventArgs e)
         {
             var userInfo = KullaniciBilgi.KullaniciBilgileri;
             lblKullanici.Text = userInfo.kullaniciAdi;
-        }
-
-        private void txtSifreChangeEski_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtSifreChangeYeni_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void btnSifreChange_Click(object sender, EventArgs e)
@@ -47,11 +36,8 @@ namespace rehber
             {
                 var userInfo = KullaniciBilgi.KullaniciBilgileri;
 
-                lblKullanici.Text = userInfo.kullaniciAdi;
-
                 if (userInfo.sifre == txtSifreChangeEski.Text)
                 {
-
                     SqlConnection connect = new SqlHelper().Connection();
                     connect.Open();
     

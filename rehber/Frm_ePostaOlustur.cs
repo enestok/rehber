@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Linq.Mapping;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -14,7 +15,7 @@ using  System.Net.Mail;
 
 namespace rehber
 {
-    public partial class Frm_ePostaOlustur : Form
+    public partial class Frm_ePostaOlustur : BaseRadForm
     {
         public Frm_ePostaOlustur()
         {
@@ -157,9 +158,6 @@ namespace rehber
                     this.txtAliciMail.Text += secim[i] + ";";
                 }
                 
-                
-
-
             }
         }
 
@@ -181,30 +179,35 @@ namespace rehber
 
             openFileDialog1.Multiselect = true;
 
-            openFileDialog1.ShowDialog();
+            DialogResult result = new DialogResult();
+
+            result = openFileDialog1.ShowDialog();
+            
+
+            if (result == DialogResult.OK)
+            {
+                lnkAttachTumunuTemizle.Show();
+            }
 
             List<string> pathList = openFileDialog1.FileNames.ToList(); //path listesi
-           //////////
-           // psthList e SPLIT uygula. sadece dosya adını al, onu göster.!! 
-           /// //////
-            selectedFilePanel1.AddTool(pathList);
-        }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //RefreshLocation();
-            //MessageBox.Show(txtRichMesaj.Rtf);
-        }
-
-        private void txtAliciMail_TextChanged(object sender, EventArgs e)
-        {
+            string[] fileNameSplit = new string[pathList.Count * 5];
+            string[] aa = new string[pathList.Count];
+            for (int i = 0; i < pathList.Count(); i++)
+            {
+                fileNameSplit = pathList[i].Split('\\');
+                 aa[i] = fileNameSplit.Last();
+                
+            }
+          
+            selectedFilePanel1.AddTool(aa.ToList());
             
         }
 
         private void Frm_ePostaOlustur_Load(object sender, EventArgs e)
         {
             txtGonderenMail.Text = KullaniciBilgi.KullaniciBilgileri.kullaniciEMail; //giriş yapan kullanıcının mail adresini otomatik olarak gönderici mail adresi kısmına yazdırıyor.
-           
+            lnkAttachTumunuTemizle.Hide();
         }
 
         private void lnkTumunuTemizle_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -216,6 +219,21 @@ namespace rehber
         private void lnkAliciTemizle_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             txtAliciMail.Clear();
+        }
+
+        private void radGroupBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radLabel3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radLabel4_Click(object sender, EventArgs e)
+        {
+
         }
 
      

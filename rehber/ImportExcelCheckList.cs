@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Telerik.WinControls;
 using Excel = Microsoft.Office.Interop.Excel;
 using Microsoft.Office.Interop.Excel;
 
@@ -116,6 +117,7 @@ namespace rehber
             {
                 _secim = _frmExcelKisi.SelectedPerson;
                 chkExcelAlan.Enabled = true;
+
             }
         }
 

@@ -138,8 +138,7 @@
             this.txtSifreChangeEski.Size = new System.Drawing.Size(274, 24);
             this.txtSifreChangeEski.TabIndex = 0;
             this.txtSifreChangeEski.ThemeName = "TelerikMetro";
-            this.txtSifreChangeEski.TextChanged += new System.EventHandler(this.txtSifreChangeEski_TextChanged);
-            // 
+             // 
             // txtSifreChangeYeni
             // 
             this.txtSifreChangeYeni.Font = new System.Drawing.Font("Segoe UI", 10F);
@@ -149,8 +148,7 @@
             this.txtSifreChangeYeni.Size = new System.Drawing.Size(274, 24);
             this.txtSifreChangeYeni.TabIndex = 1;
             this.txtSifreChangeYeni.ThemeName = "TelerikMetro";
-            this.txtSifreChangeYeni.TextChanged += new System.EventHandler(this.txtSifreChangeYeni_TextChanged);
-            // 
+           // 
             // txtSifreChangeYeniTekrar
             // 
             this.txtSifreChangeYeniTekrar.Font = new System.Drawing.Font("Segoe UI", 10F);
