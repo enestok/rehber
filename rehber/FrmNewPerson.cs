@@ -215,7 +215,8 @@ namespace rehber
 
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message.ToString());
+                        RadMessageBox.SetThemeName("TelerikMetro");
+                        RadMessageBox.Show(ex.Message.ToString());
                     }
 
                     finally

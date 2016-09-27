@@ -281,7 +281,7 @@ namespace rehber
             maskedTxtNumaraYeni.Clear();
             txtMailYeni.Clear();
             pictureBoxYeni.Image = image.icon_user_default;
-            //txtRchIsTanimiYeni.ClearFormatting();
+            txtRchIsTanimiYeni.Clear();
             cmbCinsiyetYeni.SelectedItem = null;
             dtDogumTarihiYeni.Text = "01-01-1990";
         }

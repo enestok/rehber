@@ -14,6 +14,7 @@ using Microsoft.VisualBasic.Logging;
 using System.IO;
 using System.Data.SqlClient;
 using  rehber;
+using Telerik.WinControls;
 
 namespace rehber
 {
@@ -61,15 +62,17 @@ namespace rehber
             }
             catch (SqlException)
             {
-                DialogResult result = MessageBox.Show("Veritabanı bağlantısı yapılamadı. Bağlantıyı kontrol edip tekrar deneyiniz. ", "Bağlantı Hatası", MessageBoxButtons.RetryCancel);
+                RadMessageBox.SetThemeName("TelerikMetro");
+                DialogResult result = RadMessageBox.Show("Veritabanı bağlantısı yapılamadı. Bağlantıyı kontrol edip tekrar deneyiniz. ", "Bağlantı Hatası", MessageBoxButtons.RetryCancel);
                
                 if (result == DialogResult.Retry)
                 {
                     //btnGiris_Click içinde yapılan işlemler "yeniden dene" butonuna basılırsa tekrar çağırılıyor...
                     if (!KullaniciLoginDurum())
                     {
-                        MessageBox.Show("Hatalı Giriş. Bilgilerinizi Kontrol Edin", "Hatalı Giriş", MessageBoxButtons.OK,
-                            MessageBoxIcon.Information);
+                        RadMessageBox.SetThemeName("TelerikMetro");
+                        RadMessageBox.Show("Hatalı Giriş. Bilgilerinizi Kontrol Edin", "Hatalı Giriş", MessageBoxButtons.OK,
+                            RadMessageIcon.Info);
                     }
                     else
                     {
@@ -139,7 +142,8 @@ namespace rehber
         {
             if (!KullaniciLoginDurum())
             {
-                MessageBox.Show("Hatalı Giriş. Bilgilerinizi Kontrol Edin", "Hatalı Giriş", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                RadMessageBox.SetThemeName("TelerikMetro");
+                RadMessageBox.Show("Hatalı Giriş. Bilgilerinizi Kontrol Edin", "Hatalı Giriş", MessageBoxButtons.OK, RadMessageIcon.Info);
             }
             else
             {
@@ -161,7 +165,8 @@ namespace rehber
 
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message.ToString());
+                        RadMessageBox.SetThemeName("TelerikMetro");
+                        RadMessageBox.Show(ex.Message.ToString());
                     }
 
                     finally

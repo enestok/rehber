@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Telerik.WinControls;
 
 namespace rehber
 {
@@ -76,7 +77,8 @@ namespace rehber
             }
             else
             {
-                MessageBox.Show(" Kayıt seçilmedi! ");
+                RadMessageBox.SetThemeName("TelerikMetro");
+                RadMessageBox.Show(" Kayıt seçilmedi! ");
                 return false;
             }
 

@@ -8,6 +8,7 @@ using System.Data.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Telerik.WinControls;
 
 namespace rehber
 {
@@ -43,7 +44,8 @@ namespace rehber
         {
             if (txtKullaniciKayit.Text == "" && txtSifreKayit.Text == "" || txtSifreKayit.Text != txtSifreTekrarKayit.Text)
             {
-                MessageBox.Show(" Boş alanları doldurun ve şifrelerin uyuştuğundan emin olun! ", "Kayıt Ol", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                RadMessageBox.SetThemeName("TelerikMetro");
+                RadMessageBox.Show(" Boş alanları doldurun ve şifrelerin uyuştuğundan emin olun! ", "Kayıt Ol", MessageBoxButtons.OK, RadMessageIcon.Error);
             }
             else
             {
@@ -61,7 +63,8 @@ namespace rehber
                 signUpDataContext.KullaniciKayits.InsertOnSubmit(kayit);
                 signUpDataContext.SubmitChanges();
 
-                MessageBox.Show("Kayıt başarılı.", "Kayıt Ol", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                RadMessageBox.SetThemeName("TelerikMetro");
+                RadMessageBox.Show("Kayıt başarılı.", "Kayıt Ol", MessageBoxButtons.OK, RadMessageIcon.Info);
                 btnKayitOl.Enabled = false;
             }
         }

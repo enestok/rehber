@@ -37,7 +37,11 @@ namespace rehber
         private void ImportToExcell()
         {
             if (chkExcelAlan.CheckedItems.Count == 0)
-                MessageBox.Show("Lütfen görüntülemek için en az 1 alan seçiniz.");
+            {
+                RadMessageBox.SetThemeName("TelerikMetro");
+                RadMessageBox.Show("Lütfen görüntülemek için en az 1 alan seçiniz.");
+                
+            }
             else
             {
                 Excel.Application ExcelApp = new Excel.Application();
@@ -87,7 +91,8 @@ namespace rehber
                                 break;
                             default:
                             {
-                                MessageBox.Show("Hay Aksi! İstenmeyen bir durum oluştu.", "Hata");
+                                RadMessageBox.SetThemeName("TelerikMetro");
+                                RadMessageBox.Show("Hay Aksi! İstenmeyen bir durum oluştu.", "Hata");
                                 this.Close();
                                 break;
                             }

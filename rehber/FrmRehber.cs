@@ -9,6 +9,7 @@
 
 using System.Runtime.InteropServices;
 using Microsoft.Office.Interop.Excel;
+using Telerik.WinControls;
 
 namespace rehber
 {
@@ -62,7 +63,8 @@ namespace rehber
         {
             if(lstRehber.Items.Count==0)
             {
-                MessageBox.Show("Silinecek kayýt yok!", "Sil", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                RadMessageBox.SetThemeName("TelerikMetro");
+                RadMessageBox.Show("Silinecek kayýt yok!", "Sil", MessageBoxButtons.OK, RadMessageIcon.Info);
             }
             else if (MessageBox.Show("Kayýdý silmek istediðinize emin misiniz ?", "Sil", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
@@ -80,7 +82,8 @@ namespace rehber
                     this.listele();
                     controlsEnableOrNot();
 
-                    MessageBox.Show("Kayýt silindi!", "Sil", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    RadMessageBox.SetThemeName("TelerikMetro");
+                    RadMessageBox.Show("Kayýt silindi!", "Sil", MessageBoxButtons.OK, RadMessageIcon.Info);
 
                    connection.Close();
 
@@ -100,7 +103,8 @@ namespace rehber
         {
                 if (lstRehber.Items.Count == 0)
                 {
-                    MessageBox.Show("Listede henüz kayýt yok.", "Güncelle", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    RadMessageBox.SetThemeName("TelerikMetro");
+                    RadMessageBox.Show("Listede henüz kayýt yok.", "Güncelle", MessageBoxButtons.OK, RadMessageIcon.Info);
                 }
                 else
                 {
@@ -245,7 +249,8 @@ namespace rehber
         ////
         private void btnKullaniciDegistir_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Baþka kullanýcýya geçmek istediðinize emin misiniz?","Kullanýcý Deðiþtir", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            RadMessageBox.SetThemeName("TelerikMetro");
+            DialogResult result = RadMessageBox.Show("Baþka kullanýcýya geçmek istediðinize emin misiniz?", "Kullanýcý Deðiþtir", MessageBoxButtons.YesNo, RadMessageIcon.Question);
 
             if (result == DialogResult.Yes)
             {

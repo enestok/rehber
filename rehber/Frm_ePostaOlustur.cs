@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using  System.Net.Mail;
+using Telerik.WinControls;
 
 namespace rehber
 {
@@ -45,13 +46,15 @@ namespace rehber
                 }
                 catch (FormatException e)
                 {
-                    MessageBox.Show("Gönderici bilgilerini kontrol ediniz. \n \n" + e);
+                    RadMessageBox.SetThemeName("TelerikMetro");
+                    RadMessageBox.Show("Gönderici bilgilerini kontrol ediniz. \n \n" + e);
                 }
                 
             }
             else
             {
-                MessageBox.Show("Gönderen bilgilerini kontrol ediniz.");
+                RadMessageBox.SetThemeName("TelerikMetro");
+                RadMessageBox.Show("Gönderen bilgilerini kontrol ediniz.");
             }
             
             if (_frmNewPerson.IsMailAddress(AliciMail))
@@ -67,7 +70,8 @@ namespace rehber
                         }
                         catch (FormatException e)
                         {
-                            MessageBox.Show("Alıcı bilgilerini kontrol ediniz..." + "\n " + "farklı adresler arasında ';' kullanmayı unutmayın. " + "\n \n" + e);
+                            RadMessageBox.SetThemeName("TelerikMetro");
+                            RadMessageBox.Show("Alıcı bilgilerini kontrol ediniz..." + "\n " + "farklı adresler arasında ';' kullanmayı unutmayın. " + "\n \n" + e);
                             return false;
                         }
 
@@ -77,7 +81,8 @@ namespace rehber
             }
             else
             {
-                MessageBox.Show("Alıcı Mail adresini kontrol ediniz.");
+                RadMessageBox.SetThemeName("TelerikMetro");
+                RadMessageBox.Show("Alıcı Mail adresini kontrol ediniz.");
             }
             
 
@@ -113,13 +118,14 @@ namespace rehber
             {
                 smtp.SendAsync(ePosta, (object)ePosta);
                 //smtp.Send(ePosta);
-
-                MessageBox.Show("mail gönderildi."); 
+                RadMessageBox.SetThemeName("TelerikMetro");
+                RadMessageBox.Show("mail gönderildi."); 
             }
             catch (Exception e)
             {
                 kontrol = false;
-                MessageBox.Show(" mail gönderme işlemi başarısız! " + "\n \n" + e);
+                RadMessageBox.SetThemeName("TelerikMetro");
+                RadMessageBox.Show(" mail gönderme işlemi başarısız! " + "\n \n" + e);
                 
                 
             }

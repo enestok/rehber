@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using Telerik.WinControls;
 
 namespace rehber
 {
@@ -30,7 +31,8 @@ namespace rehber
         {
             if (txtSifreChangeYeni.Text != txtSifreChangeYeniTekrar.Text)
             {
-                MessageBox.Show("Girilen şifreler farklı. Yeni şifrenizi doğrulayınız.","Şifreler Farklı",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                RadMessageBox.SetThemeName("TelerikMetro");
+                RadMessageBox.Show("Girilen şifreler farklı. Yeni şifrenizi doğrulayınız.", "Şifreler Farklı", MessageBoxButtons.OK, RadMessageIcon.Info);
             }
             else 
             {
@@ -45,13 +47,16 @@ namespace rehber
                     command.Parameters.AddWithValue("@sifre", txtSifreChangeYeni.Text);
                     userInfo.sifre = txtSifreChangeYeni.Text;
                     command.ExecuteNonQuery();
-                    MessageBox.Show("Şifreniz değiştirildi");
+
+                    RadMessageBox.SetThemeName("TelerikMetro");
+                    RadMessageBox.Show("Şifreniz değiştirildi");
                     this.Close();
                     connect.Close();
                 }
                 else
                 {
-                    MessageBox.Show("Eski şifrenizi doğru girdiğinizden emin olun..");
+                    RadMessageBox.SetThemeName("TelerikMetro");
+                    RadMessageBox.Show("Eski şifrenizi doğru girdiğinizden emin olun..");
                 }
             }
 
