@@ -41,6 +41,7 @@
             this.radGroupBox1 = new Telerik.WinControls.UI.RadGroupBox();
             this.radThemeManager1 = new Telerik.WinControls.RadThemeManager();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).BeginInit();
             this.radPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkBeniHatirla)).BeginInit();
@@ -56,21 +57,22 @@
             // 
             // radPanel1
             // 
+            this.radPanel1.Controls.Add(this.linkLabel1);
             this.radPanel1.Controls.Add(this.chkBeniHatirla);
             this.radPanel1.Controls.Add(this.btnSifreGoster);
             this.radPanel1.Controls.Add(this.txtKullaniciAdi);
             this.radPanel1.Controls.Add(this.txtSifre);
             this.radPanel1.Controls.Add(this.label2);
             this.radPanel1.Controls.Add(this.label1);
-            this.radPanel1.Location = new System.Drawing.Point(40, 37);
+            this.radPanel1.Location = new System.Drawing.Point(20, 37);
             this.radPanel1.Name = "radPanel1";
-            this.radPanel1.Size = new System.Drawing.Size(389, 154);
+            this.radPanel1.Size = new System.Drawing.Size(449, 154);
             this.radPanel1.TabIndex = 3;
             this.radPanel1.ThemeName = "TelerikMetro";
             // 
             // chkBeniHatirla
             // 
-            this.chkBeniHatirla.Location = new System.Drawing.Point(160, 98);
+            this.chkBeniHatirla.Location = new System.Drawing.Point(134, 96);
             this.chkBeniHatirla.Name = "chkBeniHatirla";
             // 
             // 
@@ -89,7 +91,7 @@
             this.btnSifreGoster.DisplayStyle = Telerik.WinControls.DisplayStyle.Image;
             this.btnSifreGoster.Image = global::rehber.image.SeePassword2;
             this.btnSifreGoster.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnSifreGoster.Location = new System.Drawing.Point(351, 68);
+            this.btnSifreGoster.Location = new System.Drawing.Point(402, 66);
             this.btnSifreGoster.MaximumSize = new System.Drawing.Size(200, 200);
             this.btnSifreGoster.Name = "btnSifreGoster";
             // 
@@ -107,9 +109,9 @@
             // txtKullaniciAdi
             // 
             this.txtKullaniciAdi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtKullaniciAdi.Location = new System.Drawing.Point(156, 34);
+            this.txtKullaniciAdi.Location = new System.Drawing.Point(130, 32);
             this.txtKullaniciAdi.Name = "txtKullaniciAdi";
-            this.txtKullaniciAdi.Size = new System.Drawing.Size(194, 25);
+            this.txtKullaniciAdi.Size = new System.Drawing.Size(266, 25);
             this.txtKullaniciAdi.TabIndex = 10;
             this.txtKullaniciAdi.Text = "admin";
             this.txtKullaniciAdi.ThemeName = "TelerikMetro";
@@ -118,10 +120,10 @@
             // txtSifre
             // 
             this.txtSifre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtSifre.Location = new System.Drawing.Point(156, 70);
+            this.txtSifre.Location = new System.Drawing.Point(130, 68);
             this.txtSifre.Name = "txtSifre";
             this.txtSifre.PasswordChar = '*';
-            this.txtSifre.Size = new System.Drawing.Size(194, 25);
+            this.txtSifre.Size = new System.Drawing.Size(266, 25);
             this.txtSifre.TabIndex = 11;
             this.txtSifre.Text = "admin";
             this.txtSifre.ThemeName = "TelerikMetro";
@@ -130,7 +132,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Buxton Sketch", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label2.Location = new System.Drawing.Point(39, 72);
+            this.label2.Location = new System.Drawing.Point(26, 70);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(101, 20);
             this.label2.TabIndex = 9;
@@ -140,7 +142,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Buxton Sketch", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label1.Location = new System.Drawing.Point(39, 37);
+            this.label1.Location = new System.Drawing.Point(26, 33);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(101, 20);
             this.label1.TabIndex = 8;
@@ -149,9 +151,9 @@
             // btnKayitOlDialog
             // 
             this.btnKayitOlDialog.Font = new System.Drawing.Font("Buxton Sketch", 15F);
-            this.btnKayitOlDialog.Location = new System.Drawing.Point(57, 205);
+            this.btnKayitOlDialog.Location = new System.Drawing.Point(21, 205);
             this.btnKayitOlDialog.Name = "btnKayitOlDialog";
-            this.btnKayitOlDialog.Size = new System.Drawing.Size(108, 38);
+            this.btnKayitOlDialog.Size = new System.Drawing.Size(113, 57);
             this.btnKayitOlDialog.TabIndex = 4;
             this.btnKayitOlDialog.Text = "Kayıt Ol";
             this.btnKayitOlDialog.ThemeName = "TelerikMetro";
@@ -160,9 +162,9 @@
             // btnGiris
             // 
             this.btnGiris.Font = new System.Drawing.Font("Buxton Sketch", 17F);
-            this.btnGiris.Location = new System.Drawing.Point(307, 205);
+            this.btnGiris.Location = new System.Drawing.Point(318, 205);
             this.btnGiris.Name = "btnGiris";
-            this.btnGiris.Size = new System.Drawing.Size(108, 43);
+            this.btnGiris.Size = new System.Drawing.Size(151, 66);
             this.btnGiris.TabIndex = 5;
             this.btnGiris.Text = "GİRİŞ";
             this.btnGiris.ThemeName = "TelerikMetro";
@@ -175,12 +177,23 @@
             this.radGroupBox1.Controls.Add(this.btnKayitOlDialog);
             this.radGroupBox1.Controls.Add(this.radPanel1);
             this.radGroupBox1.HeaderText = "Kullanıcı Bilgileri";
-            this.radGroupBox1.Location = new System.Drawing.Point(23, 19);
+            this.radGroupBox1.Location = new System.Drawing.Point(12, 12);
             this.radGroupBox1.Name = "radGroupBox1";
-            this.radGroupBox1.Size = new System.Drawing.Size(463, 284);
+            this.radGroupBox1.Size = new System.Drawing.Size(486, 291);
             this.radGroupBox1.TabIndex = 6;
             this.radGroupBox1.Text = "Kullanıcı Bilgileri";
             this.radGroupBox1.ThemeName = "TelerikMetro";
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(303, 99);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(95, 15);
+            this.linkLabel1.TabIndex = 13;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Şifremi Unuttum";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // FrmLogin
             // 
@@ -228,5 +241,6 @@
         private Telerik.WinControls.RadThemeManager radThemeManager1;
         private Telerik.WinControls.UI.RadButton btnSifreGoster;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }

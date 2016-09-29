@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
-            this.lblFileName = new System.Windows.Forms.LinkLabel();
             this.btnCancelAttach = new System.Windows.Forms.Button();
+            this.lblFileName = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,15 +46,6 @@
             this.panel2.Size = new System.Drawing.Size(248, 32);
             this.panel2.TabIndex = 17;
             // 
-            // lblFileName
-            // 
-            this.lblFileName.Location = new System.Drawing.Point(7, 5);
-            this.lblFileName.Name = "lblFileName";
-            this.lblFileName.Size = new System.Drawing.Size(205, 20);
-            this.lblFileName.TabIndex = 10;
-            this.lblFileName.TabStop = true;
-            this.lblFileName.Text = "linkLabel1";
-            // 
             // btnCancelAttach
             // 
             this.btnCancelAttach.Image = global::rehber.Properties.Resources.cancelAttach;
@@ -66,6 +57,16 @@
             this.btnCancelAttach.UseVisualStyleBackColor = true;
             this.btnCancelAttach.Click += new System.EventHandler(this.btnCancelAttach_Click);
             // 
+            // lblFileName
+            // 
+            this.lblFileName.AutoSize = true;
+            this.lblFileName.Location = new System.Drawing.Point(14, 8);
+            this.lblFileName.MaximumSize = new System.Drawing.Size(205, 20);
+            this.lblFileName.Name = "lblFileName";
+            this.lblFileName.Size = new System.Drawing.Size(35, 13);
+            this.lblFileName.TabIndex = 11;
+            this.lblFileName.Text = "label1";
+            // 
             // SelectedFileTool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -74,6 +75,7 @@
             this.Name = "SelectedFileTool";
             this.Size = new System.Drawing.Size(248, 32);
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -81,7 +83,7 @@
         #endregion
 
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.LinkLabel lblFileName;
         private System.Windows.Forms.Button btnCancelAttach;
+        private System.Windows.Forms.Label lblFileName;
     }
 }

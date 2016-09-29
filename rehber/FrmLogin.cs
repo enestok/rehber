@@ -218,6 +218,12 @@ namespace rehber
             txtSifre.PasswordChar = '*'; //password char ı eski haline getirecek
         }
 
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            FrmForgetPassword _frmPassword = new FrmForgetPassword();
+            _frmPassword.ShowDialog();
+        }
+
 
        
     }

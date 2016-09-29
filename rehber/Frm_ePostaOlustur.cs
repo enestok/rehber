@@ -197,22 +197,24 @@ namespace rehber
 
             List<string> pathList = openFileDialog1.FileNames.ToList(); //path listesi
 
-            string[] fileNameSplit = new string[pathList.Count * 5];
-            string[] aa = new string[pathList.Count];
-            for (int i = 0; i < pathList.Count(); i++)
-            {
-                fileNameSplit = pathList[i].Split('\\');
-                 aa[i] = fileNameSplit.Last();
+            //string[] fileNameSplit = new string[pathList.Count * 5];
+            //string[] aa = new string[pathList.Count];
+            //for (int i = 0; i < pathList.Count(); i++)
+            //{
+            //    fileNameSplit = pathList[i].Split('\\');
+            //     aa[i] = fileNameSplit.Last();
                 
-            }
+            //}
           
-            selectedFilePanel1.AddTool(aa.ToList());
+            //selectedFilePanel1.AddTool(aa.ToList());
+            selectedFilePanel1.AddTool(pathList);
             
         }
 
         private void Frm_ePostaOlustur_Load(object sender, EventArgs e)
         {
-            txtGonderenMail.Text = KullaniciBilgi.KullaniciBilgileri.kullaniciEMail; //giriş yapan kullanıcının mail adresini otomatik olarak gönderici mail adresi kısmına yazdırıyor.
+            var info = KullaniciBilgi.KullaniciBilgileri;
+            txtGonderenMail.Text = info.kullaniciEMail; //giriş yapan kullanıcının mail adresini otomatik olarak gönderici mail adresi kısmına yazdırıyor.
             lnkAttachTumunuTemizle.Hide();
         }
 

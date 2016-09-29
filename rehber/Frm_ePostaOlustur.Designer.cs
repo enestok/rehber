@@ -210,6 +210,7 @@
             // 
             this.txtGonderenSifre.Location = new System.Drawing.Point(104, 97);
             this.txtGonderenSifre.Name = "txtGonderenSifre";
+            this.txtGonderenSifre.PasswordChar = '*';
             this.txtGonderenSifre.Size = new System.Drawing.Size(227, 22);
             this.txtGonderenSifre.TabIndex = 3;
             this.txtGonderenSifre.ThemeName = "TelerikMetro";
@@ -365,7 +366,7 @@
         private System.Windows.Forms.Button btnAliciEkle;
         private System.Windows.Forms.Button btnAddAttach;
         private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        public System.Windows.Forms.OpenFileDialog openFileDialog1;
         private rehber.SelectedFilePanel selectedFilePanel1;
         private System.Windows.Forms.LinkLabel lnkAttachTumunuTemizle;
         private System.Windows.Forms.LinkLabel lnkAliciTemizle;
