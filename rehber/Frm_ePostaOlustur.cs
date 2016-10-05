@@ -107,9 +107,25 @@ namespace rehber
             SmtpClient smtp = new SmtpClient();
             smtp.Credentials= new NetworkCredential("" + GonderenMail + "", "" + GonderenSifre + "");
 
+
             smtp.Port = 587; // gmail port numarası
             smtp.Host = "smtp.gmail.com";
+
             smtp.EnableSsl = true;
+
+            //if (txtGonderenMail.Text.Contains("@gmail.com"))
+            //{
+            //    smtp.Port = 587; // gmail port numarası
+            //    smtp.Host = "smtp.gmail.com";
+            //}
+            //else if (txtGonderenMail.Text.Contains("@outlook.com"))
+            //{
+            //    smtp.Port = 587; // hotmail port numarası
+            //    smtp.Host = "smtp.live.com";
+            //}
+ 
+
+           
 
             object userState = ePosta;
             bool kontrol = true;
@@ -208,6 +224,8 @@ namespace rehber
           
             //selectedFilePanel1.AddTool(aa.ToList());
             selectedFilePanel1.AddTool(pathList);
+
+
             
         }
 

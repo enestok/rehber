@@ -138,9 +138,11 @@ namespace rehber
         private void txtAra_TextChanged(object sender, System.EventArgs e)
         {
             List<RehberModel> list = (from q in this._rehberList
-                                      where ((q.Isim.Contains(this.txtAra.Text) | q.Soyisim.Contains(this.txtAra.Text)) | q.GenelBilgi.Contains(this.txtAra.Text)) | q.TelNo.Contains(this.txtAra.Text)
+                                      where ((q.Isim.Contains(this.txtAra.Text) | q.Soyisim.Contains(this.txtAra.Text)) |
+                                                    q.GenelBilgi.Contains(this.txtAra.Text)) | q.TelNo.Contains(this.txtAra.Text)
                                       select q).ToList<RehberModel>();
            
+
 
             if (list.Count == 0)
             {
@@ -153,12 +155,13 @@ namespace rehber
             }
             else
             {
-                this.lstRehber.DataSource = list;
+                this.lstRehber.DataSource = list;  //  FrmRehber formundaki listbox(lstRehber) ýn data source una 
+                                                   //  LINQ ifadesiyle bilgileri içine doldurduðumuz 'list' isimli liste deðiþkeni veriliyor.
                 lblLBStatus.Text = "Toplam Kayýt: " + list.Count; 
                 lblLBStatus.ForeColor = Color.Black;
             }
 
-            this.lstRehber.DataSource = list;
+            this.lstRehber.DataSource = list;  // listboxta, arama sonucuna göre 'list' in içinde mevcut olan kayýtlar listeleniyor.
         }
 
 

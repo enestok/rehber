@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.radPanel1 = new Telerik.WinControls.UI.RadPanel();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.chkBeniHatirla = new Telerik.WinControls.UI.RadCheckBox();
             this.btnSifreGoster = new Telerik.WinControls.UI.RadButton();
             this.txtKullaniciAdi = new Telerik.WinControls.UI.RadTextBox();
@@ -41,7 +42,6 @@
             this.radGroupBox1 = new Telerik.WinControls.UI.RadGroupBox();
             this.radThemeManager1 = new Telerik.WinControls.RadThemeManager();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).BeginInit();
             this.radPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkBeniHatirla)).BeginInit();
@@ -69,6 +69,17 @@
             this.radPanel1.Size = new System.Drawing.Size(449, 154);
             this.radPanel1.TabIndex = 3;
             this.radPanel1.ThemeName = "TelerikMetro";
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(303, 99);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(95, 15);
+            this.linkLabel1.TabIndex = 13;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Şifremi Unuttum";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // chkBeniHatirla
             // 
@@ -184,17 +195,6 @@
             this.radGroupBox1.Text = "Kullanıcı Bilgileri";
             this.radGroupBox1.ThemeName = "TelerikMetro";
             // 
-            // linkLabel1
-            // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(303, 99);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(95, 15);
-            this.linkLabel1.TabIndex = 13;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Şifremi Unuttum";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
-            // 
             // FrmLogin
             // 
             this.AcceptButton = this.btnGiris;
@@ -203,12 +203,15 @@
             this.ClientSize = new System.Drawing.Size(510, 327);
             this.Controls.Add(this.radGroupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MaximumSize = new System.Drawing.Size(518, 362);
+            this.MinimumSize = new System.Drawing.Size(518, 362);
             this.Name = "FrmLogin";
             // 
             // 
             // 
             this.RootElement.ApplyShapeToControl = true;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.RootElement.MaxSize = new System.Drawing.Size(518, 362);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Kullanıcı Girişi";
             this.Load += new System.EventHandler(this.FrmLogin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).EndInit();

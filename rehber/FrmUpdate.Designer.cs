@@ -520,7 +520,7 @@
             // 
             this.radLabel2.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.radLabel2.ForeColor = System.Drawing.Color.Red;
-            this.radLabel2.Location = new System.Drawing.Point(293, 82);
+            this.radLabel2.Location = new System.Drawing.Point(293, 118);
             this.radLabel2.Name = "radLabel2";
             this.radLabel2.Size = new System.Drawing.Size(15, 25);
             this.radLabel2.TabIndex = 98;
@@ -600,6 +600,7 @@
             // 
             // 
             this.RootElement.ApplyShapeToControl = true;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Kişi Güncelle";
             this.Load += new System.EventHandler(this.guncelle_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxYeni)).EndInit();

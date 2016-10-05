@@ -485,7 +485,6 @@
             this.RootElement.ApplyShapeToControl = true;
             this.RootElement.MaxSize = new System.Drawing.Size(862, 550);
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "REHBER";
             this.Load += new System.EventHandler(this.FrmRehber_Load);
             ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).EndInit();

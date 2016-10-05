@@ -121,6 +121,7 @@
             // 
             // chkLstKisiler
             // 
+            this.chkLstKisiler.CheckOnClick = true;
             this.chkLstKisiler.FormattingEnabled = true;
             this.chkLstKisiler.HorizontalScrollbar = true;
             this.chkLstKisiler.Location = new System.Drawing.Point(52, 110);
@@ -134,11 +135,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(421, 510);
             this.Controls.Add(this.radGroupBox1);
+            this.MaximumSize = new System.Drawing.Size(429, 545);
+            this.MinimumSize = new System.Drawing.Size(429, 545);
             this.Name = "Frm_AliciEkle";
             // 
             // 
             // 
             this.RootElement.ApplyShapeToControl = true;
+            this.RootElement.MaxSize = new System.Drawing.Size(429, 545);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Alıcı Seç";
             this.Load += new System.EventHandler(this.Frm_AliciEkle_Load);
             ((System.ComponentModel.ISupportInitialize)(this.radGroupBox1)).EndInit();

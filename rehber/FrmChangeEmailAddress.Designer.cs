@@ -85,12 +85,17 @@
             this.Controls.Add(this.txtNewEMail);
             this.Controls.Add(this.btnEMailChange);
             this.Controls.Add(this.radLabel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MaximumSize = new System.Drawing.Size(482, 252);
+            this.MinimumSize = new System.Drawing.Size(482, 252);
             this.Name = "FrmChangeEmailAddress";
             // 
             // 
             // 
             this.RootElement.ApplyShapeToControl = true;
-            this.Text = "FrmChangeEmailAddress";
+            this.RootElement.MaxSize = new System.Drawing.Size(482, 252);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "E-Mail Değiştir";
             this.Load += new System.EventHandler(this.FrmChangeEmailAddress_Load);
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEMailChange)).EndInit();

@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace rehber
 {
-  public  class RehberBL  // BL -> business logic layer anlamında..
+  public  class RehberBL  // BL -> business layer anlamında (iş parçacığı)..
     {
-      public List<RehberModel> RehberList() //List -> collection. List<Type> -> generic collection. içerisine her türden veri alabilir.
+      public List<RehberModel> RehberList() // kullanıcı adına göre veritabanından bilgilerin çekildiği liste. 
       {
           SqlConnection baglanti = new SqlHelper().Connection();
           baglanti.Open();
@@ -53,8 +53,11 @@ namespace rehber
 
       public bool NumaraVar(string numara, int kullaniciId,int kayitId)
       {
-          var noKatSayi = new tokDBEntities1().rehbers.Count(q => q.telNo.Equals(numara) && q.kullaniciID == kullaniciId && q.ID != kayitId); // aynı numaradan, kullanıcı ID si aynı olan ama kayıt ID si farklı olan kac tane numara var?(aynı kullanıcının sadece 1 tane aynı numaraya sahip olmasını istiyoruz) 
-                                                                                                                                              // bu yüzden buradan gelecek Count() en az 0 ve yalnız 0 gelmelidir. aynı numaranın başka kaydı yok anlamında...              
+          var noKatSayi = new tokDBEntities1().rehbers.Count(q => q.telNo.Equals(numara) 
+                                                                && q.kullaniciID == kullaniciId && q.ID != kayitId); 
+                     //  aynı numaradan, kullanıcı ID si aynı olan ama kayıt ID si farklı olan kac tane numara var?
+                     //  (aynı kullanıcının sadece 1 tane aynı numaraya sahip olmasını bekliyoruz.) 
+                     // bu yüzden buradan gelecek Count() en az 0 ve yalnız 0 gelmelidir. aynı numaranın başka kaydı yok anlamında...              
           return noKatSayi > 0;
 
       }

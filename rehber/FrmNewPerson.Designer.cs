@@ -30,6 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmNewPerson));
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.radLabel2 = new Telerik.WinControls.UI.RadLabel();
+            this.radLabel3 = new Telerik.WinControls.UI.RadLabel();
+            this.radLabel4 = new Telerik.WinControls.UI.RadLabel();
+            this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
+            this.txtKapat = new Telerik.WinControls.UI.RadButton();
+            this.btnTemizle = new Telerik.WinControls.UI.RadButton();
+            this.btnFotografSec = new Telerik.WinControls.UI.RadButton();
+            this.pictureBox = new System.Windows.Forms.PictureBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -52,14 +60,14 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnTemizle = new Telerik.WinControls.UI.RadButton();
-            this.btnFotografSec = new Telerik.WinControls.UI.RadButton();
-            this.pictureBox = new System.Windows.Forms.PictureBox();
-            this.txtKapat = new Telerik.WinControls.UI.RadButton();
-            this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
-            this.radLabel2 = new Telerik.WinControls.UI.RadLabel();
-            this.radLabel3 = new Telerik.WinControls.UI.RadLabel();
-            this.radLabel4 = new Telerik.WinControls.UI.RadLabel();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtKapat)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnTemizle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnFotografSec)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbCinsiyet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRchIsTanimi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnKaydet)).BeginInit();
@@ -68,20 +76,96 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtIsim)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtDogumTarihi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.maskedTxtNumara)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnTemizle)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnFotografSec)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtKapat)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // radLabel2
+            // 
+            this.radLabel2.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.radLabel2.ForeColor = System.Drawing.Color.Red;
+            this.radLabel2.Location = new System.Drawing.Point(288, 122);
+            this.radLabel2.Name = "radLabel2";
+            this.radLabel2.Size = new System.Drawing.Size(15, 25);
+            this.radLabel2.TabIndex = 96;
+            this.radLabel2.Text = "*";
+            // 
+            // radLabel3
+            // 
+            this.radLabel3.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.radLabel3.ForeColor = System.Drawing.Color.Red;
+            this.radLabel3.Location = new System.Drawing.Point(288, 157);
+            this.radLabel3.Name = "radLabel3";
+            this.radLabel3.Size = new System.Drawing.Size(15, 25);
+            this.radLabel3.TabIndex = 96;
+            this.radLabel3.Text = "*";
+            // 
+            // radLabel4
+            // 
+            this.radLabel4.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.radLabel4.ForeColor = System.Drawing.Color.Red;
+            this.radLabel4.Location = new System.Drawing.Point(288, 227);
+            this.radLabel4.Name = "radLabel4";
+            this.radLabel4.Size = new System.Drawing.Size(15, 25);
+            this.radLabel4.TabIndex = 96;
+            this.radLabel4.Text = "*";
+            // 
+            // radLabel1
+            // 
+            this.radLabel1.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.radLabel1.ForeColor = System.Drawing.Color.Red;
+            this.radLabel1.Location = new System.Drawing.Point(288, 51);
+            this.radLabel1.Name = "radLabel1";
+            this.radLabel1.Size = new System.Drawing.Size(15, 25);
+            this.radLabel1.TabIndex = 95;
+            this.radLabel1.Text = "*";
+            // 
+            // txtKapat
+            // 
+            this.txtKapat.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.txtKapat.Location = new System.Drawing.Point(373, 359);
+            this.txtKapat.Name = "txtKapat";
+            this.txtKapat.Size = new System.Drawing.Size(84, 32);
+            this.txtKapat.TabIndex = 94;
+            this.txtKapat.Text = "KAPAT";
+            this.txtKapat.ThemeName = "TelerikMetro";
+            this.txtKapat.Click += new System.EventHandler(this.btnKapat_Click);
+            // 
+            // btnTemizle
+            // 
+            this.btnTemizle.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnTemizle.Location = new System.Drawing.Point(373, 283);
+            this.btnTemizle.Name = "btnTemizle";
+            this.btnTemizle.Size = new System.Drawing.Size(84, 56);
+            this.btnTemizle.TabIndex = 93;
+            this.btnTemizle.Text = "TEMİZLE";
+            this.btnTemizle.ThemeName = "TelerikMetro";
+            this.btnTemizle.Click += new System.EventHandler(this.btnTemizle_Click);
+            // 
+            // btnFotografSec
+            // 
+            this.btnFotografSec.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFotografSec.Location = new System.Drawing.Point(354, 231);
+            this.btnFotografSec.Name = "btnFotografSec";
+            this.btnFotografSec.Size = new System.Drawing.Size(103, 32);
+            this.btnFotografSec.TabIndex = 92;
+            this.btnFotografSec.Text = "Fotoğraf Seç...";
+            this.btnFotografSec.ThemeName = "TelerikMetro";
+            this.btnFotografSec.Click += new System.EventHandler(this.btnSec_Click);
+            // 
+            // pictureBox
+            // 
+            this.pictureBox.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.pictureBox.Location = new System.Drawing.Point(322, 52);
+            this.pictureBox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.pictureBox.Name = "pictureBox";
+            this.pictureBox.Size = new System.Drawing.Size(135, 164);
+            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox.TabIndex = 94;
+            this.pictureBox.TabStop = false;
             // 
             // label14
             // 
@@ -330,90 +414,6 @@
             this.label1.TabIndex = 78;
             this.label1.Text = "İSİM";
             // 
-            // btnTemizle
-            // 
-            this.btnTemizle.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnTemizle.Location = new System.Drawing.Point(373, 283);
-            this.btnTemizle.Name = "btnTemizle";
-            this.btnTemizle.Size = new System.Drawing.Size(84, 56);
-            this.btnTemizle.TabIndex = 93;
-            this.btnTemizle.Text = "TEMİZLE";
-            this.btnTemizle.ThemeName = "TelerikMetro";
-            this.btnTemizle.Click += new System.EventHandler(this.btnTemizle_Click);
-            // 
-            // btnFotografSec
-            // 
-            this.btnFotografSec.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFotografSec.Location = new System.Drawing.Point(354, 231);
-            this.btnFotografSec.Name = "btnFotografSec";
-            this.btnFotografSec.Size = new System.Drawing.Size(103, 32);
-            this.btnFotografSec.TabIndex = 92;
-            this.btnFotografSec.Text = "Fotoğraf Seç...";
-            this.btnFotografSec.ThemeName = "TelerikMetro";
-            this.btnFotografSec.Click += new System.EventHandler(this.btnSec_Click);
-            // 
-            // pictureBox
-            // 
-            this.pictureBox.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.pictureBox.Location = new System.Drawing.Point(322, 52);
-            this.pictureBox.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(135, 164);
-            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox.TabIndex = 94;
-            this.pictureBox.TabStop = false;
-            // 
-            // txtKapat
-            // 
-            this.txtKapat.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.txtKapat.Location = new System.Drawing.Point(373, 359);
-            this.txtKapat.Name = "txtKapat";
-            this.txtKapat.Size = new System.Drawing.Size(84, 32);
-            this.txtKapat.TabIndex = 94;
-            this.txtKapat.Text = "KAPAT";
-            this.txtKapat.ThemeName = "TelerikMetro";
-            this.txtKapat.Click += new System.EventHandler(this.btnKapat_Click);
-            // 
-            // radLabel1
-            // 
-            this.radLabel1.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.radLabel1.ForeColor = System.Drawing.Color.Red;
-            this.radLabel1.Location = new System.Drawing.Point(288, 51);
-            this.radLabel1.Name = "radLabel1";
-            this.radLabel1.Size = new System.Drawing.Size(15, 25);
-            this.radLabel1.TabIndex = 95;
-            this.radLabel1.Text = "*";
-            // 
-            // radLabel2
-            // 
-            this.radLabel2.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.radLabel2.ForeColor = System.Drawing.Color.Red;
-            this.radLabel2.Location = new System.Drawing.Point(288, 86);
-            this.radLabel2.Name = "radLabel2";
-            this.radLabel2.Size = new System.Drawing.Size(15, 25);
-            this.radLabel2.TabIndex = 96;
-            this.radLabel2.Text = "*";
-            // 
-            // radLabel3
-            // 
-            this.radLabel3.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.radLabel3.ForeColor = System.Drawing.Color.Red;
-            this.radLabel3.Location = new System.Drawing.Point(288, 157);
-            this.radLabel3.Name = "radLabel3";
-            this.radLabel3.Size = new System.Drawing.Size(15, 25);
-            this.radLabel3.TabIndex = 96;
-            this.radLabel3.Text = "*";
-            // 
-            // radLabel4
-            // 
-            this.radLabel4.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.radLabel4.ForeColor = System.Drawing.Color.Red;
-            this.radLabel4.Location = new System.Drawing.Point(288, 227);
-            this.radLabel4.Name = "radLabel4";
-            this.radLabel4.Size = new System.Drawing.Size(15, 25);
-            this.radLabel4.TabIndex = 96;
-            this.radLabel4.Text = "*";
-            // 
             // FrmNewPerson
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -454,14 +454,25 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.MaximumSize = new System.Drawing.Size(510, 517);
+            this.MinimumSize = new System.Drawing.Size(510, 517);
             this.Name = "FrmNewPerson";
             this.RightToLeftLayout = true;
             // 
             // 
             // 
             this.RootElement.ApplyShapeToControl = true;
+            this.RootElement.MaxSize = new System.Drawing.Size(510, 517);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Yeni Kişi Ekle";
-            this.Click += new System.EventHandler(this.btnKaydet_Click);
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtKapat)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnTemizle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnFotografSec)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbCinsiyet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtRchIsTanimi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnKaydet)).EndInit();
@@ -470,14 +481,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtIsim)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtDogumTarihi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.maskedTxtNumara)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnTemizle)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnFotografSec)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtKapat)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -487,7 +490,6 @@
         #endregion
 
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private getDate date1;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;

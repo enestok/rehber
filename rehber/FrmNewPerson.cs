@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
+using Microsoft.SqlServer.Server;
 using Telerik.WinControls;
 
 namespace rehber
@@ -58,7 +59,7 @@ namespace rehber
         }
         private void btnKaydet_Click(object sender, EventArgs e)
         {
-            if (txtIsim.Text == "" || maskedTxtNumara.Text == "")
+            if (txtIsim.Text == "" || maskedTxtNumara.Text == "(____)-___-____")
             {
                 RadMessageBox.SetThemeName("TelerikMetro");
                 RadMessageBox.Show("Yıldızlı alanları boş bırakmayınız !", "Boş Alanları Doldurunuz");
@@ -72,7 +73,7 @@ namespace rehber
                     DialogResult result = RadMessageBox.Show("Aynı numaraya sahip kullanıcı mevcut!! \n " +
                                        "Yine de kaydetmek istiyor musunuz?", "Aynı Numara Mevcut",MessageBoxButtons.YesNo,RadMessageIcon.Info);
                     
-                    /* kayıtlarda aynı numara varsa kullanıcıya uyarı göndermek için tekrar if-else açtık!  */
+                    // kayıtlarda aynı numara varsa kullanıcıya uyarı göndermek için tekrar if-else açtık!  
                     if (result == DialogResult.Yes)
                     {
                         //Sql Veritabanı Bağlantısı ve Kayıt işlemleri
@@ -157,8 +158,8 @@ namespace rehber
                     
                     //Sql Veritabanı Bağlantısı ve Kayıt işlemleri
                     SqlConnection baglanti = new SqlHelper().Connection();
-                    SqlCommand komut = new SqlCommand("resimKayit", baglanti);   //resimKayit (stored procedure)
-                    komut.CommandType = CommandType.StoredProcedure;
+                    SqlCommand komut = new SqlCommand("resimKayit", baglanti);
+                    komut.CommandType = CommandType.StoredProcedure; // resimKayit (stored procedure)
 
                     if (pictureBox.Image == null)
                         komut.Parameters.Add("@Resim", SqlDbType.Image).Value = DBNull.Value;
@@ -170,7 +171,8 @@ namespace rehber
                         br.Close();
                         fs.Close();
 
-                        komut.Parameters.AddWithValue("@Resim", resim); //resim yolunu veritabanına "binary" olarak kaydediyor.
+                        komut.Parameters.AddWithValue("@Resim", resim); //resim yolunu veritabanına 
+                                                                        //"binary" olarak kaydediyor.
                     }
 
                     if (txtIsim.Text.Length + txtSoyisim.Text.Length < 34)
@@ -182,16 +184,13 @@ namespace rehber
                     if (IsMailAddress(txtMail.Text) == false)
                     {
                         RadMessageBox.SetThemeName("TelerikMetro");
-                        RadMessageBox.Show("E Mail adresinizi kontrol ediniz. (örnek: biri@biryer.com)");
+                        RadMessageBox.Show("E Mail adresinizi kontrol ediniz. " +
+                                           "(örnek: biri@biryer.com)");
                         
                     }
                     else if (IsMailAddress(txtMail.Text) && txtMail.Text != null)
                     {
                         komut.Parameters.AddWithValue("@eMail", txtMail.Text); 
-                    }
-                    else
-                    {
-                        komut.Parameters.AddWithValue("@eMail", "NULL");
                     }
 
                     komut.Parameters.AddWithValue("@telNo", maskedTxtNumara.Text);
@@ -209,7 +208,8 @@ namespace rehber
                         _frmRehber.controlsEnableOrNot();
 
                         RadMessageBox.SetThemeName("TelerikMetro");
-                        RadMessageBox.Show(" Kayıt İşlemi Tamamlandı. ", "Kayıt Ekle", MessageBoxButtons.OK, RadMessageIcon.Info);
+                        RadMessageBox.Show(" Kayıt İşlemi Tamamlandı. ", "Kayıt Ekle", 
+                            MessageBoxButtons.OK, RadMessageIcon.Info);
                         Temizle();
                     }
 

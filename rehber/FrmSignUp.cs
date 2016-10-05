@@ -32,8 +32,8 @@ namespace rehber
         {
             var kullanici = new tokDBEntities1().logins.SingleOrDefault(q=> q.kullaniciAdi.Equals(txtKullaniciKayit.Text));
 
-            if (kullanici != null) //1 tane kullanıcı varsa aynı isimde başka kullanıcı kabul edilemez.
-            {
+            if (kullanici != null) //  0' dan farklı değilse aynı isimde başka bir kayıt mevcuttur.
+            {                      //  bu yüzden IsSingle? yani tek mi? -hayır. (false) 
                 return false; 
             }
             return true;
@@ -84,7 +84,7 @@ namespace rehber
 
         private void txtKullaniciKayit_Leave(object sender, EventArgs e)
         {
-            if (!IsSingle())
+            if (! IsSingle()) 
             {
                 btnKayitOl.Enabled = false;
                 

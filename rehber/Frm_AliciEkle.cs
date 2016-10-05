@@ -108,7 +108,7 @@ namespace rehber
 
         private void btnIptal_Click(object sender, EventArgs e)
         {
-            Close();
+            this.Close();
         }
 
         

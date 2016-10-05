@@ -140,6 +140,7 @@
             // 
             // 
             this.RootElement.ApplyShapeToControl = true;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Kişi Seç";
             this.Load += new System.EventHandler(this.Frm_ExcelList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.radGroupBox1)).EndInit();

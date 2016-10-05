@@ -273,11 +273,14 @@
             this.Controls.Add(this.btnSignUpGiris);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximumSize = new System.Drawing.Size(633, 390);
+            this.MinimumSize = new System.Drawing.Size(633, 390);
             this.Name = "FrmSignUp";
             // 
             // 
             // 
             this.RootElement.ApplyShapeToControl = true;
+            this.RootElement.MaxSize = new System.Drawing.Size(633, 390);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Kayıt Ol ";
             this.Load += new System.EventHandler(this.FrmSignUp_Load);

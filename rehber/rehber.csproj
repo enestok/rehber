@@ -104,13 +104,6 @@
     <Compile Include="BaseRadForm.Designer.cs">
       <DependentUpon>BaseRadForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Class1.cs" />
-    <Compile Include="date.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="date.Designer.cs">
-      <DependentUpon>date.cs</DependentUpon>
-    </Compile>
     <Compile Include="FrmChangeEmailAddress.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -186,7 +179,6 @@
     <Compile Include="login.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="LoginBL.cs" />
     <Compile Include="Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -248,9 +240,6 @@
     </Compile>
     <EmbeddedResource Include="BaseRadForm.resx">
       <DependentUpon>BaseRadForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="date.resx">
-      <DependentUpon>date.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmChangeEmailAddress.resx">
       <DependentUpon>FrmChangeEmailAddress.cs</DependentUpon>
@@ -314,6 +303,7 @@
     <None Include="ClassDiagram5.cd" />
     <None Include="ClassDiagram6.cd" />
     <Fakes Include="Fakes\Telerik.WinControls.Themes.Office2010Black.fakes" />
+    <None Include="ClassDiagram7.cd" />
     <None Include="packages.config" />
     <None Include="Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

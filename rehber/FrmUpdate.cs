@@ -52,10 +52,6 @@ namespace rehber
 
         private void guncelle_Load(object sender, EventArgs e)
         {
-            SqlConnection baglanti = new SqlHelper().Connection();
-            SqlCommand guncelle = new SqlCommand("kayitGuncelle", baglanti);  //kayitGuncelle (stored procedure)
-            guncelle.CommandType = CommandType.StoredProcedure;
-
             txtIsimYeni.Text = _rehberModel.Isim;
             txtSoyisimYeni.Text = _rehberModel.Soyisim;
             maskedTxtNumaraYeni.Text = _rehberModel.TelNo;
@@ -68,7 +64,6 @@ namespace rehber
             {
                 ImageConverter converter = new ImageConverter();
                 pictureBoxYeni.Image = image.icon_user_default;
-                //_rehberModel.Resim = (byte[])converter.ConvertFrom(pictureBoxYeni.Image);
             }
             else
             {
@@ -114,7 +109,7 @@ namespace rehber
         {
             EntityCompare(_rehberModel);
 
-            if (txtIsimYeni.Text == "" || maskedTxtNumaraYeni.Text == "" || cmbCinsiyetYeni.SelectedItem==null)
+            if (txtIsimYeni.Text == "" || maskedTxtNumaraYeni.Text == "(____)-___-____")
             {
                 RadMessageBox.SetThemeName("TelerikMetro");
                 RadMessageBox.Show("Yıldızlı alanları boş bırakmayınız !", "Boş Alanları Doldurunuz");
@@ -148,12 +143,10 @@ namespace rehber
                                 byte[] resim = br.ReadBytes(Convert.ToInt32(fs.Length));
                                 br.Close();
                                 fs.Close();
-
+                                
                                 guncelle.Parameters.Add("@ResimYeni", SqlDbType.Image).Value = (byte[])resim;
                             }
-
                         }
-
 
                         if (new FrmNewPerson(_rehber).IsMailAddress(txtMailYeni.Text) == false)
                         {
@@ -163,7 +156,7 @@ namespace rehber
                         else
                         {
                             guncelle.Parameters.AddWithValue("@eMailYeni", txtMailYeni.Text);
-                        }// e mail adresini boş girmeyi sağla
+                        }
 
                         guncelle.Parameters.AddWithValue("@telNoYeni", maskedTxtNumaraYeni.Text);
                         guncelle.Parameters.AddWithValue("@isimYeni", txtIsimYeni.Text);
@@ -213,7 +206,7 @@ namespace rehber
                     var sonuc = ImageCompare.Compare((Bitmap)pictureBoxYeni.Image, image.icon_user_default);
 
                     if (sonuc == ImageCompare.CompareResult.ciNull || (sonuc == ImageCompare.CompareResult.ciCompareOk))//resource ekleyerek default görüntü atadık. resource eklemeyi adım adım deftere yaz.
-                        guncelle.Parameters.Add("@ResimYeni", SqlDbType.Image).Value = DBNull.Value;  //veri tabanından resim bilgisi gelmediyse DB ye NULL yazsın..
+                        guncelle.Parameters.Add("@ResimYeni", SqlDbType.Image).Value = DBNull.Value;  //veri tabanından resim bilgisi gelmediyse DB ye NULL yazsın..                                                                
                     else
                     {
                         if (!string.IsNullOrEmpty(resimYolu)) // fotoğraf seç butonuna tıklandıysa (resim yolu na bir değer geldiyse) seçilen fotoğrafı db ye ekle..
@@ -226,9 +219,7 @@ namespace rehber
 
                             guncelle.Parameters.Add("@ResimYeni", SqlDbType.Image).Value = (byte[])resim;
                         }
-
                     }
-
 
                     if (new FrmNewPerson(_rehber).IsMailAddress(txtMailYeni.Text) == false)
                     {
@@ -305,42 +296,43 @@ namespace rehber
 
     public class ImageCompare //image compare -> İMAJ KARŞILAŞTIRMA.  
     {
-        public enum CompareResult //enum -> kod tarafında sabit olacak, elle müdahale edilmeyecek sayı değerlerini tutar. 
+        public enum CompareResult //enum -> kod tarafında sabit olacak, elle müdahale edilmeyecek sayı değerlerini tutar.
+                                     
         {
             ciCompareOk,
-            ciPixelMismatch,
+            ciPixelMismatch,    // durum değerlendirebilmek için tanımlanan elemanlar.
             ciSizeMismatch,
             ciNull
         };
 
         public static CompareResult Compare(Bitmap bmp1, Bitmap bmp2)// bitmap-> resmin pixel verilerine ulaşan sınıftır. image ile farkını araştır deftere yaz  
         {
-            CompareResult cr = CompareResult.ciCompareOk;
+            CompareResult cr = CompareResult.ciCompareOk; // başlangıçta, iki resmin aynı olduğu kabul ediliyor.
 
             if (bmp1 == null || bmp2 == null)
             {
                 return CompareResult.ciNull;
             }
-            //Test to see if we have the same size of image
+            //resimlerin boyutlarını karşılaştırıyor
             if (bmp1.Size != bmp2.Size)
             {
                 cr = CompareResult.ciSizeMismatch;
             }
             else
             {
-                //Convert each image to a byte array
-                System.Drawing.ImageConverter ic = new System.Drawing.ImageConverter();
+                //iki resim de byte türüne çevriliyor.
+                var ic = new ImageConverter();
                 byte[] btImage1 = new byte[1];
                 btImage1 = (byte[])ic.ConvertTo(bmp1, btImage1.GetType());
                 byte[] btImage2 = new byte[1];
                 btImage2 = (byte[])ic.ConvertTo(bmp2, btImage2.GetType());
 
-                //Compute a hash for each image
+                //iki resim için hash hesaplanıyor. 
                 SHA256Managed shaM = new SHA256Managed();
                 byte[] hash1 = shaM.ComputeHash(btImage1);
                 byte[] hash2 = shaM.ComputeHash(btImage2);
 
-                //Compare the hash values
+                //hash bilgileri karşılaştırılıyor
                 for (int i = 0; i < hash1.Length && i < hash2.Length && cr == CompareResult.ciCompareOk; i++)
                 {
                     if (hash1[i] != hash2[i])

@@ -35,8 +35,6 @@ namespace rehber
         {
             try
             {
-                // var login = new tokDBEntities1().logins.FirstOrDefault(q => q.kullaniciAdi.Equals(txtKullaniciAdi.Text) & q.sifre.Equals(txtSifre.Text));
-
                 var j = new tokDBEntities1().logins.ToDictionary(x => x.kullaniciAdi);
                 //-> x i key olarak atayıp, database'de uniq olan kullanıcı adı'nı da x e atadık.
                 //j bütün kullanıcı adlarını çekecek.
@@ -186,14 +184,17 @@ namespace rehber
         private void txtKullaniciAdi_Leave(object sender, EventArgs e)
         {
             var j = new tokDBEntities1().logins.ToDictionary(x => x.kullaniciAdi);
-            //-> x i key olarak atayıp, database'de uniq olan kullanıcı adı'nı da x e atadık.
-            //j bütün kullanıcı adlarını çekecek.
+            //  x i ToDictionary metodunun keyi olarak atayıp, 
+            //  database'de uniq olan kullanıcı adı'nı da x e atadık.
+            //  j bütün kullanıcı adlarını çekecek.
             try
             {
                 var uName = j[txtKullaniciAdi.Text];
-                // kullanıcı adı textboxtakiyle aynı olan üye varsa işleme sokacak. 
+                //  textbox'a yazılan kullanıcı adıyla uyuşan
+                //  kayıt varsa bu kayıtın bütün bilgileri 
+                //  'uName' değişkenine atanacak. 
 
-                if (uName.beniHatirla == true)
+                if (uName.beniHatirla == true) 
                 {
                     txtSifre.Text = uName.sifre;
                 }
@@ -223,8 +224,6 @@ namespace rehber
             FrmForgetPassword _frmPassword = new FrmForgetPassword();
             _frmPassword.ShowDialog();
         }
-
-
        
     }
 }

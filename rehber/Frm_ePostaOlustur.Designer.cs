@@ -331,6 +331,7 @@
             // 
             this.RootElement.ApplyShapeToControl = true;
             this.RootElement.MaxSize = new System.Drawing.Size(880, 510);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "E-Posta Yaz";
             this.Load += new System.EventHandler(this.Frm_ePostaOlustur_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txtGonderenMail)).EndInit();
