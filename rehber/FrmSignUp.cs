@@ -33,7 +33,7 @@ namespace rehber
             var kullanici = new tokDBEntities1().logins.SingleOrDefault(q=> q.kullaniciAdi.Equals(txtKullaniciKayit.Text));
 
             if (kullanici != null) //  0' dan farklı değilse aynı isimde başka bir kayıt mevcuttur.
-            {                      //  bu yüzden IsSingle? yani tek mi? -hayır. (false) 
+            {                      //  bu yüzden IsSingle(). yani tek mi? -hayır, başka kayıt var. (false) 
                 return false; 
             }
             return true;
@@ -57,7 +57,6 @@ namespace rehber
                 kayit.kullaniciAdi = txtKullaniciKayit.Text;
                 kayit.sifre = txtSifreKayit.Text;
                 kayit.kullaniciEmail = txtMailKayit.Text;
-           
                 kayit.beniHatirla = false;
 
                 signUpDataContext.KullaniciKayits.InsertOnSubmit(kayit);

@@ -11,7 +11,8 @@ namespace rehber
 {
   public  class RehberBL  // BL -> business layer anlamında (iş parçacığı)..
     {
-      public List<RehberModel> RehberList() // kullanıcı adına göre veritabanından bilgilerin çekildiği liste. 
+      public List<RehberModel> RehberList() // kullanıcı ID sine göre veritabanından 
+                                            // bilgilerin çekildiği liste. 
       {
           SqlConnection baglanti = new SqlHelper().Connection();
           baglanti.Open();
@@ -20,7 +21,7 @@ namespace rehber
 
           cmd.Parameters.AddWithValue("@kulId", KullaniciBilgi.KullaniciID);
 
-          var rd = cmd.ExecuteReader();
+          SqlDataReader rd = cmd.ExecuteReader();
 
           var lst = new List<RehberModel>();
 
@@ -61,5 +62,6 @@ namespace rehber
           return noKatSayi > 0;
 
       }
+
   }
 }

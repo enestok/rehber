@@ -133,35 +133,44 @@ namespace rehber
         }
 
         ///
-        //->   textBoxAra_TextChanged -> arama yaparken sonuçlarý anlýk gösterebilmek için..
+        //->   textBoxAra_TextChanged -> arama yapýp listelerken 
+        //     sonuçlarý anlýk gösterebilmek için..
         ///
         private void txtAra_TextChanged(object sender, System.EventArgs e)
         {
-            List<RehberModel> list = (from q in this._rehberList
-                                      where ((q.Isim.Contains(this.txtAra.Text) | q.Soyisim.Contains(this.txtAra.Text)) |
-                                                    q.GenelBilgi.Contains(this.txtAra.Text)) | q.TelNo.Contains(this.txtAra.Text)
+            List<RehberModel> list = 
+                (from q in this._rehberList
+                    where ((q.Isim.Contains(this.txtAra.Text) | 
+                                            q.Soyisim.Contains(this.txtAra.Text)) |
+                                            q.GenelBilgi.Contains(this.txtAra.Text)) | 
+                                            q.TelNo.Contains(this.txtAra.Text)
                                       select q).ToList<RehberModel>();
            
-
-
             if (list.Count == 0)
             {
                 this.pictureBoxGoster.Image = image.icon_user_default;
                 this.labelAdSoyad.Text = "...";
-                this.labelTelefon.Text = this.labelDogumTarihi.Text = this.labelCinsiyet.Text = this.txtIsTanimi.Text = "-";
+                this.labelTelefon.Text = 
+                    this.labelDogumTarihi.Text = 
+                        this.labelCinsiyet.Text = 
+                            this.txtIsTanimi.Text = "-";
                 lblLBStatus.Text = "Kayýt Bulunamadý !!";
 
                 lblLBStatus.ForeColor = Color.Red;
             }
             else
-            {
-                this.lstRehber.DataSource = list;  //  FrmRehber formundaki listbox(lstRehber) ýn data source una 
-                                                   //  LINQ ifadesiyle bilgileri içine doldurduðumuz 'list' isimli liste deðiþkeni veriliyor.
+            {   //  FrmRehber formundaki listbox(lstRehber) ýn data source una 
+                //  LINQ ifadesiyle bilgileri içine doldurduðumuz 
+                // 'list' isimli liste deðiþkeni veriliyor.
+
+                this.lstRehber.DataSource = list;  
                 lblLBStatus.Text = "Toplam Kayýt: " + list.Count; 
                 lblLBStatus.ForeColor = Color.Black;
             }
 
-            this.lstRehber.DataSource = list;  // listboxta, arama sonucuna göre 'list' in içinde mevcut olan kayýtlar listeleniyor.
+            // listboxta, arama sonucuna göre 
+            // 'list' in içinde mevcut olan kayýtlar listeleniyor.
+            this.lstRehber.DataSource = list;  
         }
 
 
@@ -178,10 +187,14 @@ namespace rehber
         ///
         public void listele()
         {
-            this.lstRehber.ValueMember = "kullaniciID";
-            this.lstRehber.DisplayMember = "GenelBilgi"; // GenelBilgi, RehberModel'in içinde "Ýsim + Soyisim" bilgisini tutan eleman.
             this._rehberList = new RehberBL().RehberList();
-            this.lstRehber.DataSource = this._rehberList;
+            this.lstRehber.DataSource = this._rehberList; // RehberModel cinsinden verileri tutan liste 
+                                                          //listbox ýmýzýn DataSource una atanýyor.
+
+            this.lstRehber.ValueMember = "kullaniciID";
+            this.lstRehber.DisplayMember = "GenelBilgi"; // GenelBilgi, RehberModel'in içinde 
+                                                         //"Ýsim + Soyisim" bilgisini tutan eleman.
+            
 
             lblLBStatus.Text = "Toplam Kayýt: " + _rehberList.Count;
         }
@@ -191,7 +204,9 @@ namespace rehber
         ///
         public void goster()
         {
+
             RehberModel selectedItem = this.lstRehber.SelectedItem as RehberModel;
+
             if (selectedItem != null)
             {
                 if (selectedItem.Resim != null)

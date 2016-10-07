@@ -19,7 +19,9 @@ namespace rehber
 
         private List<RehberModel> _mailList;
 
-        public new List<string> Choose { get; set; } //Frm_ePostaOlustur un nesnelerine ( txtAliciMail ) erişebilmek için referans olması için "get set" kullandık.
+        public new List<string> Choose { get; set; } 
+        // Frm_ePostaOlustur un nesnelerine ( txtAliciMail ) erişebilmek için 
+        // referans olması adına "get set" kullandık.
         
         private void Frm_AliciEkle_Load(object sender, EventArgs e)
         {
@@ -42,7 +44,8 @@ namespace rehber
             _mailList = new RehberBL().RehberList();
             ((ListBox)chkLstKisiler).DataSource = _mailList;
             ((ListBox)chkLstKisiler).ValueMember = "KullaniciID";
-            ((ListBox)chkLstKisiler).DisplayMember = "MailListe"; // MailListe, RehberModel'in içinde "İsim + Soyisim + Email" bilgilerini birlikte tutan liste elemanı.
+            ((ListBox)chkLstKisiler).DisplayMember = "MailListe"; 
+            // MailListe, RehberModel'in içinde "İsim + Soyisim + Email" bilgilerini birlikte tutan liste elemanı.
 
         }
 
@@ -108,7 +111,7 @@ namespace rehber
 
         private void btnIptal_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         

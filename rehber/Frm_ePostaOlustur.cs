@@ -66,12 +66,16 @@ namespace rehber
                     {
                         try
                         {
-                            ePosta.To.Add(hasSplitted.Trim());  // alıcı
+                            ePosta.To.Add(hasSplitted.Trim());  // alıcı formundan seçilen kişiler 
+                                                                // tek tek ekleniyor
                         }
                         catch (FormatException e)
                         {
                             RadMessageBox.SetThemeName("TelerikMetro");
-                            RadMessageBox.Show("Alıcı bilgilerini kontrol ediniz..." + "\n " + "farklı adresler arasında ';' kullanmayı unutmayın. " + "\n \n" + e);
+                            RadMessageBox.Show("Alıcı bilgilerini kontrol ediniz..." 
+                                                + "\n " 
+                                                + "farklı adresler arasında ';' kullanmayı unutmayın. " 
+                                                + "\n \n" + e);
                             return false;
                         }
 
@@ -112,6 +116,8 @@ namespace rehber
             smtp.Host = "smtp.gmail.com";
 
             smtp.EnableSsl = true;
+
+            // outlook hesabından mail göndermek..
 
             //if (txtGonderenMail.Text.Contains("@gmail.com"))
             //{
@@ -177,7 +183,8 @@ namespace rehber
                 
                 for (int i = 0; i < secim.Count; i++)
                 {
-                    this.txtAliciMail.Text += secim[i] + ";";
+                    this.txtAliciMail.Text += secim[i] + ";";  
+                    // Alıcı mail adreslerinin arasına ';' koyularak birbirinden ayrılıyor
                 }
                 
             }
@@ -213,20 +220,8 @@ namespace rehber
 
             List<string> pathList = openFileDialog1.FileNames.ToList(); //path listesi
 
-            //string[] fileNameSplit = new string[pathList.Count * 5];
-            //string[] aa = new string[pathList.Count];
-            //for (int i = 0; i < pathList.Count(); i++)
-            //{
-            //    fileNameSplit = pathList[i].Split('\\');
-            //     aa[i] = fileNameSplit.Last();
-                
-            //}
-          
-            //selectedFilePanel1.AddTool(aa.ToList());
             selectedFilePanel1.AddTool(pathList);
 
-
-            
         }
 
         private void Frm_ePostaOlustur_Load(object sender, EventArgs e)

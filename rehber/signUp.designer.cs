@@ -83,12 +83,12 @@ namespace rehber
 		private int _kullaniciID;
 		
 		private string _kullaniciAdi;
-		/// 
-        private string _kullaniciEmail;
-		///
+		
 		private string _sifre;
-
-	    private bool _beniHatirla;
+		
+		private string _kullaniciEmail;
+		
+		private bool _beniHatirla;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -98,13 +98,12 @@ namespace rehber
     partial void OnkullaniciIDChanged();
     partial void OnkullaniciAdiChanging(string value);
     partial void OnkullaniciAdiChanged();
-        //
-    partial void OnkullaniciEmailChanging(string value);
-    partial void OnkullaniciEmailChanged();
-        //
     partial void OnsifreChanging(string value);
     partial void OnsifreChanged();
-   
+    partial void OnkullaniciEmailChanging(string value);
+    partial void OnkullaniciEmailChanged();
+    partial void OnbeniHatirlaChanging(bool value);
+    partial void OnbeniHatirlaChanged();
     #endregion
 		
 		public KullaniciKayit()
@@ -151,59 +150,7 @@ namespace rehber
 				}
 			}
 		}
-        //
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_kullaniciEmail", DbType = "NVarChar(50)", CanBeNull = true)]
-        public string kullaniciEmail
-        {
-            get
-            {
-                return this._kullaniciEmail;
-            }
-            set
-            {
-                if ((this._kullaniciEmail != value))
-                {
-                    this.OnkullaniciEmailChanging(value);
-                    this.SendPropertyChanging();
-                    this._kullaniciEmail = value;
-                    this.SendPropertyChanged("kullaniciEmail");
-                    this.OnkullaniciEmailChanged();
-                }
-            }
-        }
-        //
-
-        [global::System.Data.Linq.Mapping.ColumnAttribute(Storage = "_beniHatirla", DbType = "bit NOT NULL", CanBeNull = false)]
-        public bool beniHatirla
-        {
-            get
-            {
-                return this._beniHatirla;
-            }
-            set
-            {
-                if ((this._beniHatirla != value))
-                {
-                    this.OnbeniHatirlaChanging(value);
-                    this.SendPropertyChanging();
-                    this._beniHatirla = value;
-                    this.SendPropertyChanged("beniHatirla");
-                    this.OnbeniHatirlaChanged();
-                }
-            }
-        }
-
-        private void OnbeniHatirlaChanged()
-        {
-            throw new NotImplementedException();
-        }
-
-        private void OnbeniHatirlaChanging(bool value)
-        {
-            throw new NotImplementedException();
-        }
-
-
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_sifre", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
 		public string sifre
 		{
@@ -223,7 +170,46 @@ namespace rehber
 				}
 			}
 		}
-
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_kullaniciEmail", CanBeNull=false)]
+		public string kullaniciEmail
+		{
+			get
+			{
+				return this._kullaniciEmail;
+			}
+			set
+			{
+				if ((this._kullaniciEmail != value))
+				{
+					this.OnkullaniciEmailChanging(value);
+					this.SendPropertyChanging();
+					this._kullaniciEmail = value;
+					this.SendPropertyChanged("kullaniciEmail");
+					this.OnkullaniciEmailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_beniHatirla")]
+		public bool beniHatirla
+		{
+			get
+			{
+				return this._beniHatirla;
+			}
+			set
+			{
+				if ((this._beniHatirla != value))
+				{
+					this.OnbeniHatirlaChanging(value);
+					this.SendPropertyChanging();
+					this._beniHatirla = value;
+					this.SendPropertyChanged("beniHatirla");
+					this.OnbeniHatirlaChanged();
+				}
+			}
+		}
 		
 		public event PropertyChangingEventHandler PropertyChanging;
 		

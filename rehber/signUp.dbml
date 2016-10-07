@@ -5,6 +5,8 @@
       <Column Name="kullaniciID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="kullaniciAdi" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="sifre" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="kullaniciEmail" Type="System.String" CanBeNull="false" />
+      <Column Name="beniHatirla" Type="System.Boolean" CanBeNull="false" />
     </Type>
   </Table>
 </Database>

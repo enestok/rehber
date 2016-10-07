@@ -23,39 +23,35 @@ namespace rehber
         {
             get
             {
-                var lst = new List<string>();
-
-                foreach (Control item in this.Controls)
-                {
-                    var tool = item as SelectedFileTool;
-                    if (tool != null)
-                    {
-                        lst.Add(tool.FileName);
-                        
-                    }
-                }
-
-                return lst;
+                return this.Controls.OfType<SelectedFileTool>().Select(tool => tool.Path).ToList();
             }
-        } 
+        }
 
-        public void AddTool(List<string> pathList) // attach edilen belgeler etrafındaki çerçeveyle beraber gösteriliyor.
+        public void AddTool(List<string> pathList) 
+            // attach edilen belgeler etrafındaki çerçeveyle beraber gösteriliyor.
         {
 
             foreach (var item in pathList)
             {
-                var tool = new SelectedFileTool();
-                tool.FileName = item.ToString();
-                tool.Parent = this;
-                
-                tool.Location = new Point(5, _ly);
+                var fn = item.Split('\\');
+
+                var fname = fn[fn.Length - 1];
+
+                var tool = new SelectedFileTool
+                {
+                    FileName = fname,
+                    Parent = this,
+                    Location = new Point(5, _ly),
+                    Path = item
+                };
+
                 this.Controls.Add(tool);
 
                 _ly += 35;
             }
         }
 
-        private void SelectedFilePanel_Load(object sender, EventArgs e) 
+        private void SelectedFilePanel_Load(object sender, EventArgs e)
         {
 
         }
@@ -63,14 +59,14 @@ namespace rehber
         public void RefreshLocation() // eklenen belge iptal edilmek istendiğinde çerçevedeki (x) e basınca çerçeve görünmeyecek. 
         {                             // diğer eklenen belgelerin konumlarının yenilenmesini sağlıyor..
             _ly = 10;
-      
+
             foreach (Control cntr in this.Controls)
             {
                 if (cntr is SelectedFileTool)
                 {
                     cntr.Location = new Point(5, _ly);
 
-                    _ly += 40; 
+                    _ly += 35;
                 }
 
             }

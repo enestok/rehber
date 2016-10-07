@@ -39,7 +39,7 @@ namespace rehber
                 //-> x i key olarak atayıp, database'de uniq olan kullanıcı adı'nı da x e atadık.
                 //j bütün kullanıcı adlarını çekecek.
                 var uName = j[txtKullaniciAdi.Text];
-                // kullanıcı adı textboxtakiyle aynı olan üye varsa işleme sokacak. 
+                // kullanıcı adı, textboxtakiyle aynı olan üye varsa bütün bilgilerini uName değişkenine atacak. 
 
                 if (uName != null && uName.sifre == txtSifre.Text)
                 {
@@ -54,6 +54,7 @@ namespace rehber
             {
                 return false;
             }
+
             catch(KeyNotFoundException ex)
             {
                 return false;

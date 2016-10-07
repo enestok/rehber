@@ -62,7 +62,6 @@ namespace rehber
                     sheet1.Cells[1, i].Font.Bold = true;
                 }
 
-                
                 for (int i = 0; i < _secim.Count; i++)
                 {
                     var index = 1;
@@ -98,12 +97,9 @@ namespace rehber
                             }
                         }
                         index++;
-
                     }
                 }
-               
-               
-                
+
                 this.Close();
             }
 
